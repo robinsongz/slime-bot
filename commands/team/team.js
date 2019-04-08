@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
 
     let teamChannel = enmap.get(message.guild.id, 'teamChannel');
          
-    // expedition check-ins
+    // expedition commands
     
         const [ prop ] = args;
 
@@ -770,9 +770,9 @@ module.exports.run = async (bot, message, args) => {
                     }
 
                     else if (firstteam === 'team1' && secondteam === 'team3') {
-                        let member1 = team1.team[firstNumber-1];
+                        let member1 = team1[firstNumber-1];
 
-                        let member2 = team3.team[secondNumber-1];
+                        let member2 = team3[secondNumber-1];
 
                         if (member1 === undefined && member2 !== undefined) {
 
@@ -813,9 +813,9 @@ module.exports.run = async (bot, message, args) => {
                     }
 
                     else if (firstteam === 'team2' && secondteam === 'team3') {
-                        let member1 = team2.team[firstNumber-1];
+                        let member1 = team2[firstNumber-1];
 
-                        let member2 = team3.team[secondNumber-1];
+                        let member2 = team3[secondNumber-1];
 
                         if (member1 === undefined && member2 !== undefined) {
 
