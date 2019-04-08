@@ -1,26 +1,8 @@
-const Commando = require('discord.js-commando');
-const bot = new Commando.Client({
-    commandPrefix: '!',
-    owner: '151152121780109312',
-    unknownCommandResponse: false
-});
-
-const config = require('./config.json')
+const Discord = require('discord.js');
+const config = require('./config.json');
 const Enmap = require('enmap');
 const fs = require('fs');
 const CronJob = require('cron').CronJob;
-
-//registering commands
-bot.registry
-    .registerGroups([
-        ['forge', 'Forge Commands'],
-        ['configs', 'Config Commands'],
-        ['team', 'Team Commands'],
-        ['misc', 'Misc Commands'],
-        ['party', 'Party Commands']
-    ])
-    .registerCommandsIn((__dirname + '/commands'));
-
 
 // enmap settings back-end
 enmap = new Enmap({
@@ -33,7 +15,8 @@ enmap = new Enmap({
 
 // enmap settings front-end  
 defaultSettings = {		
-    adminRole: "GM",	
+    adminRole: "GM",
+    prefix: "!",	
     privateMessage: "Hi there, welcome to our discord! \n\n Please change your nickname to your in-game IGN. \n\n Type !help for my list of commands!",
     expoChannel: "general",
     expoMessage: "@everyone Expeditions are starting in 15 minutes! Good luck!",
@@ -73,6 +56,21 @@ defaultSettings = {
     }
 }
 
+const bot = new Discord.Client({
+});
+
+bot.commands = new Discord.Collection(); 
+
+//registering commands
+// bot.registry
+//     .registerGroups([
+//         ['forge', 'Forge Commands'],
+//         ['configs', 'Config Commands'],
+//         ['team', 'Team Commands'],
+//         ['misc', 'Misc Commands'],
+//         ['prefix', 'Prefix Commands']
+//     ])
+//     .registerCommandsIn((__dirname + '/commands'));
 
 // This loop reads the /events/ folder and attaches each event file to the appropriate event.
 fs.readdir("./events/", (err, files) => {
@@ -89,8 +87,25 @@ fs.readdir("./events/", (err, files) => {
     });
   });
 
+// This loop reads the /commands/ folder and registrates every js file as a new command
+fs.readdir("./commands/", (err, files) => {
+    if(err) console.log(err);
 
+    if (files.length <= 0) {
+        return;
+    }
 
+    files.forEach((f, i) => {
+        fs.readdir("./commands/" + f, (err, file) => {
+            for (i in file) {
+                let props = require(`./commands/${f}/${file[i]}`);
+                if (!!props.help) {
+                bot.commands.set(props.help.name, props)
+                }
+            }
+        })
+    })
+})
 
 bot.on('ready', () => {
     console.log(`Serving ${bot.guilds.size} servers`);
@@ -170,10 +185,29 @@ bot.on('ready', () => {
         let banquetTime = enmap.get(guild.id, 'banquetTime');
                       
         new CronJob(`00 ${banquetTime} * * *`, banquetReminder, null, true, 'America/Los_Angeles');
-
           
         })
     })
+    
+
+bot.on('message', function(message) {
+
+    if (message.author.bot) return;
+
+    if (message.channel.type === "dm") return;
+
+    let msgPrefix = message.content.charAt(0);
+    let prefix = enmap.get(message.guild.id, 'prefix');
+    let messageArray = message.content.split(" ");
+    let cmd = messageArray[0];
+    let args = messageArray.slice(1);
+
+    let commandfile = bot.commands.get(cmd.slice(prefix.length));
+    if (prefix == msgPrefix && commandfile) {
+        commandfile.run(bot, message, args)
+    }
+
+})
 
 // logs unhandled rejections
 process.on('unhandledRejection', (reason, promise) => {
