@@ -108,7 +108,7 @@ module.exports.run = async (bot, message, args) => {
             return message.reply(`You cannot enter a blank value. Type '!setconf help' for configuration help, or '!showconf' for your current configurations.`)
         }
 
-        else if (prop === 'expoChannel' || prop === 'banquetChannel' || prop === 'fortChannel' || prop === 'teamChannel' || prop === 'partyChannel') {
+        else if (prop === 'expoChannel' || prop === 'banquetChannel' || prop === 'fortChannel' || prop === 'teamChannel') {
             enmap.ensure(message.guild.id, defaultSettings)
         
             enmap.set(message.guild.id, value.join("-").toLowerCase(), prop);
@@ -145,6 +145,26 @@ module.exports.run = async (bot, message, args) => {
         //     }
         // } 
 
+
+        else if (prop === 'prefix') {
+
+            if (value.length == 0) return message.channel.send("Please enter a valid prefix!");
+
+            if (value.length > 1) return message.channel.send("Please enter only one prefix!");
+
+            if (value[0].length > 1) return message.channel.send("Your selected prefix is too long, please use only 1 character!");
+
+        
+
+            enmap.set(message.guild.id, value, prop);
+
+            let botembed = new Discord.RichEmbed()
+            .setTitle("Prefix changed!")
+            .setDescription("Your prefix has been changed to `" + value + "`!")
+            .setColor("#15f153")
+
+            return message.channel.send(botembed);  
+        }
         else if (prop === 'region') {
 
             let botembed = new Discord.RichEmbed()

@@ -169,15 +169,15 @@ bot.on('ready', () => {
 
             
           
-            new CronJob('00 45 12,20 * * *', expedReminder, null, true, 'Europe/London');
+            new CronJob('00 45 12,20 * * *', expedReminder, null, true, 'Europe/Amsterdam');
                
-            new CronJob('00 45 21 * * *', fortReminder, null, true, 'Europe/London');
+            new CronJob('00 45 21 * * *', fortReminder, null, true, 'Europe/Amsterdam');
                 
             let banquetTime = enmap.get(guild.id, 'banquetTime');
                       
-            new CronJob(`00 ${banquetTime} * * *`, banquetReminder, null, true, 'Europe/London');
+            new CronJob(`00 ${banquetTime} * * *`, banquetReminder, null, true, 'Europe/Amsterdam');
         
-            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Europe/London')
+            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Europe/Amsterdam')
         
         }
 
