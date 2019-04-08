@@ -1,32 +1,21 @@
 const commando = require('discord.js-commando');
 const config = require('../../config.json');
 
-class Party extends commando.Command{
-    constructor(client){
-        super(client, {
-            name: 'party',
-            group: 'party',
-            memberName: 'party',
-            description: 'Organizing Party Commands'
-        });
-    }
 
-    async run(message) {
 
-        const args = message.content.split(/\s+/g);
-        const command = args.shift().slice(config.prefix.length).toLowerCase();
+module.exports.run = async (bot, message, args) => {
 
-        if (!message.guild || message.author.bot) return;
-    
-        if (message.content.indexOf(config.prefix) !== 0) return;
+    const guildConf = enmap.ensure(message.guild.id, defaultSettings);
 
-        const guildConf = enmap.ensure(message.guild.id, defaultSettings);
+    if (!message.guild || message.author.bot) return;
+  
+    if (message.content.indexOf(guildConf.prefix) !== 0) return;
 
         let member = message.member.displayName;
         
         // expedition check-ins
     
-        if (command === "party") {
+      
 
             const [ prop ] = args;
 
@@ -64,7 +53,7 @@ class Party extends commando.Command{
 
                 // if party spot is undefined, replace with " "
                 const partyList = (index, partyNumber) => {
-                    return partyNumber[index] === undefined ? " " : partyNumber[index];
+                    return partyNumber[index] === undefined ? "-" : partyNumber[index];
                 }
 
                 //discord embed function
@@ -73,7 +62,7 @@ class Party extends commando.Command{
                         color: 3447003,
                         fields: [{
                             name: `**__${name}__**`,
-                            value: `1. ${partyList(0, partyNumber)} \n 2. ${partyList(1, partyNumber)} \n 3. ${partyList(2, partyNumber)} \n 4. ${partyList(3, partyNumber)} \n 5. ${partyList(4, partyNumber)} \n 6. ${partyList(5, partyNumber)}`
+                            value: ` 1. ${partyList(0, partyNumber)} \n2. ${partyList(1, partyNumber)} \n3. ${partyList(2, partyNumber)} \n4. ${partyList(3, partyNumber)} \n5. ${partyList(4, partyNumber)} \n6. ${partyList(5, partyNumber)}`
                         },
                         ]
                     }
@@ -692,7 +681,7 @@ class Party extends commando.Command{
                     else if (value === 'all') {
 
                         const partyList = (index, party) => {
-                            return party[index] === undefined ? " " : party[index];
+                            return party[index] === undefined ? "-" : party[index];
                         }
 
                         return message.channel.send({embed: {
@@ -700,15 +689,15 @@ class Party extends commando.Command{
                             fields: [
                                 {
                                 name: `**__${name1}__**`,
-                                value: `1. ${partyList(0, party1)} \n 2. ${partyList(1, party1)} \n 3. ${partyList(2, party1)} \n 4. ${partyList(3, party1)} \n 5. ${partyList(4, party1)} \n 6. ${partyList(5, party1)}`
+                                value: `1. ${partyList(0, party1)} \n2. ${partyList(1, party1)} \n3. ${partyList(2, party1)} \n4. ${partyList(3, party1)} \n5. ${partyList(4, party1)} \n6. ${partyList(5, party1)}`
                                 },
                                 {
                                 name: `**__${name2}__**`,
-                                value: `1. ${partyList(0, party2)} \n 2. ${partyList(1, party2)} \n 3. ${partyList(2, party2)} \n 4. ${partyList(3, party2)} \n 5. ${partyList(4, party2)} \n 6. ${partyList(5, party2)} `
+                                value: `1. ${partyList(0, party2)} \n2. ${partyList(1, party2)} \n3. ${partyList(2, party2)} \n4. ${partyList(3, party2)} \n5. ${partyList(4, party2)} \n6. ${partyList(5, party2)} `
                                 },
                                 {
                                 name: `**__${name3}__**`,
-                                value: `1. ${partyList(0, party3)} \n 2. ${partyList(1, party3)} \n 3. ${partyList(2, party3)} \n 4. ${partyList(3, party3)} \n 5. ${partyList(4, party3)} \n 6. ${partyList(5, party3)} `
+                                value: `1. ${partyList(0, party3)} \n2. ${partyList(1, party3)} \n3. ${partyList(2, party3)} \n4. ${partyList(3, party3)} \n5. ${partyList(4, party3)} \n6. ${partyList(5, party3)} `
                                 },
                             ]
                         }
@@ -1023,8 +1012,8 @@ class Party extends commando.Command{
                 }
         }
 
-    }
+
+
+module.exports.help = {
+    name: 'party'
 }
-
-
-module.exports = Party;

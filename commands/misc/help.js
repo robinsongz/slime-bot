@@ -1,27 +1,19 @@
 const commando = require('discord.js-commando');
 const config = require('../../config.json');
 
-class Help extends commando.Command{
-    constructor(client){
-        super(client, {
-            name: 'help',
-            group: 'misc',
-            memberName: 'help',
-            description: 'Lists bot commands'
-        });
-    }
 
-    async run(message) {
 
-        const args = message.content.split(/\s+/g);
-        const command = args.shift().slice(config.prefix.length).toLowerCase();
+module.exports.run = async (bot, message) => {
 
-        if (!message.guild || message.author.bot) return;
-    
-        if (message.content.indexOf(config.prefix) !== 0) return;
+    const guildConf = enmap.ensure(message.guild.id, defaultSettings);
+
+    if (!message.guild || message.author.bot) return;
+  
+    if (message.content.indexOf(guildConf.prefix) !== 0) return;
+
 
     // list available bot commands
-        if (command === 'help') {
+     
             message.author.send({embed: {
                 color: 3447003,
                 fields: [{
@@ -37,10 +29,12 @@ class Help extends commando.Command{
             })
 
             message.reply(`Check your DM!`)
-        }
+       
 
         
     }
-}
 
-module.exports = Help;
+
+module.exports.help = {
+    name: "help"
+}

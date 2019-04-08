@@ -1,26 +1,8 @@
-const Commando = require('discord.js-commando');
-const bot = new Commando.Client({
-    commandPrefix: '!',
-    owner: '151152121780109312',
-    unknownCommandResponse: false
-});
-
-const config = require('./config.json')
+const Discord = require('discord.js');
+const config = require('./config.json');
 const Enmap = require('enmap');
 const fs = require('fs');
 const CronJob = require('cron').CronJob;
-
-//registering commands
-bot.registry
-    .registerGroups([
-        ['forge', 'Forge Commands'],
-        ['configs', 'Config Commands'],
-        ['team', 'Team Commands'],
-        ['misc', 'Misc Commands'],
-        ['party', 'Party Commands']
-    ])
-    .registerCommandsIn((__dirname + '/commands'));
-
 
 // enmap settings back-end
 enmap = new Enmap({
@@ -33,7 +15,8 @@ enmap = new Enmap({
 
 // enmap settings front-end  
 defaultSettings = {		
-    adminRole: "GM",	
+    adminRole: "GM",
+    prefix: "!",	
     privateMessage: "Hi there, welcome to our discord! \n\n Please change your nickname to your in-game IGN. \n\n Type !help for my list of commands!",
     expoChannel: "general",
     expoMessage: "@everyone Expeditions are starting in 15 minutes! Good luck!",
@@ -73,6 +56,10 @@ defaultSettings = {
     }
 }
 
+const bot = new Discord.Client({
+});
+
+bot.commands = new Discord.Collection(); 
 
 // This loop reads the /events/ folder and attaches each event file to the appropriate event.
 fs.readdir("./events/", (err, files) => {
@@ -89,15 +76,32 @@ fs.readdir("./events/", (err, files) => {
     });
   });
 
+// This loop reads the /commands/ folder and registrates every js file as a new command
+fs.readdir("./commands/", (err, files) => {
+    if(err) console.log(err);
 
+    if (files.length <= 0) {
+        return;
+    }
 
+    files.forEach((f, i) => {
+        fs.readdir("./commands/" + f, (err, file) => {
+            for (i in file) {
+                let props = require(`./commands/${f}/${file[i]}`);
+                if (!!props.help) {
+                bot.commands.set(props.help.name, props)
+                }
+            }
+        })
+    })
+})
 
 bot.on('ready', () => {
     console.log(`Serving ${bot.guilds.size} servers`);
     console.log('Ready boss!');
 
     bot.guilds.forEach((guild) => {
-        
+
         enmap.ensure(guild.id, defaultSettings);
 
         const expedReminder = () => {
@@ -148,7 +152,7 @@ bot.on('ready', () => {
                     
         
         }
-
+    
         const expedAutoClear = () => {
             enmap.ensure(guild.id, defaultSettings);
             
@@ -156,24 +160,90 @@ bot.on('ready', () => {
             enmap.set(guild.id, [], 'team2.team');
             enmap.set(guild.id, [], 'team3.team');    
         }
-
-        //exped reminders
-        new CronJob('00 45 12,20 * * *', expedReminder, null, true, 'America/Los_Angeles');
         
-        // exped auto clear
-        new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'America/Los_Angeles')
+        let region = enmap.get(guild.id, 'region');
 
-         // guild fort reminder
-        new CronJob('00 45 21 * * *', fortReminder, null, true, 'America/Los_Angeles');
-      
-        // banquet reminder
-        let banquetTime = enmap.get(guild.id, 'banquetTime');
-                      
-        new CronJob(`00 ${banquetTime} * * *`, banquetReminder, null, true, 'America/Los_Angeles');
+    
 
+        if (region === 'eu') {
+
+            
           
-        })
+            new CronJob('00 45 12,20 * * *', expedReminder, null, true, 'Europe/London');
+               
+            new CronJob('00 45 21 * * *', fortReminder, null, true, 'Europe/London');
+                
+            let banquetTime = enmap.get(guild.id, 'banquetTime');
+                      
+            new CronJob(`00 ${banquetTime} * * *`, banquetReminder, null, true, 'Europe/London');
+        
+            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Europe/London')
+        
+        }
+
+        else if (region === 'asia') {
+
+            
+           
+
+            new CronJob('00 45 12,20 * * *', expedReminder, null, true, 'Asia/Taipei');
+       
+
+               
+            new CronJob('00 45 21 * * *', fortReminder, null, true, 'Asia/Taipei');
+                
+        
+            let banquetTime = enmap.get(guild.id, 'banquetTime');
+                      
+            new CronJob(`00 ${banquetTime} * * *`, banquetReminder, null, true, 'Asia/Taipei');
+            
+
+            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Asia/Taipei');
+        
+        }
+        
+        else {
+    
+
+            new CronJob('00 45 12,20 * * *', expedReminder, null, true, 'America/Los_Angeles');
+    
+            new CronJob('00 45 21 * * *', fortReminder, null, true, 'America/Los_Angeles');
+    
+            let banquetTime = enmap.get(guild.id, 'banquetTime');
+                  
+            new CronJob(`00 ${banquetTime} * * *`, banquetReminder, null, true, 'America/Los_Angeles');
+
+
+            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'America/Los_Angeles')
+        }
+
+           
+        
     })
+    })
+    
+
+bot.on('message', function(message) {
+
+    if (message.author.bot) return;
+
+    if (message.channel.type === "dm") return;
+
+    // if guild does not have enmap settings, set defaultSettings as default
+    enmap.ensure(message.guild.id, defaultSettings);
+
+    let msgPrefix = message.content.charAt(0);
+    let prefix = enmap.get(message.guild.id, 'prefix');
+    let messageArray = message.content.split(" ");
+    let cmd = messageArray[0];
+    let args = messageArray.slice(1);
+
+    let commandfile = bot.commands.get(cmd.slice(prefix.length));
+    if (prefix == msgPrefix && commandfile) {
+        commandfile.run(bot, message, args) 
+    } 
+ 
+})
 
 // logs unhandled rejections
 process.on('unhandledRejection', (reason, promise) => {
@@ -181,4 +251,4 @@ process.on('unhandledRejection', (reason, promise) => {
 })
 
 // bot login
-bot.login(config.token);
+bot.login(config.token); 

@@ -1,36 +1,22 @@
-const commando = require('discord.js-commando');
-const config = require('../../config.json');
+const Discord = require('discord.js');
 
-class Team extends commando.Command{
-    constructor(client){
-        super(client, {
-            name: 'team',
-            group: 'team',
-            memberName: 'team',
-            description: 'Organizing Team Commands'
-        });
-    }
+module.exports.run = async (bot, message, args) => {
 
-    async run(message) {
+    const guildConf = enmap.ensure(message.guild.id, defaultSettings);
 
-        const args = message.content.split(/\s+/g);
-        const command = args.shift().slice(config.prefix.length).toLowerCase();
+    if (!message.guild || message.author.bot) return;
+  
+    if (message.content.indexOf(guildConf.prefix) !== 0) return;
 
-        if (!message.guild || message.author.bot) return;
-    
-        if (message.content.indexOf(config.prefix) !== 0) return;
+    let member = message.member.displayName;
 
-        const guildConf = enmap.ensure(message.guild.id, defaultSettings);
+    // let username = message.member.user.tag;
 
-        let member = message.member.displayName;
-
-        let teamChannel = enmap.get(message.guild.id, 'teamChannel');
+    let teamChannel = enmap.get(message.guild.id, 'teamChannel');
          
-        // expedition check-ins
+    // expedition check-ins
     
-        if (command === "team") {
-
-            const [ prop ] = args;
+        const [ prop ] = args;
 
             if (message.channel.name === teamChannel) {
 
@@ -66,7 +52,7 @@ class Team extends commando.Command{
 
                 // if spot is empty, replace undefined with " "
                 const teamList = (index, teamNumber) => {
-                    return teamNumber[index] === undefined ? " " : teamNumber[index];
+                    return teamNumber[index] === undefined ? "-" : teamNumber[index];
                 }
 
                 // discord embed function
@@ -75,7 +61,7 @@ class Team extends commando.Command{
                         color: 3447003,
                         fields: [{
                             name: `**__${name}__**`,
-                            value: `1. ${teamList(0, teamNumber)} \n 2. ${teamList(1, teamNumber)} \n 3. ${teamList(2, teamNumber)} \n 4. ${teamList(3, teamNumber)} \n 5. ${teamList(4, teamNumber)} \n 6. ${teamList(5, teamNumber)} \n 7. ${teamList(6, teamNumber)}\n 8. ${teamList(7, teamNumber)}\n 9. ${teamList(8, teamNumber)}\n 10. ${teamList(9, teamNumber)}`
+                            value: `1. ${teamList(0, teamNumber)} \n2. ${teamList(1, teamNumber)} \n3. ${teamList(2, teamNumber)} \n4. ${teamList(3, teamNumber)} \n5. ${teamList(4, teamNumber)} \n6. ${teamList(5, teamNumber)} \n7. ${teamList(6, teamNumber)}\n8. ${teamList(7, teamNumber)}\n9. ${teamList(8, teamNumber)}\n10. ${teamList(9, teamNumber)}`
                         },
                         ]
                     }
@@ -281,6 +267,9 @@ class Team extends commando.Command{
                     }
                 }
                 
+                // else if (prop === 'test') {
+                //     message.reply(`${username}`)
+                // }
                 // checking out
                 else if (prop === "checkout") {
                 
@@ -692,7 +681,7 @@ class Team extends commando.Command{
 
                     else if (value === 'all') {
                         const teamList = (index, team) => {
-                            return team[index] === undefined ? " " : team[index];
+                            return team[index] === undefined ? "-" : team[index];
                         }
 
                         return message.channel.send({embed: {
@@ -700,15 +689,15 @@ class Team extends commando.Command{
                             fields: [
                                 {
                                 name: `**__${name1}__**`,
-                                value: `1. ${teamList(0, team1)} \n 2. ${teamList(1, team1)} \n 3. ${teamList(2, team1)} \n 4. ${teamList(3, team1)} \n 5. ${teamList(4, team1)} \n 6. ${teamList(5, team1)} \n 7. ${teamList(6, team1)} \n 8. ${teamList(7, team1)} \n 9. ${teamList(8, team1)} \n 10. ${teamList(9, team1)}`
+                                value: ` 1. ${teamList(0, team1)} \n2. ${teamList(1, team1)} \n3. ${teamList(2, team1)} \n4. ${teamList(3, team1)} \n5. ${teamList(4, team1)} \n6. ${teamList(5, team1)} \n7. ${teamList(6, team1)} \n8. ${teamList(7, team1)} \n9. ${teamList(8, team1)} \n10. ${teamList(9, team1)}`
                                 },
                                 {
                                 name: `**__${name2}__**`,
-                                value: `1. ${teamList(0, team2)} \n 2. ${teamList(1, team2)} \n 3. ${teamList(2, team2)} \n 4. ${teamList(3, team2)} \n 5. ${teamList(4, team2)} \n 6. ${teamList(5, team2)} \n 7. ${teamList(6, team2)} \n 8. ${teamList(7, team2)} \n 9. ${teamList(8, team2)} \n 10. ${teamList(9, team2)} `
+                                value: ` 1. ${teamList(0, team2)} \n2. ${teamList(1, team2)} \n3. ${teamList(2, team2)} \n4. ${teamList(3, team2)} \n5. ${teamList(4, team2)} \n6. ${teamList(5, team2)} \n7. ${teamList(6, team2)} \n8. ${teamList(7, team2)} \n9. ${teamList(8, team2)} \n10. ${teamList(9, team2)} `
                                 },
                                 {
                                 name: `**__${name3}__**`,
-                                value: `1. ${teamList(0, team3)} \n 2. ${teamList(1, team3)} \n 3. ${teamList(2, team3)} \n 4. ${teamList(3, team3)} \n 5. ${teamList(4, team3)} \n 6. ${teamList(5, team3)} \n 7. ${teamList(6, team3)} \n 8. ${teamList(7, team3)} \n 9. ${teamList(8, team3)} \n 10. ${teamList(9, team3)} `
+                                value: ` 1. ${teamList(0, team3)} \n2. ${teamList(1, team3)} \n3. ${teamList(2, team3)} \n4. ${teamList(3, team3)} \n5. ${teamList(4, team3)} \n6. ${teamList(5, team3)} \n7. ${teamList(6, team3)} \n8. ${teamList(7, team3)} \n9. ${teamList(8, team3)} \n10. ${teamList(9, team3)} `
                                 },
                             ]
                         }
@@ -1046,8 +1035,10 @@ class Team extends commando.Command{
             else {
                 return message.reply(`This command is not available in this channel`)
             }
-        }
-    }
 }
 
-module.exports = Team;
+
+
+module.exports.help = {
+    name: 'team'
+}
