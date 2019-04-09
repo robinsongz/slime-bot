@@ -3,6 +3,7 @@ const config = require('./config.json');
 const Enmap = require('enmap');
 const fs = require('fs');
 const CronJob = require('cron').CronJob;
+const CronTime = require('cron').CronTime;
 
 // enmap settings back-end
 enmap = new Enmap({
@@ -61,17 +62,6 @@ const bot = new Discord.Client({
 
 bot.commands = new Discord.Collection(); 
 
-//registering commands
-// bot.registry
-//     .registerGroups([
-//         ['forge', 'Forge Commands'],
-//         ['configs', 'Config Commands'],
-//         ['team', 'Team Commands'],
-//         ['misc', 'Misc Commands'],
-//         ['prefix', 'Prefix Commands']
-//     ])
-//     .registerCommandsIn((__dirname + '/commands'));
-
 // This loop reads the /events/ folder and attaches each event file to the appropriate event.
 fs.readdir("./events/", (err, files) => {
     if (err) return console.error(err);
@@ -107,12 +97,13 @@ fs.readdir("./commands/", (err, files) => {
     })
 })
 
+
 bot.on('ready', () => {
     console.log(`Serving ${bot.guilds.size} servers`);
     console.log('Ready boss!');
 
     bot.guilds.forEach((guild) => {
-        
+
         enmap.ensure(guild.id, defaultSettings);
 
         const expedReminder = () => {
@@ -163,7 +154,7 @@ bot.on('ready', () => {
                     
         
         }
-
+    
         const expedAutoClear = () => {
             enmap.ensure(guild.id, defaultSettings);
             
@@ -171,23 +162,56 @@ bot.on('ready', () => {
             enmap.set(guild.id, [], 'team2.team');
             enmap.set(guild.id, [], 'team3.team');    
         }
-
-        //exped reminders
-        new CronJob('00 45 12,20 * * *', expedReminder, null, true, 'America/Los_Angeles');
         
-        // exped auto clear
-        new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'America/Los_Angeles')
+        let region = enmap.get(guild.id, 'region');
 
-         // guild fort reminder
-        new CronJob('00 45 21 * * *', fortReminder, null, true, 'America/Los_Angeles');
-      
-        // banquet reminder
-        let banquetTime = enmap.get(guild.id, 'banquetTime');
+
+        if (region === 'eu') {
+
+            new CronJob('00 45 12,20 * * *', expedReminder, null, true, 'Europe/Amsterdam');
+               
+            new CronJob('00 45 21 * * *', fortReminder, null, true, 'Europe/Amsterdam');
+                
+            let banquetTime = enmap.get(guild.id, 'banquetTime');
                       
-        new CronJob(`00 ${banquetTime} * * *`, banquetReminder, null, true, 'America/Los_Angeles');
-          
-        })
+            banquetCron = new CronJob(`00 ${banquetTime} * * *`, banquetReminder, null, true, 'Europe/Amsterdam');
+        
+            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Europe/Amsterdam')
+        
+        }
+
+        else if (region === 'asia') {
+
+            new CronJob('00 45 12,20 * * *', expedReminder, null, true, 'Asia/Taipei');
+                      
+            new CronJob('00 45 21 * * *', fortReminder, null, true, 'Asia/Taipei');
+                   
+            let banquetTime = enmap.get(guild.id, 'banquetTime');
+                      
+            banquetCron = new CronJob(`00 ${banquetTime} * * *`, banquetReminder, null, true, 'Asia/Taipei');
+            
+            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Asia/Taipei');
+        
+        }
+        
+        else {
+
+            new CronJob('00 45 12,20 * * *', expedReminder, null, true, 'America/Los_Angeles');
+    
+            new CronJob('00 45 21 * * *', fortReminder, null, true, 'America/Los_Angeles');
+    
+            let banquetTime = enmap.get(guild.id, 'banquetTime');
+                  
+            banquetCron = new CronJob(`00 ${banquetTime} * * *`, banquetReminder, null, true, 'Europe/Amsterdam');
+
+            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'America/Los_Angeles')
+        }
+
+        
     })
+
+    
+})
     
 
 bot.on('message', function(message) {
@@ -196,17 +220,24 @@ bot.on('message', function(message) {
 
     if (message.channel.type === "dm") return;
 
+    // if guild does not have enmap settings, set defaultSettings as default
+    enmap.ensure(message.guild.id, defaultSettings);
+
     let msgPrefix = message.content.charAt(0);
     let prefix = enmap.get(message.guild.id, 'prefix');
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
-
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
-    if (prefix == msgPrefix && commandfile) {
-        commandfile.run(bot, message, args)
-    }
 
+    if (prefix == msgPrefix && commandfile && args[0] == "banquetTime") {
+        commandfile.run(bot, message, args, banquetCron) 
+    } 
+
+    else if (prefix == msgPrefix && commandfile) {
+        commandfile.run(bot, message, args) 
+    } 
+ 
 })
 
 // logs unhandled rejections
@@ -215,4 +246,4 @@ process.on('unhandledRejection', (reason, promise) => {
 })
 
 // bot login
-bot.login(config.token);
+bot.login(config.token); 

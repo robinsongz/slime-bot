@@ -1,33 +1,24 @@
-const commando = require('discord.js-commando');
-const config = require('../../config.json');
+const Discord = require('discord.js');
 
-class DeleteConf extends commando.Command{
-    constructor(client){
-        super(client, {
-            name: 'deleteconf',
-            group: 'configs',
-            memberName: 'deleteconf',
-            description: 'Delete existing config from all guilds'
-        });
-    }
 
-    async run(message) {
+module.exports.run = async (bot, message) => {
 
-        const args = message.content.split(/\s+/g);
-        const command = args.shift().slice(config.prefix.length).toLowerCase();
+    const guildConf = enmap.ensure(message.guild.id, defaultSettings);
 
-        if (!message.guild || message.author.bot) return;
-    
-        if (message.content.indexOf(config.prefix) !== 0) return;
+    if (!message.guild || message.author.bot) return;
+  
+    if (message.content.indexOf(guildConf.prefix) !== 0) return;
         
        
     // deleting config from all guilds
 
-        if (command === 'deleteconf') {
-            enmap.forEach( (val, key) => enmap.delete(key, "partyChannel") );
-        }
+    
+            // enmap.forEach( (val, key) => enmap.delete(key, "guildFortChannel") );
+        
         
     }
-}
 
-module.exports = DeleteConf;
+
+module.exports.help = {
+    name: 'deleteconf'
+}

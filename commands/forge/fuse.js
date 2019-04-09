@@ -1,23 +1,12 @@
-const commando = require('discord.js-commando');
-const config = require('../../config.json')
+const Discord = require('discord.js');
 
-class Fuse extends commando.Command{
-    constructor(client){
-        super(client, {
-            name: 'fuse',
-            group: 'forge',
-            memberName: 'fuse',
-            description: 'Calculate your fusing costs, various fusing data'
-        });
-    }
+module.exports.run = async (bot, message, args) => {
 
-    async run(message) {
+    const guildConf = enmap.ensure(message.guild.id, defaultSettings);
 
-        const args = message.content.split(/\s+/g);
-        const command = args.shift().slice(config.prefix.length).toLowerCase();
-        if (!message.guild || message.author.bot) return;
-    
-        if (message.content.indexOf(config.prefix) !== 0) return;
+    if (!message.guild || message.author.bot) return;
+  
+    if (message.content.indexOf(guildConf.prefix) !== 0) return;
     
     
         const fusing = (numberOfMaterials, materialCost, upgradeCost) => {
@@ -30,7 +19,7 @@ class Fuse extends commando.Command{
 
         
         // forge stuff
-        if(command === 'fuse') {
+        
     
             const botMessage = (typeOfMaterial, fuseMaterialCost, numberOfMaterials, materialCost, upgradeCost, fusingItem) => {
                 message.reply(`Using ${typeOfMaterial} at ${numberWithCommas(fuseMaterialCost)} each, it will cost you ${fusing(numberOfMaterials, materialCost, upgradeCost)} mesos to max a ${fusingItem}!`)
@@ -140,10 +129,6 @@ class Fuse extends commando.Command{
                 
                 message.author.send({embed: {
                     color: 3447003,
-                    author: {
-                      name: this.client.user.username,
-                      icon_url: this.client.user.avatarURL
-                    },
                     fields: [{
                         name: "**__Let me help you with fusing calculations!__**",
                         value: "1. Please type in !fuse followed by what you want to max (mythicweapon, legendaryweapon, uniquearmor, etc) \n \n 2. Follow that with your fusing material (maxepic, level1epic, maxunique) \n \n 3. Follow that with the cost of that fusing material (IE: 15000000, 10000000, etc) \n \n 4. Press Enter to find out your fusing cost! \n \n"
@@ -166,11 +151,6 @@ class Fuse extends commando.Command{
                       }
     
                     ],
-                    timestamp: new Date(),
-                    footer: {
-                      icon_url: this.client.user.avatarURL,
-                      text: "Slime Bot"
-                    }
                   }
                 })
     
@@ -222,7 +202,6 @@ class Fuse extends commando.Command{
                .catch(console.error);
             }
         }
-    }
+module.exports.help = {
+    name: 'fuse'
 }
-
-module.exports = Fuse;
