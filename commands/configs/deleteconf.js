@@ -12,9 +12,9 @@ module.exports.run = async (bot, message) => {
        
     // deleting config from all guilds
 
-        // if (command === 'deleteconf') {
-        //     enmap.forEach( (val, key) => enmap.delete(key, "team3") );
-        // }
+    
+            // enmap.forEach( (val, key) => enmap.delete(key, "guildFortChannel") );
+        
         
     }
 

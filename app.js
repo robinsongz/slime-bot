@@ -26,6 +26,7 @@ defaultSettings = {
     fortMessage: '@everyone Guild fort in 15 minutes! Good luck!',
     fortChannel: 'general',
     teamChannel: 'general',
+    gfChannel: 'general',
     team: {
         team1: {
             name: "Team 1", 
@@ -53,6 +54,10 @@ defaultSettings = {
             name: 'Party 3',
             team: []
         }
+    },
+    guildFort: {
+        name: 'Guild Fort Team',
+        team: []
     }
 }
 
@@ -161,6 +166,12 @@ bot.on('ready', () => {
             enmap.set(guild.id, [], 'team3.team');    
         }
         
+        const fortAutoClear = () => {
+            enmap.ensure(guild.id, defaultSettings);
+            
+            enmap.set(guild.id, [], 'guildFort.team'); 
+        }
+
         let region = enmap.get(guild.id, 'region');
 
     
@@ -177,18 +188,15 @@ bot.on('ready', () => {
                       
             new CronJob(`00 ${banquetTime} * * *`, banquetReminder, null, true, 'Europe/Amsterdam');
         
-            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Europe/Amsterdam')
-        
+            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Europe/Amsterdam');
+            
+            new CronJob(`00 01 23 * * *`, fortAutoClear, null, true, 'Europe/Amsterdam');
         }
 
         else if (region === 'asia') {
 
-            
-           
 
             new CronJob('00 45 12,20 * * *', expedReminder, null, true, 'Asia/Taipei');
-       
-
                
             new CronJob('00 45 21 * * *', fortReminder, null, true, 'Asia/Taipei');
                 
@@ -199,7 +207,8 @@ bot.on('ready', () => {
             
 
             new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Asia/Taipei');
-        
+            
+            new CronJob(`00 01 23 * * *`, fortAutoClear, null, true, 'Asia/Taipei');
         }
         
         else {
@@ -214,7 +223,9 @@ bot.on('ready', () => {
             new CronJob(`00 ${banquetTime} * * *`, banquetReminder, null, true, 'America/Los_Angeles');
 
 
-            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'America/Los_Angeles')
+            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'America/Los_Angeles');
+
+            new CronJob(`00 01 23 * * *`, fortAutoClear, null, true, 'America/Los_Angeles');
         }
 
            

@@ -108,7 +108,7 @@ module.exports.run = async (bot, message, args) => {
             return message.reply(`You cannot enter a blank value. Type '!setconf help' for configuration help, or '!showconf' for your current configurations.`)
         }
 
-        else if (prop === 'expoChannel' || prop === 'banquetChannel' || prop === 'fortChannel' || prop === 'teamChannel') {
+        else if (prop === 'expoChannel' || prop === 'banquetChannel' || prop === 'fortChannel' || prop === 'teamChannel' || prop === 'gfChannel') {
             enmap.ensure(message.guild.id, defaultSettings)
         
             enmap.set(message.guild.id, value.join("-").toLowerCase(), prop);

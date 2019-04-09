@@ -1033,7 +1033,7 @@ module.exports.run = async (bot, message, args) => {
             }
 
             else {
-                return message.reply(`This command is not available in this channel`)
+                return message.reply('This command is not available in this channel. Please set your `teamChannel` configuration')
             }
 }
 
