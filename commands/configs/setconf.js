@@ -67,8 +67,8 @@ module.exports.run = async (bot, message, args) => {
     //settings banquet configs
     if (prop === 'banquetTime') {
 
-        let minute = Number(value[0]);
-        let hour = Number(value[1]);
+        let minute = Number(value[1]);
+        let hour = Number(value[0]);
 
         if (isNaN(minute) || isNaN(hour)) {
             return message.channel.send(`Please enter a valid time.`);
@@ -89,10 +89,16 @@ module.exports.run = async (bot, message, args) => {
         if (prop === 'banquetTime') {
             enmap.set(message.guild.id, value.join(" "), 'banquetTime');
 
+            if (!!reminder) {
+                var time = new CronTime(`00 ${value[1]} ${value[0]} * * *`)
+                reminder.setTime(time);
+                reminder.stop();
+                reminder.start();
+            }
+
             message.channel
-                .send(`Your banquet reminder time has been changed to ${value[1]}:${value[0]}.`)
+                .send(`Your banquet reminder time has been changed to ${value[0]}:${value[1]}.`)
                 .catch(err => console.log(err))
-                .then(process.exit);
         }
     }
 
