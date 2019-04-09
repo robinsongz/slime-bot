@@ -202,7 +202,7 @@ bot.on('ready', () => {
     
             let banquetTime = enmap.get(guild.id, 'banquetTime');
                   
-            banquetCron = new CronJob(`00 ${banquetTime} * * *`, banquetReminder, null, true, 'Europe/Amsterdam');
+            banquetCron = new CronJob(`00 ${banquetTime} * * *`, banquetReminder, null, true, 'America/Los_Angeles');
 
             new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'America/Los_Angeles')
         }
