@@ -10,7 +10,7 @@ module.exports.run = async (bot, message) =>  {
 
         // adding config to all guilds
       
-            enmap.forEach( (val, key) => enmap.set(key, 'general', "gfChannel") );
+            // enmap.forEach( (val, key) => enmap.set(key, "20 45", "fortTime") );
       
         
     }

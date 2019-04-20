@@ -18,13 +18,16 @@ defaultSettings = {
     adminRole: "GM",
     prefix: "!",	
     privateMessage: "Hi there, welcome to our discord! \n\n Please change your nickname to your in-game IGN. \n\n Type !help for my list of commands!",
+    expoTime1: "11 45",
+    expoTime2: "19 45",
     expoChannel: "general",
     expoMessage: "@everyone Expeditions are starting in 15 minutes! Good luck!",
-    banquetTime: "00 18",
+    banquetTime: "18 00",
     banquetChannel: "general",
     banquetMessage: "@everyone Banquet is starting in 15 minutes!",
-    fortMessage: '@everyone Guild fort in 15 minutes! Good luck!',
+    fortTime: "20 45",
     fortChannel: 'general',
+    fortMessage: '@everyone Guild fort in 15 minutes! Good luck!',
     teamChannel: 'general',
     gfChannel: 'general',
     team: {
@@ -58,13 +61,22 @@ defaultSettings = {
     guildFort: {
         name: 'Guild Fort Team',
         team: []
-    }
+    },
+    region: 'na'
 }
 
 const bot = new Discord.Client({
 });
 
 bot.commands = new Discord.Collection(); 
+
+const banquet = [];
+
+const fort = [];
+
+const exped1 = [];
+
+const exped2 = [];
 
 // This loop reads the /events/ folder and attaches each event file to the appropriate event.
 fs.readdir("./events/", (err, files) => {
@@ -100,10 +112,12 @@ fs.readdir("./commands/", (err, files) => {
         })
     })
 })
+ 
 
 bot.on('ready', () => {
     console.log(`Serving ${bot.guilds.size} servers`);
     console.log('Ready boss!');
+
 
     bot.guilds.forEach((guild) => {
 
@@ -114,7 +128,8 @@ bot.on('ready', () => {
             let expoChannel = enmap.get(guild.id, "expoChannel");
                             
             let expoMessage = enmap.get(guild.id, "expoMessage");
-                
+            
+           
                 guild.channels
                     .find((channel) => {
                         if (channel.name === expoChannel) {
@@ -132,7 +147,7 @@ bot.on('ready', () => {
                             
             let fortMessage = enmap.get(guild.id, "fortMessage");
     
-                
+           
             guild.channels
                 .find((channel) => {
                     if (channel.name === fortChannel) {
@@ -149,90 +164,113 @@ bot.on('ready', () => {
          
             let banquetChannel = enmap.get(guild.id, 'banquetChannel');
             let banquetMessage = enmap.get(guild.id, 'banquetMessage');
-        
+
             guild.channels
-                .find(channel => channel.name === banquetChannel)
-                .send(banquetMessage)
-                .catch(console.error);
-                    
-        
+                .find(channel => {
+                    if (channel.name === banquetChannel) {
+                        channel
+                            .send(banquetMessage)
+                            .catch(console.error);
+                    } else {
+                        return;
+                    }
+                })
         }
     
         const expedAutoClear = () => {
             enmap.ensure(guild.id, defaultSettings);
             
-            enmap.set(guild.id, [], 'team1.team');
-            enmap.set(guild.id, [], 'team2.team');
-            enmap.set(guild.id, [], 'team3.team');    
+            enmap.set(guild.id, [], 'team.team1.team');
+            enmap.set(guild.id, [], 'team.team2.team');
+            enmap.set(guild.id, [], 'team.team3.team');    
         }
         
         const fortAutoClear = () => {
             enmap.ensure(guild.id, defaultSettings);
             
             enmap.set(guild.id, [], 'guildFort.team'); 
-        }
+        } 
 
         let region = enmap.get(guild.id, 'region');
 
-    
+        let banquetTime = enmap.get(guild.id, 'banquetTime');
+
+        let banqMin = banquetTime.charAt(3) + banquetTime.charAt(4);
+
+        let banqHr = banquetTime.charAt(0) + banquetTime.charAt(1);
+       
+        let fortTime = enmap.get(guild.id, 'fortTime');
+
+        let fortMin = fortTime.charAt(3) + fortTime.charAt(4);
+
+        let fortHr = fortTime.charAt(0) + fortTime.charAt(1);
+
+        let expoTime1 = enmap.get(guild.id, 'expoTime1');
+
+        let expoMin1 = expoTime1.charAt(3) + expoTime1.charAt(4);
+
+        let expoHr1 = expoTime1.charAt(0) + expoTime1.charAt(1);
+
+        let expoTime2 = enmap.get(guild.id, 'expoTime2');
+
+        let expoMin2 = expoTime2.charAt(3) + expoTime2.charAt(4);
+
+        let expoHr2 = expoTime2.charAt(0) + expoTime2.charAt(1);
 
         if (region === 'eu') {
 
-            
-          
-            new CronJob('00 45 12,20 * * *', expedReminder, null, true, 'Europe/Amsterdam');
+            exped1[guild.id] = new CronJob(`00 ${expoMin1} ${expoHr1} * * *`, expedReminder, null, true, 'Europe/Amsterdam');
+
+            exped2[guild.id] = new CronJob(`00 ${expoMin2} ${expoHr2} * * *`, expedReminder, null, true, 'Europe/Amsterdam');
                
-            new CronJob('00 45 21 * * *', fortReminder, null, true, 'Europe/Amsterdam');
-                
-            let banquetTime = enmap.get(guild.id, 'banquetTime');
+            fort[guild.id] = new CronJob(`00 ${fortMin} ${fortHr} * * *`, fortReminder, null, true, 'Europe/Amsterdam');
                       
-            new CronJob(`00 ${banquetTime} * * *`, banquetReminder, null, true, 'Europe/Amsterdam');
+            banquet[guild.id] = new CronJob(`00 ${banqMin} ${banqHr} * * *`, banquetReminder, null, true, 'Europe/Amsterdam');
         
-            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Europe/Amsterdam');
+            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Europe/Amsterdam')
             
-            new CronJob(`00 01 23 * * *`, fortAutoClear, null, true, 'Europe/Amsterdam');
+            new CronJob(`00 01 22 * * *`, fortAutoClear, null, true, 'Europe/Amsterdam');
         }
 
         else if (region === 'asia') {
 
+            exped1[guild.id] = new CronJob(`00 ${expoMin1} ${expoHr1} * * *`, expedReminder, null, true, 'Asia/Taipei');
 
-            new CronJob('00 45 12,20 * * *', expedReminder, null, true, 'Asia/Taipei');
+            exped2[guild.id] = new CronJob(`00 ${expoMin2} ${expoHr2} * * *`, expedReminder, null, true, 'Asia/Taipei');
                
-            new CronJob('00 45 21 * * *', fortReminder, null, true, 'Asia/Taipei');
-                
-        
-            let banquetTime = enmap.get(guild.id, 'banquetTime');
-                      
-            new CronJob(`00 ${banquetTime} * * *`, banquetReminder, null, true, 'Asia/Taipei');
+            fort[guild.id] = new CronJob(`00 ${fortMin} ${fortHr} * * *`, fortReminder, null, true, 'Asia/Taipei');
+                     
+            banquet[guild.id] = new CronJob(`00 ${banqMin} ${banqHr} * * *`, banquetReminder, null, true, 'Asia/Taipei');
             
 
-            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Asia/Taipei');
+            new CronJob(`00 01 13,21 * * *`, expedAutoClear, null, true, 'Asia/Taipei');
             
-            new CronJob(`00 01 23 * * *`, fortAutoClear, null, true, 'Asia/Taipei');
+            new CronJob(`00 01 22 * * *`, fortAutoClear, null, true, 'Asia/Taipei');
+        
         }
         
         else {
+
+            exped1[guild.id] = new CronJob(`00 ${expoMin1} ${expoHr1} * * *`, expedReminder, null, true, 'America/Anchorage');
+
+            exped2[guild.id]  = new CronJob(`00 ${expoMin2} ${expoHr2} * * *`, expedReminder, null, true, 'America/Anchorage');
     
-
-            new CronJob('00 45 12,20 * * *', expedReminder, null, true, 'America/Los_Angeles');
+            fort[guild.id] = new CronJob(`00 ${fortMin} ${fortHr} * * *`, fortReminder, null, true, 'America/Anchorage');
     
-            new CronJob('00 45 21 * * *', fortReminder, null, true, 'America/Los_Angeles');
-    
-            let banquetTime = enmap.get(guild.id, 'banquetTime');
-                  
-            new CronJob(`00 ${banquetTime} * * *`, banquetReminder, null, true, 'America/Los_Angeles');
+            banquet[guild.id]  = new CronJob(`00 ${banqMin} ${banqHr} * * *`, banquetReminder, null, true, 'America/Anchorage');
 
+ 
+            new CronJob(`00 01 13,21 * * *`, expedAutoClear, null, true, 'America/Anchorage');
 
-            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'America/Los_Angeles');
-
-            new CronJob(`00 01 23 * * *`, fortAutoClear, null, true, 'America/Los_Angeles');
+            new CronJob(`00 01 22 * * *`, fortAutoClear, null, true, 'America/Anchorage');
         }
 
-           
-        
+         
     })
-    })
+
     
+})
+     
 
 bot.on('message', function(message) {
 
@@ -248,9 +286,25 @@ bot.on('message', function(message) {
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
-
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
-    if (prefix == msgPrefix && commandfile) {
+
+    if (prefix == msgPrefix && commandfile && args[0] == "banquetTime") {
+        commandfile.run(bot, message, args, banquet[message.guild.id]) 
+    } 
+
+    else if (prefix == msgPrefix && commandfile && args[0] == "fortTime") {
+        commandfile.run(bot, message, args, fort[message.guild.id]) 
+    } 
+
+    else if (prefix == msgPrefix && commandfile && args[0] == "expoTime1") {
+        commandfile.run(bot, message, args, exped1[message.guild.id]) 
+    } 
+
+    else if (prefix == msgPrefix && commandfile && args[0] == "expoTime2") {
+        commandfile.run(bot, message, args, exped2[message.guild.id]) 
+    } 
+
+    else if (prefix == msgPrefix && commandfile) {
         commandfile.run(bot, message, args) 
     } 
  

@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
+const CronTime = require('cron').CronTime;
 
-
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (bot, message, args, reminder) => {
 
     const guildConf = enmap.ensure(message.guild.id, defaultSettings);
 
@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
     if (message.content.indexOf(guildConf.prefix) !== 0) return;
   
   
-     // setting configurations command
+    // setting configurations command
     
      
     // grabbing value of admin
@@ -25,7 +25,22 @@ module.exports.run = async (bot, message, args) => {
     
     const [prop, ...value] = args;
 
-  
+    
+    let botembed = new Discord.RichEmbed()
+        .setTitle(`${prop} changed!`)
+        .setDescription(`Your \`${prop}\` has been changed to: \n \`${value.join(" ")}\``)
+        .setColor("#15f153")
+
+    let timeembed = new Discord.RichEmbed()
+        .setTitle(`${prop} changed!`)
+        .setDescription(`Your \`${prop}\` has been changed to: \n \`${value.join(":")}\``)
+        .setColor("#15f153")
+
+    let channelembed = new Discord.RichEmbed()
+        .setTitle(`${prop} changed!`)
+        .setDescription(`Your \`${prop}\` has been changed to: \n \`${value.join("-")}\``)
+        .setColor("#15f153")
+
     if (prop === 'help') {
         message.author.send({embed: {
             color: 3447003,
@@ -60,61 +75,267 @@ module.exports.run = async (bot, message, args) => {
         .catch(console.error);
     }
 
-    else if (prop === 'team1' || prop === 'team2' || prop === 'team3') {
-        return message.reply(`You cannot set these configurations. Use the '!team' command`)
+    else if (prop === 'team' || prop === 'party') {
+        return message.reply(`You cannot set these configurations. Use the !${prop} command`)
     }
 
     //settings banquet configs
-    if (prop === 'banquetTime') {
 
-        let minute = Number(value[0]);
-        let hour = Number(value[1]);
+    
+    else if (prop === 'banquetTime') {
+
+        let minute = Number(value[1]);
+        let hour = Number(value[0]);
 
         if (isNaN(minute) || isNaN(hour)) {
             return message.channel.send(`Please enter a valid time.`);
         }
 
         if ( minute > 60 || hour > 24) {
-            return message.channel.send(`Please enter a valid time, with minute first and hour second, in military time. \n For example: 30 18 = 6:30pm.`)
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`)
         }
 
         if (minute < 0 || hour < 0) {
-            return message.channel.send(`Please enter a valid time, with minute first and hour second, in military time. \n For example: 30 18 = 6:30pm`)
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm`)
         }
 
         if (value[2]) {
-           return message.channel.send(`Please enter a valid time, with minute first and hour second, in military time. \n For example: 30 18 = 6:30pm.`)
+           return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`)
         }
 
-        if (prop === 'banquetTime') {
+       
             enmap.set(message.guild.id, value.join(" "), 'banquetTime');
 
+            if (!!reminder) {
+                let timezone = reminder.cronTime.zone;
+
+                
+                var time = new CronTime(`00 ${value[1]} ${value[0]} * * *`, timezone)
+                reminder.setTime(time);
+                
+                reminder.stop();
+                reminder.start();
+                               
+            }  
+
+            
             message.channel
-                .send(`Your banquet reminder time has been changed to ${value[1]}:${value[0]}.`)
+                .send(timeembed)
                 .catch(err => console.log(err))
+        
+           
+        
+    }
+
+    else if (prop === 'fortTime') {
+
+        let minute = Number(value[1]);
+        let hour = Number(value[0]);
+
+        if (isNaN(minute) || isNaN(hour)) {
+            return message.channel.send(`Please enter a valid time.`);
+        }
+
+        if ( minute > 60 || hour > 24) {
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`)
+        }
+
+        if (minute < 0 || hour < 0) {
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm`)
+        }
+
+        if (value[2]) {
+           return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`)
+        }
+
+       
+            enmap.set(message.guild.id, value.join(" "), 'fortTime');
+
+            if (!!reminder) {
+                let timezone = reminder.cronTime.zone;
+
+                
+                var time = new CronTime(`00 ${value[1]} ${value[0]} * * *`, timezone)
+                reminder.setTime(time);
+                
+                reminder.stop();
+                reminder.start();
+                               
+            }
+
+            message.channel
+                .send(timeembed)
+                .catch(err => console.log(err))
+        
+    }
+
+    else if (prop === 'expoTime1') {
+
+        let minute = Number(value[1]);
+        let hour = Number(value[0]);
+
+        if (isNaN(minute) || isNaN(hour)) {
+            return message.channel.send(`Please enter a valid time.`);
+        }
+
+        if ( minute > 60 || hour > 24) {
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`)
+        }
+
+        if (minute < 0 || hour < 0) {
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm`)
+        }
+
+        if (value[2]) {
+           return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`)
+        }
+
+       
+            enmap.set(message.guild.id, value.join(" "), 'expoTime1');
+
+            if (!!reminder) {
+                let timezone = reminder.cronTime.zone;
+
+                
+                var time = new CronTime(`00 ${value[1]} ${value[0]} * * *`, timezone)
+                reminder.setTime(time);
+                
+                reminder.stop();
+                reminder.start();
+                               
+            }
+
+            message.channel
+                .send(timeembed)
+                .catch(err => console.log(err))
+        
+    }
+
+    else if (prop === 'expoTime2') {
+
+        let minute = Number(value[1]);
+        let hour = Number(value[0]);
+
+        if (isNaN(minute) || isNaN(hour)) {
+            return message.channel.send(`Please enter a valid time.`);
+        }
+
+        if ( minute > 60 || hour > 24) {
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`)
+        }
+
+        if (minute < 0 || hour < 0) {
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm`)
+        }
+
+        if (value[2]) {
+           return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`)
+        }
+
+       
+            enmap.set(message.guild.id, value.join(" "), 'expoTime2');
+
+            if (!!reminder) {
+                let timezone = reminder.cronTime.zone;
+
+                
+                var time = new CronTime(`00 ${value[1]} ${value[0]} * * *`, timezone)
+                reminder.setTime(time);
+                
+                reminder.stop();
+                reminder.start();
+                               
+            }
+            message.channel
+                .send(timeembed)
+                .catch(err => console.log(err))
+        
+    }
+
+     // if changing channel configs
+    else if (prop === 'expoChannel' || prop === 'banquetChannel' || prop === 'fortChannel' || prop === 'teamChannel' || prop === 'gfChannel') {
+        enmap.ensure(message.guild.id, defaultSettings)
+    
+        enmap.set(message.guild.id, value.join("-").toLowerCase(), prop);
+        
+        return message.channel
+            .send(channelembed)
+    }
+
+    // if changing prefix
+    else if (prop === 'prefix') {
+
+        if (value.length == 0) return message.channel.send("Please enter a valid prefix!");
+
+        if (value.length > 1) return message.channel.send("Please enter only one prefix!");
+
+        if (value[0].length > 1) return message.channel.send("Your selected prefix is too long, please use only 1 character!");
+
+    
+
+        enmap.set(message.guild.id, value, prop);
+
+        
+
+        return message.channel.send(botembed);  
+    }
+
+    // if changing region
+    else if (prop === 'region') {
+
+        if (value.join(" ").toLowerCase() === 'na') {
+            enmap.ensure(message.guild.id, defaultSettings)
+    
+            enmap.set(message.guild.id, value.join(" ").toLowerCase(), prop);
+
+         
+
+            return message.channel
+                .send(botembed)
                 .then(process.exit);
         }
-    }
+
+        if (value.join(" ").toLowerCase() === 'eu') {
+            enmap.ensure(message.guild.id, defaultSettings)
+    
+            enmap.set(message.guild.id, value.join(" ").toLowerCase(), prop);
+
+            
+
+            return message.channel
+                .send(botembed)
+                .then(process.exit);
+        }
+
+        if (value.join(" ").toLowerCase() === 'asia') {
+            enmap.ensure(message.guild.id, defaultSettings)
+    
+            enmap.set(message.guild.id, value.join(" ").toLowerCase(), prop);
+
+           
+
+            return message.channel
+                .send(botembed)
+                .then(process.exit);
+        }
+
+        else {
+            return message.channel
+                .send(`Please enter **'na'**, **'eu'**, or **'asia'**.`)
+        }
+    }   
 
     else {
 
-        // if blank value is entered
+        // if blank key is entered
         if (prop === undefined ) {
             return message.reply("You cannot enter a blank key. Type '!setconf help' for configuration help, or '!showconf' for your current configurations.")
             .catch(console.error);
         }
 
+        // if blank value is entered
         if (value === undefined || value === null || value.join(" ") === '') {
             return message.reply(`You cannot enter a blank value. Type '!setconf help' for configuration help, or '!showconf' for your current configurations.`)
-        }
-
-        else if (prop === 'expoChannel' || prop === 'banquetChannel' || prop === 'fortChannel' || prop === 'teamChannel' || prop === 'gfChannel') {
-            enmap.ensure(message.guild.id, defaultSettings)
-        
-            enmap.set(message.guild.id, value.join("-").toLowerCase(), prop);
-        
-            return message.channel
-                .send(`Guild configuration item **${prop}** has been changed to:\n\`${value.join("-").toLowerCase()}\``)
         }
 
         // else if (prop === ('expoReminder') || prop === 'fortReminder' || prop === 'banquetReminder') {
@@ -145,82 +366,21 @@ module.exports.run = async (bot, message, args) => {
         //     }
         // } 
 
-
-        else if (prop === 'prefix') {
-
-            if (value.length == 0) return message.channel.send("Please enter a valid prefix!");
-
-            if (value.length > 1) return message.channel.send("Please enter only one prefix!");
-
-            if (value[0].length > 1) return message.channel.send("Your selected prefix is too long, please use only 1 character!");
-
         
-
-            enmap.set(message.guild.id, value, prop);
-
-            let botembed = new Discord.RichEmbed()
-            .setTitle("Prefix changed!")
-            .setDescription("Your prefix has been changed to `" + value + "`!")
-            .setColor("#15f153")
-
-            return message.channel.send(botembed);  
-        }
-        else if (prop === 'region') {
+        // changing all other configs
+        else {
 
             let botembed = new Discord.RichEmbed()
-                    .setTitle("Region changed!")
-                    .setDescription("Your region has been changed to `" + value + "`!")
+                    .setTitle(`${prop} changed!`)
+                    .setDescription(`Your \`${prop}\` has been changed to: \n \`${value.join(" ")}!\``)
                     .setColor("#15f153")
 
-            if (value.join(" ").toLowerCase() === 'na') {
-                enmap.ensure(message.guild.id, defaultSettings)
-        
-                enmap.set(message.guild.id, value.join(" ").toLowerCase(), prop);
-
-             
-
-                return message.channel
-                    .send(botembed)
-                    .then(process.exit);
-            }
-
-            if (value.join(" ").toLowerCase() === 'eu') {
-                enmap.ensure(message.guild.id, defaultSettings)
-        
-                enmap.set(message.guild.id, value.join(" ").toLowerCase(), prop);
-
-                
-
-                return message.channel
-                    .send(botembed)
-                    .then(process.exit);
-            }
-
-            if (value.join(" ").toLowerCase() === 'asia') {
-                enmap.ensure(message.guild.id, defaultSettings)
-        
-                enmap.set(message.guild.id, value.join(" ").toLowerCase(), prop);
-
-               
-
-                return message.channel
-                    .send(botembed)
-                    .then(process.exit);
-            }
-
-            else {
-                return message.channel
-                    .send(`Please enter **'na'**, **'eu'**, or **'asia'**.`)
-            }
-        }   
-        
-        else {
             enmap.ensure(message.guild.id, defaultSettings)
         
             enmap.set(message.guild.id, value.join(" "), prop);
         
             return message.channel
-                .send(`Guild configuration item **${prop}** has been changed to:\n\`${value.join(" ")}\``)
+                .send(botembed)
                 
         }
         }
