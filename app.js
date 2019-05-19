@@ -321,4 +321,4 @@ process.on('unhandledRejection', (reason, promise) => {
 })
 
 // bot login
-bot.login(config.token); 
+bot.login(process.env.config.token); 
