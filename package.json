@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "discord bot for maplestory m",
   "engines": {
-    "node": "8.12.0"
+    "node": "8.x"
   },
   "main": "app.js",
   "scripts": {
@@ -23,6 +23,7 @@
     "dotenv": "^6.2.0",
     "enmap": "^4.3.3",
     "forever": "^0.15.3",
+    "moment": "^2.24.0",
     "node-cron": "^2.0.3",
     "sqlite": "^3.0.0",
     "time": "^0.12.0"

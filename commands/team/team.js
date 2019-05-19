@@ -488,7 +488,7 @@ module.exports.run = async (bot, message, args) => {
                             if (value2 !== undefined) {
                                 message.channel.send(`${value2} has been removed from ${name2}.`)
 
-                                teamRemove(value, teamTeam2);
+                                teamRemove(value2, teamTeam2);
                 
                                 teamEmbed(name2, team2);
                             }
@@ -514,7 +514,7 @@ module.exports.run = async (bot, message, args) => {
                             if (value3 !== undefined) {
                                 message.channel.send(`${value3} has been removed from ${name3}.`)
 
-                                teamRemove(value, teamTeam3);
+                                teamRemove(value3, teamTeam3);
                 
                                 teamEmbed(name3, team3);
                             }
@@ -743,9 +743,9 @@ module.exports.run = async (bot, message, args) => {
             
                             message.reply(`${member1} has been moved to ${name2}`);
             
-                            teamPush(member2, teamTeam2);
+                            teamPush(member1, teamTeam2);
 
-                            teamRemove(member2, teamTeam1);
+                            teamRemove(member1, teamTeam1);
             
                             
                         }

@@ -229,7 +229,7 @@ bot.on('ready', () => {
         
             new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Europe/Amsterdam')
             
-            new CronJob(`00 01 22 * * *`, fortAutoClear, null, true, 'Europe/Amsterdam');
+            new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'Europe/Amsterdam');
         }
 
         else if (region === 'asia') {
@@ -245,7 +245,7 @@ bot.on('ready', () => {
 
             new CronJob(`00 01 13,21 * * *`, expedAutoClear, null, true, 'Asia/Taipei');
             
-            new CronJob(`00 01 22 * * *`, fortAutoClear, null, true, 'Asia/Taipei');
+            new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'Asia/Taipei');
         
         }
         
@@ -260,9 +260,9 @@ bot.on('ready', () => {
             banquet[guild.id]  = new CronJob(`00 ${banqMin} ${banqHr} * * *`, banquetReminder, null, true, 'America/Anchorage');
 
  
-            new CronJob(`00 01 13,21 * * *`, expedAutoClear, null, true, 'America/Anchorage');
+            new CronJob(`00 01 13,19 * * *`, expedAutoClear, null, true, 'America/Anchorage');
 
-            new CronJob(`00 01 22 * * *`, fortAutoClear, null, true, 'America/Anchorage');
+            new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'America/Anchorage');
         }
 
          
@@ -283,6 +283,7 @@ bot.on('message', function(message) {
 
     let msgPrefix = message.content.charAt(0);
     let prefix = enmap.get(message.guild.id, 'prefix');
+    let region = enmap.get(message.guild.id, 'region');
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
@@ -303,6 +304,10 @@ bot.on('message', function(message) {
     else if (prefix == msgPrefix && commandfile && args[0] == "expoTime2") {
         commandfile.run(bot, message, args, exped2[message.guild.id]) 
     } 
+
+    else if (prefix == msgPrefix && commandfile && cmd == '!calc') {
+        commandfile.run(bot, message, args, region)
+    }
 
     else if (prefix == msgPrefix && commandfile) {
         commandfile.run(bot, message, args) 

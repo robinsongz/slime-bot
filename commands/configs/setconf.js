@@ -60,7 +60,11 @@ module.exports.run = async (bot, message, args, reminder) => {
               },
               {
                 name: "**__Keys and their functions__**",
-                value: "**privateMessage**: I will send this private DM to new guild members. \n\n **expoChannel**: The channel I will send my expedition reminders to. \n\n **expoMessage**: This message will be sent to the expoChannel 15 minutes prior to expeditions. \n\n **banquetTime**: the time you want me to remind your guild about banquet. You must enter time in this format: [minute][hour] military time. IE: 30 18 = 6:30pm \n\n **banquetChannel**: the channel I will send the banquetMessage to. \n\n **banquetMessage**: the message I will send to banquetChannel."
+                value: "**adminRole**: name of role you must have to use admin commands \n\n **prefix**: prefix used before every command \n\n **privateMessage**: private message sent to new discord members \n\n **expoChannel/banquetChannel/fortChannel**: The channel I will send my reminders to. \n\n **expoMessage/banquetMessage/fortMessage**: content of reminder messages \n\n **expoTime1/expoTime2/banquetTime/fortTime**: time for reminders to be sent. \n\n **teamChannel/gfChannel**: !team and !gf commands will only work in these channels \n\n **team/party/guildFort**: used for each commands. cannot customize! \n\n **region**: timezone for reminder times"
+              },
+              {
+                name: "**__Guide to Setting Times__**",
+                value: "All times are set in MSM's server time (the time that shows in the MSM in-game app). \n\n Times are in HH MM format, military time. For example, 15 00 = 3:00pm; 02 00 = 2:00am \n\n Knowing this, please set your **expoTime1, expoTime2, fortTime, and banquetTime** accordingly. \n\n **__Examples__** \n !setconf expoTime1 09 45 - this sets day expedition reminder time to 9:45am SERVER TIME, which would go off at 10:45 PST and 13:45 EST for NA users."
               }
             ]
           }
@@ -77,6 +81,10 @@ module.exports.run = async (bot, message, args, reminder) => {
 
     else if (prop === 'team' || prop === 'party') {
         return message.reply(`You cannot set these configurations. Use the !${prop} command`)
+    }
+
+    else if (prop === 'guildFort') {
+        return message.reply(`You cannot set these configurations. Use the !gf command`)
     }
 
     //settings banquet configs
