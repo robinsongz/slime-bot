@@ -7,7 +7,8 @@
   },
   "main": "app.js",
   "scripts": {
-    "start": "forever start app.js",
+    "start": "node app.js",
+    "foreverstart": "forever start app.js",
     "stop": "forever stop app.js",
     "restart": "npm stop && npm start",
     "nodemon": "nodemon app.js"
