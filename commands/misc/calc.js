@@ -18,85 +18,97 @@ module.exports.run = async (bot, message, args, region) => {
         return message.channel.send(`Please input !calc followed by the end of hot time in HH:MM format (14:00 = 2:00pm). \n\nFor example: **!calc 14:00** helps calculate how much AB you need to fill if hot time ends at 14:00pm server time.`)
     }
 
-    else if (args[0].length !== 5) {
-        return message.channel.send(`Please input !calc followed by the end of hot time in HH:MM format (14:00 = 2:00pm). \n\nFor example: **!calc 14:00** helps calculate how much AB you need to fill if hot time ends at 14:00pm server time.`)
-    }
-
     else if (args[0].includes(':')) {
-        if (region === 'na') {
-            let currentTime = moment().tz('America/Anchorage').format('HH:mm');
 
-            let parsedInputtedTime = parseTime(args[0]);
-            let parsedCurrentTime = parseTime(currentTime);
+        let splitTime = args[0].split(':');
 
-
-            if (parsedInputtedTime < parsedCurrentTime) {
-               
-                newParsedInputtedTime = parsedInputtedTime + 1440;
-
-                time = Math.abs(newParsedInputtedTime - parsedCurrentTime)
-
-                message.reply(`You will need to load ${time} minutes of AB`);
-              
-            }
-
-            else {
-
-                time = Math.abs(parsedInputtedTime - parsedCurrentTime);
-    
-                message.reply(`You will need to load ${time} minutes of AB`);
+        if (!isNaN(splitTime[0]) && !isNaN(splitTime[1])) {
+            
+            if (splitTime[0] < 24 && splitTime[1] < 60) {
+                if (region === 'na') {
+                    let currentTime = moment().tz('America/Anchorage').format('HH:mm');
+        
+                    let parsedInputtedTime = parseTime(args[0]);
+                    let parsedCurrentTime = parseTime(currentTime);
+        
+        
+                    if (parsedInputtedTime < parsedCurrentTime) {
+                       
+                        newParsedInputtedTime = parsedInputtedTime + 1440;
+        
+                        time = Math.abs(newParsedInputtedTime - parsedCurrentTime)
+        
+                        message.reply(`You will need to load ${time} minutes of AB`);
+                      
+                    }
+        
+                    else {
+        
+                        time = Math.abs(parsedInputtedTime - parsedCurrentTime);
+            
+                        message.reply(`You will need to load ${time} minutes of AB`);
+                    }
+                   
+                }
+            
+                if (region === 'eu') {
+                    let currentTime = moment().tz('Europe/Amsterdam').format('HH:mm');
+            
+                    let parsedInputtedTime = parseTime(args[0]);
+                    let parsedCurrentTime = parseTime(currentTime);
+        
+        
+                    if (parsedInputtedTime < parsedCurrentTime) {
+                       
+                        newParsedInputtedTime = parsedInputtedTime + 1440;
+        
+                        time = Math.abs(newParsedInputtedTime - parsedCurrentTime)
+        
+                        message.reply(`You will need to load ${time} minutes of AB`);
+                      
+                    }
+        
+                    else {
+        
+                        time = Math.abs(parsedInputtedTime - parsedCurrentTime);
+            
+                        message.reply(`You will need to load ${time} minutes of AB`);
+                    }
+                }
+            
+                if (region === 'asia') {
+                    let currentTime = moment().tz('Asia/Taipei').format('HH:mm');
+            
+                    let parsedInputtedTime = parseTime(args[0]);
+                    let parsedCurrentTime = parseTime(currentTime);
+        
+        
+                    if (parsedInputtedTime < parsedCurrentTime) {
+                       
+                        newParsedInputtedTime = parsedInputtedTime + 1440;
+        
+                        time = Math.abs(newParsedInputtedTime - parsedCurrentTime)
+        
+                        message.reply(`You will need to load ${time} minutes of AB`);
+                      
+                    }
+        
+                    else {
+        
+                        time = Math.abs(parsedInputtedTime - parsedCurrentTime);
+            
+                        message.reply(`You will need to load ${time} minutes of AB`);
+                    }
+                }
             }
            
-        }
-    
-        if (region === 'eu') {
-            let currentTime = moment().tz('Europe/Amsterdam').format('HH:mm');
-    
-            let parsedInputtedTime = parseTime(args[0]);
-            let parsedCurrentTime = parseTime(currentTime);
-
-
-            if (parsedInputtedTime < parsedCurrentTime) {
-               
-                newParsedInputtedTime = parsedInputtedTime + 1440;
-
-                time = Math.abs(newParsedInputtedTime - parsedCurrentTime)
-
-                message.reply(`You will need to load ${time} minutes of AB`);
-              
-            }
-
             else {
-
-                time = Math.abs(parsedInputtedTime - parsedCurrentTime);
-    
-                message.reply(`You will need to load ${time} minutes of AB`);
+                message.channel.send(`Please input !calc followed by the end of hot time in HH:MM format (14:00 = 2:00pm). \n\nFor example: **!calc 14:00** helps calculate how much AB you need to fill if hot time ends at 14:00pm server time.`)
             }
         }
-    
-        if (region === 'asia') {
-            let currentTime = moment().tz('Asia/Taipei').format('HH:mm');
-    
-            let parsedInputtedTime = parseTime(args[0]);
-            let parsedCurrentTime = parseTime(currentTime);
-
-
-            if (parsedInputtedTime < parsedCurrentTime) {
-               
-                newParsedInputtedTime = parsedInputtedTime + 1440;
-
-                time = Math.abs(newParsedInputtedTime - parsedCurrentTime)
-
-                message.reply(`You will need to load ${time} minutes of AB`);
-              
-            }
-
-            else {
-
-                time = Math.abs(parsedInputtedTime - parsedCurrentTime);
-    
-                message.reply(`You will need to load ${time} minutes of AB`);
-            }
+        
+        else {
+            message.channel.send(`Please input !calc followed by the end of hot time in HH:MM format (14:00 = 2:00pm). \n\nFor example: **!calc 14:00** helps calculate how much AB you need to fill if hot time ends at 14:00pm server time.`)
         }
         
     }
