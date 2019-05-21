@@ -104,7 +104,7 @@ module.exports.run = async (bot, message, args) => {
             
                     if (includesMember) {
 
-                       gfRemove(member, gf);
+                       gfRemove(member, gfTeam);
 
                        message.reply(`you have been removed from ${name}`)
 

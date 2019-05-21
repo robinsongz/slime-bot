@@ -17,7 +17,7 @@ module.exports.run = async (bot, message) => {
                 color: 3447003,
                 fields: [{
                     name: "**__Public Commands__**",
-                    value: "**!fuse** : fusing calc, cost, and various data \n **!jewel** : jewel data \n **!team** : expedition check-ins (can only be used in teamChannel config) \n **!party** : party check-ins \n **!gf** : guild fort checkin-ins (can only be used in gfChannel config) \n  **!exalt** : exalt data \n **!potential** : potentials data \n **!pba** : weapon pba data \n **!help** : list of commands"
+                    value: "**!fuse** : fusing calc, cost, and various data \n **!jewel** : jewel data \n **!team** : expedition check-ins (can only be used in teamChannel config) \n **!party** : party check-ins \n **!gf** : guild fort checkin-ins (can only be used in gfChannel config) \n  **!exalt** : exalt data \n **!potential** : potentials data \n **!pba** : weapon pba data \n **!calc** : help calculate how much AB to load \n **!help** : list of commands"
                 },
                 {
                     name: "**__Admin Commands__**",
