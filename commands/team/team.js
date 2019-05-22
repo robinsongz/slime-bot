@@ -197,11 +197,12 @@ module.exports.run = async (bot, message, args) => {
                     else {  
                         // if team 1 is full
                         if (fullteam1) {
-
-                            if (team2.includes(member) || team3.includes(member)) {
+                            
+                            // if already in team 2 & 3
+                            if (team2.includes(member) && team3.includes(member)) {
                                 return message.reply(`${name1} is full, and you are already in ${name2} and ${name3}`)
                             }
-
+                            // if team 2 is full
                             else if (fullteam2) {
 
                                 if (fullteam3) {
@@ -227,10 +228,12 @@ module.exports.run = async (bot, message, args) => {
                         // if team 2 is full
                         else if(fullteam2) {
 
-                            if (team1.includes(member) || team3.includes(member)) {
+                            // if already in team 1 and team 3
+                            if (team1.includes(member) && team3.includes(member)) {
                                 return message.reply(`${name2} is full, and you are already checked in to ${name1} and ${name3}`)
                             }
 
+                            // if team 1 has room
                             else if (team1.includes(undefined) && team1.length !== 6) {
                                 teamPush(member, teamTeam1);
 
@@ -252,10 +255,11 @@ module.exports.run = async (bot, message, args) => {
                             }
                         }    
 
+                        // if already in team 1
                         else if (team1.includes(member)) {
                             return message.reply(`You're already checked in!`)
                         }
-                
+                        
                         else {
                 
                             teamPush(member, teamTeam1);
@@ -267,9 +271,7 @@ module.exports.run = async (bot, message, args) => {
                     }
                 }
                 
-                // else if (prop === 'test') {
-                //     message.reply(`${username}`)
-                // }
+              
                 // checking out
                 else if (prop === "checkout") {
                 

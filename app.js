@@ -260,7 +260,7 @@ bot.on('ready', () => {
             banquet[guild.id]  = new CronJob(`00 ${banqMin} ${banqHr} * * *`, banquetReminder, null, true, 'America/Anchorage');
 
  
-            new CronJob(`00 01 13,19 * * *`, expedAutoClear, null, true, 'America/Anchorage');
+            new CronJob(`00 01 11,19 * * *`, expedAutoClear, null, true, 'America/Anchorage');
 
             new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'America/Anchorage');
         }
