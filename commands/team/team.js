@@ -234,7 +234,7 @@ module.exports.run = async (bot, message, args) => {
                             }
 
                             // if team 1 has room
-                            else if (team1.includes(undefined) && team1.length !== 6) {
+                            else if (team1.includes(undefined) && team1.length !== 10) {
                                 teamPush(member, teamTeam1);
 
                                 message.reply(`${name2} is full, you have been added to ${name1}`);
@@ -251,7 +251,7 @@ module.exports.run = async (bot, message, args) => {
                 
                                 message.reply(`${name2} is full, you have been added to ${name3}`);
                 
-                                teamEmbed(name3, teamTeam3);
+                                teamEmbed(name3, team3);
                             }
                         }    
 
