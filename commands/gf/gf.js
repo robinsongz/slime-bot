@@ -70,7 +70,7 @@ module.exports.run = async (bot, message, args) => {
                
                 //variables for getting gf names from enmap
                 let name = enmap.get(message.guild.id, 'guildFort.name');
-          
+
                 // checking in
                 if (prop === "checkin") {
                 

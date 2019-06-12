@@ -305,7 +305,7 @@ bot.on('message', function(message) {
         commandfile.run(bot, message, args, exped2[message.guild.id]) 
     } 
 
-    else if (prefix == msgPrefix && commandfile && cmd == '!calc') {
+    else if (prefix == msgPrefix && commandfile && cmd == prefix + 'calc') {
         commandfile.run(bot, message, args, region)
     }
 
