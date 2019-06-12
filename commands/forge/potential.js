@@ -11,12 +11,12 @@ module.exports.run = async (bot, message) => {
         
         //Potentials data
 
-        return message.reply(`https://imgur.com/a/zWIgBp9?`)
+        return message.reply(`https://imgur.com/a/zWIgBp9?`);
         
        
-    }
+    };
 
 
 module.exports.help = {
     name: 'potential'
-}
+};

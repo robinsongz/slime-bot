@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args, region) => {
     }
 
     if (args[0] === undefined) {
-        return message.channel.send(`Please input !calc followed by the end of hot time in HH:MM format (14:00 = 2:00pm). \n\nFor example: **!calc 14:00** helps calculate how much AB you need to fill if hot time ends at 14:00pm server time.`)
+        return message.channel.send(`Please input !calc followed by the end of hot time in HH:MM format (14:00 = 2:00pm). \n\nFor example: **!calc 14:00** helps calculate how much AB you need to fill if hot time ends at 14:00pm server time.`);
     }
 
     else if (args[0].includes(':')) {
@@ -36,7 +36,7 @@ module.exports.run = async (bot, message, args, region) => {
                        
                         newParsedInputtedTime = parsedInputtedTime + 1440;
         
-                        time = Math.abs(newParsedInputtedTime - parsedCurrentTime)
+                        time = Math.abs(newParsedInputtedTime - parsedCurrentTime);
         
                         message.reply(`You will need to load ${time} minutes of AB`);
                       
@@ -62,7 +62,7 @@ module.exports.run = async (bot, message, args, region) => {
                        
                         newParsedInputtedTime = parsedInputtedTime + 1440;
         
-                        time = Math.abs(newParsedInputtedTime - parsedCurrentTime)
+                        time = Math.abs(newParsedInputtedTime - parsedCurrentTime);
         
                         message.reply(`You will need to load ${time} minutes of AB`);
                       
@@ -87,7 +87,7 @@ module.exports.run = async (bot, message, args, region) => {
                        
                         newParsedInputtedTime = parsedInputtedTime + 1440;
         
-                        time = Math.abs(newParsedInputtedTime - parsedCurrentTime)
+                        time = Math.abs(newParsedInputtedTime - parsedCurrentTime);
         
                         message.reply(`You will need to load ${time} minutes of AB`);
                       
@@ -103,24 +103,24 @@ module.exports.run = async (bot, message, args, region) => {
             }
            
             else {
-                message.channel.send(`Please input !calc followed by the end of hot time in HH:MM format (14:00 = 2:00pm). \n\nFor example: **!calc 14:00** helps calculate how much AB you need to fill if hot time ends at 14:00pm server time.`)
+                message.channel.send(`Please input !calc followed by the end of hot time in HH:MM format (14:00 = 2:00pm). \n\nFor example: **!calc 14:00** helps calculate how much AB you need to fill if hot time ends at 14:00pm server time.`);
             }
         }
         
         else {
-            message.channel.send(`Please input !calc followed by the end of hot time in HH:MM format (14:00 = 2:00pm). \n\nFor example: **!calc 14:00** helps calculate how much AB you need to fill if hot time ends at 14:00pm server time.`)
+            message.channel.send(`Please input !calc followed by the end of hot time in HH:MM format (14:00 = 2:00pm). \n\nFor example: **!calc 14:00** helps calculate how much AB you need to fill if hot time ends at 14:00pm server time.`);
         }
         
     }
 
     else {
-        message.channel.send(`Please input !calc followed by the end of hot time in HH:MM format (14:00 = 2:00pm). \n\nFor example: **!calc 14:00** helps calculate how much AB you need to fill if hot time ends at 14:00pm server time.`)
+        message.channel.send(`Please input !calc followed by the end of hot time in HH:MM format (14:00 = 2:00pm). \n\nFor example: **!calc 14:00** helps calculate how much AB you need to fill if hot time ends at 14:00pm server time.`);
     }
     
 
     
        
-    }
+    };
 module.exports.help = {
     name: 'calc'
-}
+};

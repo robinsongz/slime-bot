@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
             const [ prop ] = args;
 
                 // variable for getting gf team from enmap
-                let gf = enmap.get(message.guild.id, 'guildFort.team')
+                let gf = enmap.get(message.guild.id, 'guildFort.team');
 
                 //variable for gf team
                 let gfTeam = 'guildFort.team';
@@ -30,22 +30,22 @@ module.exports.run = async (bot, message, args) => {
                 //function to push member into gf array
                 const gfPush = (member, gf) => {
                     return enmap.push(message.guild.id, member, gf);
-                }
+                };
 
                 //function to remove member from gf
                 const gfRemove = (member, gf) => {
                     return enmap.remove(message.guild.id, member, gf);
-                }
+                };
 
                 //function to set gf to whatever value
                 const gfSet = (value, gf) => {
                     return enmap.set(message.guild.id, value, gf);
-                }
+                };
 
                 // if gf spot is undefined, replace with " "
                 const gfList = (index, gfNumber) => {
                     return gfNumber[index] === undefined ? "-" : gfNumber[index];
-                }
+                };
 
                 //discord embed function
                 const gfEmbed = (name, gfNumber) => {
@@ -57,8 +57,8 @@ module.exports.run = async (bot, message, args) => {
                         },
                         ]
                     }
-                    })
-                }
+                    });
+                };
 
                 //full gf variables
                 let fullgf = !gf.includes(undefined) && gf.length === 20;
@@ -80,18 +80,18 @@ module.exports.run = async (bot, message, args) => {
                         // if gf 1 is full
                         if (fullgf) {
 
-                            return message.reply('Guild Fort list is full!')
+                            return message.reply('Guild Fort list is full!');
                         }
 
                         else if (gf.includes(member)) {
-                            return message.reply(`You're already checked in!`)
+                            return message.reply(`You're already checked in!`);
                         }
                 
                         else {
                 
                             gfPush(member, gfTeam);
                         
-                            message.reply(`you just checked in to ${name}.`)
+                            message.reply(`you just checked in to ${name}.`);
                     
                             gfEmbed(name, gf);
                         } 
@@ -106,13 +106,13 @@ module.exports.run = async (bot, message, args) => {
 
                        gfRemove(member, gfTeam);
 
-                       message.reply(`you have been removed from ${name}`)
+                       message.reply(`you have been removed from ${name}`);
 
                        gfEmbed(name, gf);
                     }
 
                     else {
-                        return message.reply(`You aren't checked in.`)
+                        return message.reply(`You aren't checked in.`);
                     }
 
                 }
@@ -133,14 +133,14 @@ module.exports.run = async (bot, message, args) => {
                     let hi = gf[value-1];
 
                     if (isNaN(value)) {
-                        return message.reply(`Please enter '!gf remove <number>'`)
+                        return message.reply(`Please enter '!gf remove <number>'`);
                     }
 
                     else {
 
                         gfRemove(hi, gfTeam);
 
-                        message.channel.send(`${hi} has been removed from ${name}`)
+                        message.channel.send(`${hi} has been removed from ${name}`);
 
                         gfEmbed(name, gf);
                     }
@@ -163,17 +163,17 @@ module.exports.run = async (bot, message, args) => {
 
                     if (value) {
                         if (gf.includes(value.join(" "))) {
-                            return message.reply(`${value.join(" ")} is already checked in to ${name}`)
+                            return message.reply(`${value.join(" ")} is already checked in to ${name}`);
                         }
 
                         else if (fullgf) {
-                            return message.reply(`${name} is already full!`)
+                            return message.reply(`${name} is already full!`);
                         }
             
                         else {
-                            message.channel.send(`${value.join(" ")} has been added to ${name}`)
+                            message.channel.send(`${value.join(" ")} has been added to ${name}`);
 
-                            gfPush(value.join(" "), gfTeam)
+                            gfPush(value.join(" "), gfTeam);
                 
                             gfEmbed(name, gf);
                         }
@@ -181,7 +181,7 @@ module.exports.run = async (bot, message, args) => {
                     }
                        
                     else {
-                        return message.reply(`Please enter '!gf add <display name>`)
+                        return message.reply(`Please enter '!gf add <display name>`);
                     }
                 }
         
@@ -199,7 +199,7 @@ module.exports.run = async (bot, message, args) => {
 
                         gfSet([], gfTeam);
 
-                        return message.channel.send(`${name} has been cleared.`)
+                        return message.channel.send(`${name} has been cleared.`);
                     
                 }
 
@@ -232,7 +232,7 @@ module.exports.run = async (bot, message, args) => {
                    
                         gfSet(value.join(" "), gfName);
 
-                        return message.reply(`You have changed guild fort title to ${value.join(" ")}`)
+                        return message.reply(`You have changed guild fort title to ${value.join(" ")}`);
           
                 }
 
@@ -246,7 +246,7 @@ module.exports.run = async (bot, message, args) => {
 
                     const realUser = (user) => {
                         return user === null ? "" : user;
-                    }
+                    };
 
                         let user1 = message.guild.members.find(member => member.displayName == gf[0]);
 
@@ -310,9 +310,9 @@ module.exports.run = async (bot, message, args) => {
                                 value: `**!gf checkin ** : check yourself into gf. \n **!gf checkout ** : remove yourself from gf  \n**!gf view** : view gf `
                             }]
                             }
-                        })
+                        });
 
-                        return message.reply(`Check your DM!`)
+                        return message.reply(`Check your DM!`);
                     }
 
                     else {
@@ -330,24 +330,24 @@ module.exports.run = async (bot, message, args) => {
                             }
                             ]
                         }
-                        })
+                        });
                         
-                        return message.reply(`Check your DM!`)
+                        return message.reply(`Check your DM!`);
                     }
                 }
         
                 else {
-                    return message.reply(`Please enter !gf help`)
+                    return message.reply(`Please enter !gf help`);
                 }
         }
 
         else {
-            return message.channel.send('This command is not available in this channel. Please set your `gfChannel` configuration.')
+            return message.channel.send('This command is not available in this channel. Please set your `gfChannel` configuration.');
         }
-    }
+    };
 
 
 
 module.exports.help = {
     name: 'gf'
-}
+};

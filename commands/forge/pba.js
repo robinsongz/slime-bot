@@ -12,12 +12,12 @@ module.exports.run = async (bot, message) => {
         
         // pba sheet
 
-            return message.reply(`https://imgur.com/a/1lotika`)
+            return message.reply(`https://imgur.com/a/1lotika`);
         
         
-    }
+    };
 
 
 module.exports.help = {
     name: 'pba'
-}
+};

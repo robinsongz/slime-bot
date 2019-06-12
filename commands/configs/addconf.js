@@ -13,9 +13,9 @@ module.exports.run = async (bot, message) =>  {
             // enmap.forEach( (val, key) => enmap.set(key, "20 45", "fortTime") );
       
         
-    }
+    };
 
 
 module.exports.help = {
     name: 'addconf'
-}
+};

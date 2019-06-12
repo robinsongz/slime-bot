@@ -38,22 +38,22 @@ module.exports.run = async (bot, message, args) => {
                 //function for pushing member into team array
                 const teamPush = (member, team) => {
                     return enmap.push(message.guild.id, member, team);
-                }
+                };
 
                 // function for removing member from team
                 const teamRemove = (member, team) => {
                     return enmap.remove(message.guild.id, member, team);
-                }
+                };
 
                 // function for setting team to whatever value
                 const teamSet = (value, team) => {
                     return enmap.set(message.guild.id, value, team);
-                }
+                };
 
                 // if spot is empty, replace undefined with " "
                 const teamList = (index, teamNumber) => {
                     return teamNumber[index] === undefined ? "-" : teamNumber[index];
-                }
+                };
 
                 // discord embed function
                 const teamEmbed = (name, teamNumber) => {
@@ -65,8 +65,8 @@ module.exports.run = async (bot, message, args) => {
                         },
                         ]
                     }
-                    })
-                }
+                    });
+                };
                 // variable for full teams
                 let fullteam1 = !team1.includes(undefined) && team1.length === 10;
                 let fullteam2 = !team2.includes(undefined) && team2.length === 10;
@@ -96,14 +96,14 @@ module.exports.run = async (bot, message, args) => {
                         }
 
                         else if (team3.includes(member)) {
-                            return message.reply(`You're already checked in!`)
+                            return message.reply(`You're already checked in!`);
                         }
 
                         else {
             
-                            teamPush(member, teamTeam3)
+                            teamPush(member, teamTeam3);
                         
-                            message.reply(`you just checked in to ${name3}.`)
+                            message.reply(`you just checked in to ${name3}.`);
                 
                             teamEmbed(name3, team3);
                         } 
@@ -120,14 +120,14 @@ module.exports.run = async (bot, message, args) => {
                         }
                         
                         else if (team2.includes(member)) {
-                            return message.reply(`You're already checked in!`)
+                            return message.reply(`You're already checked in!`);
                         }
             
                         else {
             
-                            teamPush(member, teamTeam2)
+                            teamPush(member, teamTeam2);
                         
-                            message.reply(`you just checked in to ${name2}.`)
+                            message.reply(`you just checked in to ${name2}.`);
                 
                             teamEmbed(name2, team2);
                         }
@@ -137,13 +137,13 @@ module.exports.run = async (bot, message, args) => {
                         
 
                         if (fullteam1 && fullteam2 && fullteam3) {
-                            return message.reply(`Sorry, all teams are full!`)
+                            return message.reply(`Sorry, all teams are full!`);
                         }
 
                         else if (fullteam1 && fullteam2) {
                             teamPush(mmeber, teamTeam3);
 
-                            message.reply(`Sorry, ${name1} and ${name2} are full, you have checked in to only ${name3}`)
+                            message.reply(`Sorry, ${name1} and ${name2} are full, you have checked in to only ${name3}`);
 
                             teamEmbed(name3, team3);
                         }
@@ -151,15 +151,15 @@ module.exports.run = async (bot, message, args) => {
                         else if (fullteam1 && fullteam3) {
                             teamPush(member, teamTeam2);
 
-                            message.reply(`${name1} and ${name3} are full, you have checked in to only ${name2}`)
+                            message.reply(`${name1} and ${name3} are full, you have checked in to only ${name2}`);
 
                             teamEmbed(name2, team2);
                         }
 
                         else if (fullteam2 && fullteam3) {
-                            teamPush(member, teamTeam1)
+                            teamPush(member, teamTeam1);
 
-                            message.reply(`${name2} and ${name3} are full, you have checked in to only ${name1}`)
+                            message.reply(`${name2} and ${name3} are full, you have checked in to only ${name1}`);
 
                             teamEmbed(name1, team1);
                         }
@@ -168,29 +168,29 @@ module.exports.run = async (bot, message, args) => {
                             teamPush(member, teamTeam2);
                             teamPush(member, teamTeam3);
 
-                            message.reply(`${name1} is full, you have checked into ${name2} and ${name3}`)
+                            message.reply(`${name1} is full, you have checked into ${name2} and ${name3}`);
                         }
 
                         else if (fullteam2) {
                             teamPush(member, teamTeam1);
                             teamPush(member, teamTeam3);
 
-                            message.reply(`${name2} is full, you have checked into ${name1} and ${name3}`)
+                            message.reply(`${name2} is full, you have checked into ${name1} and ${name3}`);
                         }
 
                         else if (fullteam3) {
                             teamPush(member, teamTeam1);
                             teamPush(member, teamTeam2);
 
-                            message.reply(`${name3} is full, you have checked into ${name1} and ${name2}`)
+                            message.reply(`${name3} is full, you have checked into ${name1} and ${name2}`);
                         }
 
                         else {
                             teamPush(member, teamTeam1);
                             teamPush(member, teamTeam2);
-                            teamPush(member, teamTeam3)
+                            teamPush(member, teamTeam3);
 
-                            message.reply(`You have checked into all teams`)
+                            message.reply(`You have checked into all teams`);
                         }
                     }
 
@@ -200,18 +200,18 @@ module.exports.run = async (bot, message, args) => {
                             
                             // if already in team 2 & 3
                             if (team2.includes(member) && team3.includes(member)) {
-                                return message.reply(`${name1} is full, and you are already in ${name2} and ${name3}`)
+                                return message.reply(`${name1} is full, and you are already in ${name2} and ${name3}`);
                             }
                             // if team 2 is full
                             else if (fullteam2) {
 
                                 if (fullteam3) {
-                                    return message.reply(`All teams are full!`)
+                                    return message.reply(`All teams are full!`);
                                 }
 
                                 teamPush(member, teamTeam3);
 
-                                message.reply(`${name1} & ${name2} are full, you have been added to ${name3}`)
+                                message.reply(`${name1} & ${name2} are full, you have been added to ${name3}`);
 
                                 teamEmbed(name3, team3);
                             }
@@ -230,7 +230,7 @@ module.exports.run = async (bot, message, args) => {
 
                             // if already in team 1 and team 3
                             if (team1.includes(member) && team3.includes(member)) {
-                                return message.reply(`${name2} is full, and you are already checked in to ${name1} and ${name3}`)
+                                return message.reply(`${name2} is full, and you are already checked in to ${name1} and ${name3}`);
                             }
 
                             // if team 1 has room
@@ -245,7 +245,7 @@ module.exports.run = async (bot, message, args) => {
                             else {
 
                                 if (fullteam3) {
-                                    return message.reply(`All teams are full!`)
+                                    return message.reply(`All teams are full!`);
                                 }
                                 teamPush(member, teamTeam3);
                 
@@ -257,14 +257,14 @@ module.exports.run = async (bot, message, args) => {
 
                         // if already in team 1
                         else if (team1.includes(member)) {
-                            return message.reply(`You're already checked in!`)
+                            return message.reply(`You're already checked in!`);
                         }
                         
                         else {
                 
                             teamPush(member, teamTeam1);
                         
-                            message.reply(`you just checked in to ${name1}.`)
+                            message.reply(`you just checked in to ${name1}.`);
                     
                             teamEmbed(name1, team1);
                         } 
@@ -308,11 +308,11 @@ module.exports.run = async (bot, message, args) => {
                             teamRemove(member, teamTeam2);
                             teamRemove(member, teamTeam3);
 
-                            message.reply(`you have been removed from all 3 teams.`)
+                            message.reply(`you have been removed from all 3 teams.`);
                         }
 
                         else {
-                            message.reply(`You are checked in to all 3 teams. Please specify which team you'd like to be checked out of.`)
+                            message.reply(`You are checked in to all 3 teams. Please specify which team you'd like to be checked out of.`);
                         }
                     }
 
@@ -338,11 +338,11 @@ module.exports.run = async (bot, message, args) => {
                             teamRemove(member, teamTeam2);
                             
 
-                            message.reply(`you have been removed from ${name1} & ${name2}.`)
+                            message.reply(`you have been removed from ${name1} & ${name2}.`);
                         }
 
                         else {
-                            message.reply(`You are checked in to teams 1 & 2. Please specify which team you'd like to be checked out of.`)
+                            message.reply(`You are checked in to teams 1 & 2. Please specify which team you'd like to be checked out of.`);
                         }
                     }
 
@@ -369,11 +369,11 @@ module.exports.run = async (bot, message, args) => {
                             teamRemove(member, teamTeam3);
                             
 
-                            message.reply(`you have been removed from ${name1} & ${name3}.`)
+                            message.reply(`you have been removed from ${name1} & ${name3}.`);
                         }
 
                         else {
-                            message.reply(`You are checked in to teams 1 & 3. Please specify which team you'd like to be checked out of.`)
+                            message.reply(`You are checked in to teams 1 & 3. Please specify which team you'd like to be checked out of.`);
                         }
                     }
 
@@ -400,11 +400,11 @@ module.exports.run = async (bot, message, args) => {
                             teamRemove(member, teamTeam3);
                             
 
-                            message.reply(`you have been removed from ${name2} & ${name3}.`)
+                            message.reply(`you have been removed from ${name2} & ${name3}.`);
                         }
 
                         else {
-                            message.reply(`You are checked in to teams 2 & 3. Please specify which team you'd like to be checked out of.`)
+                            message.reply(`You are checked in to teams 2 & 3. Please specify which team you'd like to be checked out of.`);
                         }
                     }
 
@@ -435,7 +435,7 @@ module.exports.run = async (bot, message, args) => {
                     }
 
                     else {
-                        return message.reply(`You aren't checked in.`)
+                        return message.reply(`You aren't checked in.`);
                     }
 
                 }
@@ -461,15 +461,15 @@ module.exports.run = async (bot, message, args) => {
                         
                             if (value !== undefined) {
                             
-                                message.channel.send(`${value} has been removed from ${name1}.`)
+                                message.channel.send(`${value} has been removed from ${name1}.`);
 
-                                teamRemove(value, teamTeam1)
+                                teamRemove(value, teamTeam1);
             
                                 teamEmbed(name1, team1);
                             }
 
                             else {
-                                message.channel.send(`There is no one to remove here.`)
+                                message.channel.send(`There is no one to remove here.`);
 
                                 teamEmbed(name1, team1);
                             }
@@ -488,7 +488,7 @@ module.exports.run = async (bot, message, args) => {
                             let value2 = team2[secondValue-1];
 
                             if (value2 !== undefined) {
-                                message.channel.send(`${value2} has been removed from ${name2}.`)
+                                message.channel.send(`${value2} has been removed from ${name2}.`);
 
                                 teamRemove(value2, teamTeam2);
                 
@@ -503,7 +503,7 @@ module.exports.run = async (bot, message, args) => {
                         }
 
                         else {
-                            return message.reply(`Please enter '!team remove <team1 or team2 or team3> <number>'`)
+                            return message.reply(`Please enter '!team remove <team1 or team2 or team3> <number>'`);
                         }
                     }
 
@@ -514,7 +514,7 @@ module.exports.run = async (bot, message, args) => {
                             let value3 = team3[secondValue-1];
 
                             if (value3 !== undefined) {
-                                message.channel.send(`${value3} has been removed from ${name3}.`)
+                                message.channel.send(`${value3} has been removed from ${name3}.`);
 
                                 teamRemove(value3, teamTeam3);
                 
@@ -529,12 +529,12 @@ module.exports.run = async (bot, message, args) => {
                         }
 
                         else {
-                            return message.reply(`Please enter '!team remove <team1 or team2 or team3> <number>'`)
+                            return message.reply(`Please enter '!team remove <team1 or team2 or team3> <number>'`);
                         }
                     }
 
                     else {
-                        return message.reply(`Please enter '!team remove <team1 or team2 or team3> <number>'`)
+                        return message.reply(`Please enter '!team remove <team1 or team2 or team3> <number>'`);
                     }
                     
                 }
@@ -556,17 +556,17 @@ module.exports.run = async (bot, message, args) => {
 
 
                         if (team1.includes(secondValue.join(" "))) {
-                            return message.reply(`${secondValue.join(" ")} is already checked in to ${name1}`)
+                            return message.reply(`${secondValue.join(" ")} is already checked in to ${name1}`);
                         }
 
                         else if (fullteam1) {
-                            return message.reply(`${name1} is already full!`)
+                            return message.reply(`${name1} is already full!`);
                         }
             
                         else {
-                            message.channel.send(`${secondValue.join(" ")} has been added to ${name1}`)
+                            message.channel.send(`${secondValue.join(" ")} has been added to ${name1}`);
 
-                            teamPush(secondValue.join(" "), teamTeam1)
+                            teamPush(secondValue.join(" "), teamTeam1);
                 
                             teamEmbed(name1, team1);
                         }
@@ -575,17 +575,17 @@ module.exports.run = async (bot, message, args) => {
                     else if (value === 'team2') {
 
                         if (team2.includes(secondValue.join(" "))) {
-                            return message.reply(`${secondValue.join(" ")} is already checked in to ${name2}`)
+                            return message.reply(`${secondValue.join(" ")} is already checked in to ${name2}`);
                         }
 
                         else if (fullteam2) {
-                            return message.reply(`${name2} is already full!`)
+                            return message.reply(`${name2} is already full!`);
                         }
             
                         else {
-                            message.channel.send(`${secondValue.join(" ")} has been added to ${name2}`)
+                            message.channel.send(`${secondValue.join(" ")} has been added to ${name2}`);
             
-                            teamPush(secondValue.join(" "), teamTeam2)
+                            teamPush(secondValue.join(" "), teamTeam2);
                 
                             teamEmbed(name2, team2);
                         }
@@ -594,24 +594,24 @@ module.exports.run = async (bot, message, args) => {
                     else if (value === 'team3') {
 
                         if (team3.includes(secondValue.join(" "))) {
-                            return message.reply(`${secondValue.join(" ")} is already checked in to ${name3}`)
+                            return message.reply(`${secondValue.join(" ")} is already checked in to ${name3}`);
                         }
 
                         else if (fullteam3) {
-                            return message.reply(`${name3} is already full!`)
+                            return message.reply(`${name3} is already full!`);
                         }
             
                         else {
-                            message.channel.send(`${secondValue.join(" ")} has been added to ${name3}`)
+                            message.channel.send(`${secondValue.join(" ")} has been added to ${name3}`);
             
-                            teamPush(secondValue.join(" "), teamTeam3)
+                            teamPush(secondValue.join(" "), teamTeam3);
                 
                             teamEmbed(name3, team3);
                         }
                     }
 
                     else {
-                        return message.reply(`Please enter '!team add <team1 or team2 or team3> <display name>`)
+                        return message.reply(`Please enter '!team add <team1 or team2 or team3> <display name>`);
                     }
                 }
         
@@ -632,19 +632,19 @@ module.exports.run = async (bot, message, args) => {
                     if (value === '1') {
                         teamSet([], teamTeam1);
 
-                        return message.channel.send(`${name1} has been cleared.`)
+                        return message.channel.send(`${name1} has been cleared.`);
                     }
 
                     else if (value === '2') {
                         teamSet([], teamTeam2);
 
-                        return message.channel.send(`${name2} has been cleared`)
+                        return message.channel.send(`${name2} has been cleared`);
                     }
                     
                     else if (value === '3') {
                         teamSet([], teamTeam3);
 
-                        return message.channel.send(`${name3} has been cleared`)
+                        return message.channel.send(`${name3} has been cleared`);
                     }
 
                     else if ( value === 'all') {
@@ -652,11 +652,11 @@ module.exports.run = async (bot, message, args) => {
                         teamSet([], teamTeam2);
                         teamSet([], teamTeam3);
 
-                        return message.channel.send(`All teams have been cleared`)
+                        return message.channel.send(`All teams have been cleared`);
                     }
 
                     else {
-                        return message.reply(`Please enter which team you'd like to clear (1 or 2 or 3)`)
+                        return message.reply(`Please enter which team you'd like to clear (1 or 2 or 3)`);
                     }
 
                     
@@ -684,7 +684,7 @@ module.exports.run = async (bot, message, args) => {
                     else if (value === 'all') {
                         const teamList = (index, team) => {
                             return team[index] === undefined ? "-" : team[index];
-                        }
+                        };
 
                         return message.channel.send({embed: {
                             color: 3447003,
@@ -703,11 +703,11 @@ module.exports.run = async (bot, message, args) => {
                                 },
                             ]
                         }
-                        })
+                        });
                     }
 
                     else {
-                        return message.reply(`Please enter which team you'd like to view (1 or 2 or 3)`)
+                        return message.reply(`Please enter which team you'd like to view (1 or 2 or 3)`);
                 }
                 }
         
@@ -753,11 +753,11 @@ module.exports.run = async (bot, message, args) => {
                         }
             
                         else if (member2 === undefined && member1 === undefined) {
-                            return message.reply(`There are no one in these positions!`)
+                            return message.reply(`There are no one in these positions!`);
                         }
             
                         else {
-                            message.reply (`${member1} and ${member2} have been swapped.`)
+                            message.reply (`${member1} and ${member2} have been swapped.`);
             
                             teamPush(member1, teamTeam2);
 
@@ -797,11 +797,11 @@ module.exports.run = async (bot, message, args) => {
                         }
             
                         else if (member2 === undefined && member1 === undefined) {
-                            return message.reply(`There are no one in these positions!`)
+                            return message.reply(`There are no one in these positions!`);
                         }
             
                         else {
-                            message.reply (`${member1} and ${member2} have been swapped.`)
+                            message.reply (`${member1} and ${member2} have been swapped.`);
                             
                             teamPush(member1, teamTeam3);
 
@@ -840,11 +840,11 @@ module.exports.run = async (bot, message, args) => {
                         }
             
                         else if (member2 === undefined && member1 === undefined) {
-                            return message.reply(`There are no one in these positions!`)
+                            return message.reply(`There are no one in these positions!`);
                         }
             
                         else {
-                            message.reply (`${member1} and ${member2} have been swapped.`)
+                            message.reply (`${member1} and ${member2} have been swapped.`);
 
                             teamPush(member1, teamTeam3);
 
@@ -878,21 +878,21 @@ module.exports.run = async (bot, message, args) => {
 
                         teamSet(secondValue.join(" "), teamName3);
 
-                        return message.reply(`You have changed team 3's name to ${secondValue.join(" ")}`)
+                        return message.reply(`You have changed team 3's name to ${secondValue.join(" ")}`);
                     }
 
                     else if (value === 'team2') {
 
                         teamSet(secondValue.join(" "), teamName2);
 
-                        return message.reply(`You have changed team 2's name to ${secondValue.join(" ")}`)
+                        return message.reply(`You have changed team 2's name to ${secondValue.join(" ")}`);
                     }
 
                     else if (value === 'team1') {
 
                         teamSet(secondValue.join(" "), teamName1);
 
-                        return message.reply(`You have changed team 1's name to ${secondValue.join(" ")}`)
+                        return message.reply(`You have changed team 1's name to ${secondValue.join(" ")}`);
                     }
                 }
 
@@ -904,7 +904,7 @@ module.exports.run = async (bot, message, args) => {
 
                     const realUser = (user) => {
                         return user === null ? "" : user;
-                    }
+                    };
 
                     if (value === 'team1') {
 
@@ -930,7 +930,7 @@ module.exports.run = async (bot, message, args) => {
 
 
                             
-                        return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} : \n ${secondValue.join(" ")}`)
+                        return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} : \n ${secondValue.join(" ")}`);
                     }
 
                     if (value === 'team2') {
@@ -955,7 +955,7 @@ module.exports.run = async (bot, message, args) => {
                         let user10 = message.guild.members.find(member => member.displayName == team2[9]);
 
                             
-                        return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} : \n ${secondValue.join(" ")}`)
+                        return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} : \n ${secondValue.join(" ")}`);
                     }
 
                     if (value === 'team3') {
@@ -981,7 +981,7 @@ module.exports.run = async (bot, message, args) => {
                         let user10 = message.guild.members.find(member => member.displayName == team3[9]);
 
                                 
-                        return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} : \n ${secondValue.join(" ")}`)
+                        return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} : \n ${secondValue.join(" ")}`);
                 
                     }
                 }
@@ -1003,9 +1003,9 @@ module.exports.run = async (bot, message, args) => {
                                 value: `**!team checkin <1 or 2 or 3>** : check yourself into team 1/2/3. If team 1 is full, checks you in team 2. If team 2 is full, checks you in to team 3. Checks you in team 1 if no number is typed. \n **!team checkout <1 or 2 or 3>** : remove yourself from team 1/2/3 \n **!team checkout all** : remove yourself from all teams \n**!team view <1 or 2 or 3>** : view team 1/2/3 \n **!team view all** : view all teams`
                             }]
                             }
-                        })
+                        });
 
-                        return message.reply(`Check your DM!`)
+                        return message.reply(`Check your DM!`);
                     }
 
                     else {
@@ -1023,24 +1023,24 @@ module.exports.run = async (bot, message, args) => {
                             }
                             ]
                         }
-                        })
+                        });
                         
-                        return message.reply(`Check your DM!`)
+                        return message.reply(`Check your DM!`);
                     }
                 }
         
                 else {
-                    return message.reply(`Please enter !team help`)
+                    return message.reply(`Please enter !team help`);
                 }
             }
 
             else {
-                return message.reply('This command is not available in this channel. Please set your `teamChannel` configuration')
+                return message.reply('This command is not available in this channel. Please set your `teamChannel` configuration');
             }
-}
+};
 
 
 
 module.exports.help = {
     name: 'team'
-}
+};

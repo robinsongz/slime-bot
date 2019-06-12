@@ -10,7 +10,7 @@ enmap = new Enmap({
     fetchAll: true,
     autoFetch: true,
     cloneLevel: 'deep'
-  })
+  });
 
 
 // enmap settings front-end  
@@ -63,7 +63,7 @@ defaultSettings = {
         team: []
     },
     region: 'na'
-}
+};
 
 const bot = new Discord.Client({
 });
@@ -106,13 +106,12 @@ fs.readdir("./commands/", (err, files) => {
             for (i in file) {
                 let props = require(`./commands/${f}/${file[i]}`);
                 if (!!props.help) {
-                bot.commands.set(props.help.name, props)
+                bot.commands.set(props.help.name, props);
                 }
             }
-        })
-    })
-})
- 
+        });
+    });
+});
 
 bot.on('ready', () => {
     console.log(`Serving ${bot.guilds.size} servers`);
@@ -139,8 +138,8 @@ bot.on('ready', () => {
                         } else {
                             return;
                         }
-                    })
-        }
+                    });
+        };
     
         const fortReminder = () => {
             let fortChannel = enmap.get(guild.id, "fortChannel");
@@ -157,8 +156,8 @@ bot.on('ready', () => {
                     } else {
                         return;
                     }
-            })
-        }
+            });
+        };
     
         const banquetReminder = () => {
          
@@ -174,8 +173,8 @@ bot.on('ready', () => {
                     } else {
                         return;
                     }
-                })
-        }
+                });
+        };
     
         const expedAutoClear = () => {
             enmap.ensure(guild.id, defaultSettings);
@@ -183,13 +182,13 @@ bot.on('ready', () => {
             enmap.set(guild.id, [], 'team.team1.team');
             enmap.set(guild.id, [], 'team.team2.team');
             enmap.set(guild.id, [], 'team.team3.team');    
-        }
+        };
         
         const fortAutoClear = () => {
             enmap.ensure(guild.id, defaultSettings);
             
             enmap.set(guild.id, [], 'guildFort.team'); 
-        } 
+        };
 
         let region = enmap.get(guild.id, 'region');
 
@@ -227,7 +226,7 @@ bot.on('ready', () => {
                       
             banquet[guild.id] = new CronJob(`00 ${banqMin} ${banqHr} * * *`, banquetReminder, null, true, 'Europe/Amsterdam');
         
-            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Europe/Amsterdam')
+            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Europe/Amsterdam');
             
             new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'Europe/Amsterdam');
         }
@@ -266,10 +265,10 @@ bot.on('ready', () => {
         }
 
          
-    })
+    });
 
     
-})
+});
      
 
 bot.on('message', function(message) {
@@ -290,35 +289,35 @@ bot.on('message', function(message) {
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
     if (prefix == msgPrefix && commandfile && args[0] == "banquetTime") {
-        commandfile.run(bot, message, args, banquet[message.guild.id]) 
+        commandfile.run(bot, message, args, banquet[message.guild.id]);
     } 
 
     else if (prefix == msgPrefix && commandfile && args[0] == "fortTime") {
-        commandfile.run(bot, message, args, fort[message.guild.id]) 
+        commandfile.run(bot, message, args, fort[message.guild.id]);
     } 
 
     else if (prefix == msgPrefix && commandfile && args[0] == "expoTime1") {
-        commandfile.run(bot, message, args, exped1[message.guild.id]) 
+        commandfile.run(bot, message, args, exped1[message.guild.id]); 
     } 
 
     else if (prefix == msgPrefix && commandfile && args[0] == "expoTime2") {
-        commandfile.run(bot, message, args, exped2[message.guild.id]) 
+        commandfile.run(bot, message, args, exped2[message.guild.id]); 
     } 
 
     else if (prefix == msgPrefix && commandfile && cmd == prefix + 'calc') {
-        commandfile.run(bot, message, args, region)
+        commandfile.run(bot, message, args, region);
     }
 
     else if (prefix == msgPrefix && commandfile) {
-        commandfile.run(bot, message, args) 
+        commandfile.run(bot, message, args);
     } 
  
-})
+});
 
 // logs unhandled rejections
 process.on('unhandledRejection', (reason, promise) => {
-    console.log('Unhandled Rejection at:', reason.stack || reason)
-})
+    console.log('Unhandled Rejection at:', reason.stack || reason);
+});
 
 // bot login
 bot.login(config.token); 

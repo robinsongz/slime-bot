@@ -13,9 +13,9 @@ module.exports.run = async (bot, message) => {
             // bot.guilds.forEach(guild => guild.owner.send(`Hi all! Thanks for adding Slime Bot! Please join my discord server to ask any questions and keep up with updates! https://discord.gg/DVjQ39K`))
         // }
         
-    }
+    };
 
 
 module.exports.help = {
     name: 'send'
-}
+};

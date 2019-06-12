@@ -11,12 +11,12 @@ module.exports.run = async (bot, message) => {
         
     // exalt data
         
-    return message.reply(`https://imgur.com/a/Qp1eu9B`)
+    return message.reply(`https://imgur.com/a/Qp1eu9B`);
 
 
-    }
+    };
 
 
 module.exports.help = {
     name: 'exalt'
-}
+};
