@@ -16,9 +16,9 @@ module.exports.run = async (bot, message) => {
             // enmap.forEach( (val, key) => enmap.delete(key, "team3") );
         
         
-    }
+    };
 
 
 module.exports.help = {
     name: 'deleteconf'
-}
+};

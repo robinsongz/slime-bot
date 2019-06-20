@@ -37,22 +37,22 @@ module.exports.run = async (bot, message, args) => {
                 //function to push member into party array
                 const partyPush = (member, party) => {
                     return enmap.push(message.guild.id, member, party);
-                }
+                };
 
                 //function to remove member from party
                 const partyRemove = (member, party) => {
                     return enmap.remove(message.guild.id, member, party);
-                }
+                };
 
                 //function to set party to whatever value
                 const partySet = (value, party) => {
                     return enmap.set(message.guild.id, value, party);
-                }
+                };
 
                 // if party spot is undefined, replace with " "
                 const partyList = (index, partyNumber) => {
                     return partyNumber[index] === undefined ? "-" : partyNumber[index];
-                }
+                };
 
                 //discord embed function
                 const partyEmbed = (name, partyNumber) => {
@@ -64,8 +64,8 @@ module.exports.run = async (bot, message, args) => {
                         },
                         ]
                     }
-                    })
-                }
+                    });
+                };
 
                 //full party variables
                 let fullparty1 = !party1.includes(undefined) && party1.length === 6;
@@ -96,14 +96,14 @@ module.exports.run = async (bot, message, args) => {
                         }
 
                         else if (party3.includes(member)) {
-                            return message.reply(`You're already checked in!`)
+                            return message.reply(`You're already checked in!`);
                         }
 
                         else {
             
-                            partyPush(member, partyTeam3)
+                            partyPush(member, partyTeam3);
                         
-                            message.reply(`you just checked in to ${name3}.`)
+                            message.reply(`you just checked in to ${name3}.`);
                 
                             partyEmbed(name3, party3);
                         } 
@@ -120,14 +120,14 @@ module.exports.run = async (bot, message, args) => {
                         }
                         
                         else if (party2.includes(member)) {
-                            return message.reply(`You're already checked in!`)
+                            return message.reply(`You're already checked in!`);
                         }
             
                         else {
             
-                            partyPush(member, partyTeam2)
+                            partyPush(member, partyTeam2);
                         
-                            message.reply(`you just checked in to ${name2}.`)
+                            message.reply(`you just checked in to ${name2}.`);
                 
                             partyEmbed(name2, party2);
                         }
@@ -137,13 +137,13 @@ module.exports.run = async (bot, message, args) => {
                         
 
                         if (fullparty1 && fullparty2 && fullparty3) {
-                            return message.reply(`Sorry, all partys are full!`)
+                            return message.reply(`Sorry, all partys are full!`);
                         }
 
                         else if (fullparty1 && fullparty2) {
                             partyPush(mmeber, partyTeam3);
 
-                            message.reply(`Sorry, ${name1} and ${name2} are full, you have checked in to only ${name3}`)
+                            message.reply(`Sorry, ${name1} and ${name2} are full, you have checked in to only ${name3}`);
 
                             partyEmbed(name3, party3);
                         }
@@ -151,15 +151,15 @@ module.exports.run = async (bot, message, args) => {
                         else if (fullparty1 && fullparty3) {
                             partyPush(member, partyTeam2);
 
-                            message.reply(`${name1} and ${name3} are full, you have checked in to only ${name2}`)
+                            message.reply(`${name1} and ${name3} are full, you have checked in to only ${name2}`);
 
                             partyEmbed(name2, party2);
                         }
 
                         else if (fullparty2 && fullparty3) {
-                            partyPush(member, partyTeam1)
+                            partyPush(member, partyTeam1);
 
-                            message.reply(`${name2} and ${name3} are full, you have checked in to only ${name1}`)
+                            message.reply(`${name2} and ${name3} are full, you have checked in to only ${name1}`);
 
                             partyEmbed(name1, party1);
                         }
@@ -168,29 +168,29 @@ module.exports.run = async (bot, message, args) => {
                             partyPush(member, partyTeam2);
                             partyPush(member, partyTeam3);
 
-                            message.reply(`${name1} is full, you have checked into ${name2} and ${name3}`)
+                            message.reply(`${name1} is full, you have checked into ${name2} and ${name3}`);
                         }
 
                         else if (fullparty2) {
                             partyPush(member, partyTeam1);
                             partyPush(member, partyTeam3);
 
-                            message.reply(`${name2} is full, you have checked into ${name1} and ${name3}`)
+                            message.reply(`${name2} is full, you have checked into ${name1} and ${name3}`);
                         }
 
                         else if (fullparty3) {
                             partyPush(member, partyTeam1);
                             partyPush(member, partyTeam2);
 
-                            message.reply(`${name3} is full, you have checked into ${name1} and ${name2}`)
+                            message.reply(`${name3} is full, you have checked into ${name1} and ${name2}`);
                         }
 
                         else {
                             partyPush(member, partyTeam1);
                             partyPush(member, partyTeam2);
-                            partyPush(member, partyTeam3)
+                            partyPush(member, partyTeam3);
 
-                            message.reply(`You have checked into all partys`)
+                            message.reply(`You have checked into all partys`);
                         }
                     }
 
@@ -199,18 +199,18 @@ module.exports.run = async (bot, message, args) => {
                         if (fullparty1) {
 
                             if (party2.includes(member) || party3.includes(member)) {
-                                return message.reply(`${name1} is full, and you are already in ${name2} and ${name3}`)
+                                return message.reply(`${name1} is full, and you are already in ${name2} and ${name3}`);
                             }
 
                             else if (fullparty2) {
 
                                 if (fullparty3) {
-                                    return message.reply(`All partys are full!`)
+                                    return message.reply(`All partys are full!`);
                                 }
 
                                 partyPush(member, partyTeam3);
 
-                                message.reply(`${name1} & ${name2} are full, you have been added to ${name3}`)
+                                message.reply(`${name1} & ${name2} are full, you have been added to ${name3}`);
 
                                 partyEmbed(name3, party3);
                             }
@@ -228,7 +228,7 @@ module.exports.run = async (bot, message, args) => {
                         else if(fullparty2) {
 
                             if (party1.includes(member) || party3.includes(member)) {
-                                return message.reply(`${name2} is full, and you are already checked in to ${name1} and ${name3}`)
+                                return message.reply(`${name2} is full, and you are already checked in to ${name1} and ${name3}`);
                             }
 
                             else if (party1.includes(undefined) && party1.length !== 6) {
@@ -242,7 +242,7 @@ module.exports.run = async (bot, message, args) => {
                             else {
 
                                 if (fullparty3) {
-                                    return message.reply(`All partys are full!`)
+                                    return message.reply(`All partys are full!`);
                                 }
                                 partyPush(member, partyTeam3);
                 
@@ -253,14 +253,14 @@ module.exports.run = async (bot, message, args) => {
                         }    
 
                         else if (party1.includes(member)) {
-                            return message.reply(`You're already checked in!`)
+                            return message.reply(`You're already checked in!`);
                         }
                 
                         else {
                 
                             partyPush(member, partyTeam1);
                         
-                            message.reply(`you just checked in to ${name1}.`)
+                            message.reply(`you just checked in to ${name1}.`);
                     
                             partyEmbed(name1, party1);
                         } 
@@ -303,11 +303,11 @@ module.exports.run = async (bot, message, args) => {
                             partyRemove(member, partyTeam2);
                             partyRemove(member, partyTeam3);
 
-                            message.reply(`you have been removed from all 3 partys.`)
+                            message.reply(`you have been removed from all 3 partys.`);
                         }
 
                         else {
-                            message.reply(`You are checked in to all 3 partys. Please specify which party you'd like to be checked out of.`)
+                            message.reply(`You are checked in to all 3 partys. Please specify which party you'd like to be checked out of.`);
                         }
                     }
 
@@ -333,11 +333,11 @@ module.exports.run = async (bot, message, args) => {
                             partyRemove(member, partyTeam2);
                             
 
-                            message.reply(`you have been removed from ${name1} & ${name2}.`)
+                            message.reply(`you have been removed from ${name1} & ${name2}.`);
                         }
 
                         else {
-                            message.reply(`You are checked in to partys 1 & 2. Please specify which party you'd like to be checked out of.`)
+                            message.reply(`You are checked in to partys 1 & 2. Please specify which party you'd like to be checked out of.`);
                         }
                     }
 
@@ -364,11 +364,11 @@ module.exports.run = async (bot, message, args) => {
                             partyRemove(member, partyTeam3);
                             
 
-                            message.reply(`you have been removed from ${name1} & ${name3}.`)
+                            message.reply(`you have been removed from ${name1} & ${name3}.`);
                         }
 
                         else {
-                            message.reply(`You are checked in to partys 1 & 3. Please specify which party you'd like to be checked out of.`)
+                            message.reply(`You are checked in to partys 1 & 3. Please specify which party you'd like to be checked out of.`);
                         }
                     }
 
@@ -395,11 +395,11 @@ module.exports.run = async (bot, message, args) => {
                             partyRemove(member, partyTeam3);
                             
 
-                            message.reply(`you have been removed from ${name2} & ${name3}.`)
+                            message.reply(`you have been removed from ${name2} & ${name3}.`);
                         }
 
                         else {
-                            message.reply(`You are checked in to partys 2 & 3. Please specify which party you'd like to be checked out of.`)
+                            message.reply(`You are checked in to partys 2 & 3. Please specify which party you'd like to be checked out of.`);
                         }
                     }
 
@@ -430,7 +430,7 @@ module.exports.run = async (bot, message, args) => {
                     }
 
                     else {
-                        return message.reply(`You aren't checked in.`)
+                        return message.reply(`You aren't checked in.`);
                     }
 
                 }
@@ -456,15 +456,15 @@ module.exports.run = async (bot, message, args) => {
                         
                             if (value !== undefined) {
                             
-                                message.channel.send(`${value} has been removed from ${name1}.`)
+                                message.channel.send(`${value} has been removed from ${name1}.`);
 
-                                partyRemove(value, partyTeam1)
+                                partyRemove(value, partyTeam1);
             
                                 partyEmbed(name1, party1);
                             }
 
                             else {
-                                message.channel.send(`There is no one to remove here.`)
+                                message.channel.send(`There is no one to remove here.`);
 
                                 partyEmbed(name1, party1);
                             }
@@ -483,7 +483,7 @@ module.exports.run = async (bot, message, args) => {
                             let value2 = party2[secondValue-1];
 
                             if (value2 !== undefined) {
-                                message.channel.send(`${value2} has been removed from ${name2}.`)
+                                message.channel.send(`${value2} has been removed from ${name2}.`);
 
                                 partyRemove(value, partyTeam2);
                 
@@ -498,7 +498,7 @@ module.exports.run = async (bot, message, args) => {
                         }
 
                         else {
-                            return message.reply(`Please enter '!party remove <party1 or party2 or party3> <number>'`)
+                            return message.reply(`Please enter '!party remove <party1 or party2 or party3> <number>'`);
                         }
                     }
 
@@ -509,7 +509,7 @@ module.exports.run = async (bot, message, args) => {
                             let value3 = party3[secondValue-1];
 
                             if (value3 !== undefined) {
-                                message.channel.send(`${value3} has been removed from ${name3}.`)
+                                message.channel.send(`${value3} has been removed from ${name3}.`);
 
                                 partyRemove(value, partyTeam3);
                 
@@ -524,12 +524,12 @@ module.exports.run = async (bot, message, args) => {
                         }
 
                         else {
-                            return message.reply(`Please enter '!party remove <party1 or party2 or party3> <number>'`)
+                            return message.reply(`Please enter '!party remove <party1 or party2 or party3> <number>'`);
                         }
                     }
 
                     else {
-                        return message.reply(`Please enter '!party remove <party1 or party2 or party3> <number>'`)
+                        return message.reply(`Please enter '!party remove <party1 or party2 or party3> <number>'`);
                     }
                     
                 }
@@ -551,17 +551,17 @@ module.exports.run = async (bot, message, args) => {
 
 
                         if (party1.includes(secondValue.join(" "))) {
-                            return message.reply(`${secondValue.join(" ")} is already checked in to ${name1}`)
+                            return message.reply(`${secondValue.join(" ")} is already checked in to ${name1}`);
                         }
 
                         else if (fullparty1) {
-                            return message.reply(`${name1} is already full!`)
+                            return message.reply(`${name1} is already full!`);
                         }
             
                         else {
-                            message.channel.send(`${secondValue.join(" ")} has been added to ${name1}`)
+                            message.channel.send(`${secondValue.join(" ")} has been added to ${name1}`);
 
-                            partyPush(secondValue.join(" "), partyTeam1)
+                            partyPush(secondValue.join(" "), partyTeam1);
                 
                             partyEmbed(name1, party1);
                         }
@@ -570,17 +570,17 @@ module.exports.run = async (bot, message, args) => {
                     else if (value === 'party2') {
 
                         if (party2.includes(secondValue.join(" "))) {
-                            return message.reply(`${secondValue.join(" ")} is already checked in to ${name2}`)
+                            return message.reply(`${secondValue.join(" ")} is already checked in to ${name2}`);
                         }
 
                         else if (fullparty2) {
-                            return message.reply(`${name2} is already full!`)
+                            return message.reply(`${name2} is already full!`);
                         }
             
                         else {
-                            message.channel.send(`${secondValue.join(" ")} has been added to ${name2}`)
+                            message.channel.send(`${secondValue.join(" ")} has been added to ${name2}`);
             
-                            partyPush(secondValue.join(" "), partyTeam2)
+                            partyPush(secondValue.join(" "), partyTeam2);
                 
                             partyEmbed(name2, party2);
                         }
@@ -589,24 +589,24 @@ module.exports.run = async (bot, message, args) => {
                     else if (value === 'party3') {
 
                         if (party3.includes(secondValue.join(" "))) {
-                            return message.reply(`${secondValue.join(" ")} is already checked in to ${name3}`)
+                            return message.reply(`${secondValue.join(" ")} is already checked in to ${name3}`);
                         }
 
                         else if (fullparty3) {
-                            return message.reply(`${name3} is already full!`)
+                            return message.reply(`${name3} is already full!`);
                         }
             
                         else {
-                            message.channel.send(`${secondValue.join(" ")} has been added to ${name3}`)
+                            message.channel.send(`${secondValue.join(" ")} has been added to ${name3}`);
             
-                            partyPush(secondValue.join(" "), partyTeam3)
+                            partyPush(secondValue.join(" "), partyTeam3);
                 
                             partyEmbed(name3, party3);
                         }
                     }
 
                     else {
-                        return message.reply(`Please enter '!party add <party1 or party2 or party3> <display name>`)
+                        return message.reply(`Please enter '!party add <party1 or party2 or party3> <display name>`);
                     }
                 }
         
@@ -627,19 +627,19 @@ module.exports.run = async (bot, message, args) => {
                     if (value === '1') {
                         partySet([], partyTeam1);
 
-                        return message.channel.send(`${name1} has been cleared.`)
+                        return message.channel.send(`${name1} has been cleared.`);
                     }
 
                     else if (value === '2') {
                         partySet([], partyTeam2);
 
-                        return message.channel.send(`${name2} has been cleared`)
+                        return message.channel.send(`${name2} has been cleared`);
                     }
                     
                     else if (value === '3') {
                         partySet([], partyTeam3);
 
-                        return message.channel.send(`${name3} has been cleared`)
+                        return message.channel.send(`${name3} has been cleared`);
                     }
 
                     else if ( value === 'all') {
@@ -647,11 +647,11 @@ module.exports.run = async (bot, message, args) => {
                         partySet([], partyTeam2);
                         partySet([], partyTeam3);
 
-                        return message.channel.send(`All partys have been cleared`)
+                        return message.channel.send(`All partys have been cleared`);
                     }
 
                     else {
-                        return message.reply(`Please enter which party you'd like to clear (1 or 2 or 3)`)
+                        return message.reply(`Please enter which party you'd like to clear (1 or 2 or 3)`);
                     }
 
                     
@@ -680,7 +680,7 @@ module.exports.run = async (bot, message, args) => {
 
                         const partyList = (index, party) => {
                             return party[index] === undefined ? "-" : party[index];
-                        }
+                        };
 
                         return message.channel.send({embed: {
                             color: 3447003,
@@ -699,11 +699,11 @@ module.exports.run = async (bot, message, args) => {
                                 },
                             ]
                         }
-                        })
+                        });
                     }
 
                     else {
-                        return message.reply(`Please enter which party you'd like to view (1 or 2 or 3)`)
+                        return message.reply(`Please enter which party you'd like to view (1 or 2 or 3)`);
                 }
                 }
         
@@ -749,11 +749,11 @@ module.exports.run = async (bot, message, args) => {
                         }
             
                         else if (member2 === undefined && member1 === undefined) {
-                            return message.reply(`There are no one in these positions!`)
+                            return message.reply(`There are no one in these positions!`);
                         }
             
                         else {
-                            message.reply (`${member1} and ${member2} have been swapped.`)
+                            message.reply (`${member1} and ${member2} have been swapped.`);
             
                             partyPush(member1, partyTeam2);
 
@@ -793,11 +793,11 @@ module.exports.run = async (bot, message, args) => {
                         }
             
                         else if (member2 === undefined && member1 === undefined) {
-                            return message.reply(`There are no one in these positions!`)
+                            return message.reply(`There are no one in these positions!`);
                         }
             
                         else {
-                            message.reply (`${member1} and ${member2} have been swapped.`)
+                            message.reply (`${member1} and ${member2} have been swapped.`);
                             
                             partyPush(member1, partyTeam3);
 
@@ -836,11 +836,11 @@ module.exports.run = async (bot, message, args) => {
                         }
             
                         else if (member2 === undefined && member1 === undefined) {
-                            return message.reply(`There are no one in these positions!`)
+                            return message.reply(`There are no one in these positions!`);
                         }
             
                         else {
-                            message.reply (`${member1} and ${member2} have been swapped.`)
+                            message.reply (`${member1} and ${member2} have been swapped.`);
 
                             partyPush(member1, partyTeam3);
 
@@ -874,21 +874,21 @@ module.exports.run = async (bot, message, args) => {
 
                         partySet(secondValue.join(" "), partyName3);
 
-                        return message.reply(`You have changed party 3's name to ${secondValue.join(" ")}`)
+                        return message.reply(`You have changed party 3's name to ${secondValue.join(" ")}`);
                     }
 
                     else if (value === 'party2') {
 
                         partySet(secondValue.join(" "), partyName2);
 
-                        return message.reply(`You have changed party 2's name to ${secondValue.join(" ")}`)
+                        return message.reply(`You have changed party 2's name to ${secondValue.join(" ")}`);
                     }
 
                     else if (value === 'party1') {
 
                         partySet(secondValue.join(" "), partyName1);
 
-                        return message.reply(`You have changed party 1's name to ${secondValue.join(" ")}`)
+                        return message.reply(`You have changed party 1's name to ${secondValue.join(" ")}`);
                     }
                 }
 
@@ -902,7 +902,7 @@ module.exports.run = async (bot, message, args) => {
 
                     const realUser = (user) => {
                         return user === null ? "" : user;
-                    }
+                    };
 
                     
                     if (value === 'party1') {
@@ -919,7 +919,7 @@ module.exports.run = async (bot, message, args) => {
 
                         let user6 = message.guild.members.find(member => member.displayName == party1[5]);
                             
-                        return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} : \n ${secondValue.join(" ")}`)
+                        return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} : \n ${secondValue.join(" ")}`);
                     }
 
                    
@@ -938,7 +938,7 @@ module.exports.run = async (bot, message, args) => {
                         let user6 = message.guild.members.find(member => member.displayName == party2[5]);
 
                             
-                        return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} : \n ${secondValue.join(" ")}`)
+                        return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} : \n ${secondValue.join(" ")}`);
                     }
 
                    
@@ -957,7 +957,7 @@ module.exports.run = async (bot, message, args) => {
                         let user6 = message.guild.members.find(member => member.displayName == party3[5]);
 
                                 
-                        return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} : \n ${secondValue.join(" ")}`)
+                        return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} : \n ${secondValue.join(" ")}`);
                 
                     }
                 }
@@ -979,9 +979,9 @@ module.exports.run = async (bot, message, args) => {
                                 value: `**!party checkin <1 or 2 or 3>** : check yourself into party 1/2/3. If party 1 is full, checks you in party 2. If party 2 is full, checks you in to party 3. Checks you in party 1 if no number is typed. \n **!party checkout <1 or 2 or 3>** : remove yourself from party 1/2/3 \n **!party checkout all** : remove yourself from all partys \n**!party view <1 or 2 or 3>** : view party 1/2/3 \n **!party view all** : view all partys`
                             }]
                             }
-                        })
+                        });
 
-                        return message.reply(`Check your DM!`)
+                        return message.reply(`Check your DM!`);
                     }
 
                     else {
@@ -999,19 +999,19 @@ module.exports.run = async (bot, message, args) => {
                             }
                             ]
                         }
-                        })
+                        });
                         
-                        return message.reply(`Check your DM!`)
+                        return message.reply(`Check your DM!`);
                     }
                 }
         
                 else {
-                    return message.reply(`Please enter !party help`)
+                    return message.reply(`Please enter !party help`);
                 }
-        }
+        };
 
 
 
 module.exports.help = {
     name: 'party'
-}
+};

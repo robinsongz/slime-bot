@@ -27,7 +27,7 @@ module.exports.run = async (bot, message, args) => {
                     .addField("__S__", 
                     "Phy ATK + 200 \n Mag ATK + 200 \n JMP + 5% \n Crit DMG RES + 2%")
                     .addField("__A__", 
-                    "Phy ATK + 100 \n Mag ATK + 100 \n JMP + 2%")
+                    "Phy ATK + 100 \n Mag ATK + 100 \n JMP + 2%");
                     
                 
                 message.channel.send(embed);
@@ -42,7 +42,7 @@ module.exports.run = async (bot, message, args) => {
                     .addField("__Jump %__",
                     "SSS: 2.00 \n SS: 2.00 \n S: 1.50 \n A: 1.20 \n B: 0.90 \n C: 0.70")
                     .addField("__Crit DMG RES %__", 
-                    "SSS: 1.00 \n SS: 0.80 \n S: 0.60 \n A: 0.40 \n B: 0.30 \n C: 0.20")
+                    "SSS: 1.00 \n SS: 0.80 \n S: 0.60 \n A: 0.40 \n B: 0.30 \n C: 0.20");
                     
                 
                 message.channel.send(embed);
@@ -62,7 +62,7 @@ module.exports.run = async (bot, message, args) => {
                     .addField("__S__", 
                     "Mag DEF + 250 \n Phy DMG + 3% \n SPD + 2%")
                     .addField("__A__", 
-                    "Mag DEF + 100 \n Phy DMG + 1% ")
+                    "Mag DEF + 100 \n Phy DMG + 1% ");
                     
                 
                 message.channel.send(embed);
@@ -80,7 +80,7 @@ module.exports.run = async (bot, message, args) => {
                 .addField("__SPD %__", 
                 "SSS: 2.50 \n SS: 2.00 \n S: 1.50 \n A: 1.20 \n B: 0.90 \n C: 0.70")
                 .addField("__MAG DEF__", 
-                "SSS: 200.00 \n SS: 143.00 \n S: 103.00 \n A: 73.00 \n B: 43.00 \n C: 23.00")
+                "SSS: 200.00 \n SS: 143.00 \n S: 103.00 \n A: 73.00 \n B: 43.00 \n C: 23.00");
                 
             
                 message.channel.send(embed);
@@ -100,7 +100,7 @@ module.exports.run = async (bot, message, args) => {
                     .addField("__S__", 
                     "Phy DEF + 250 \n Mag DMG + 3% \n SPD + 2%")
                     .addField("__A__", 
-                    "Phy DEF + 100 \n Mag DMG + 1% ")
+                    "Phy DEF + 100 \n Mag DMG + 1% ");
                     
                 
                 message.channel.send(embed);
@@ -117,7 +117,7 @@ module.exports.run = async (bot, message, args) => {
                     .addField("__EVD %__", 
                     "SSS: 2.10 \n SS: 1.60 \n S: 1.20 \n A: 0.90 \n B: 0.60 \n C: 0.40")
                     .addField("__PHY DEF__", 
-                    "SSS: 200.00 \n SS: 143.00 \n S: 103.00 \n A: 73.00 \n B: 43.00 \n C: 23.00")
+                    "SSS: 200.00 \n SS: 143.00 \n S: 103.00 \n A: 73.00 \n B: 43.00 \n C: 23.00");
                     
                 
                     message.channel.send(embed);
@@ -139,7 +139,7 @@ module.exports.run = async (bot, message, args) => {
                     .addField("__S__", 
                     "Drop + 2% \n EXP + 1.5% \n KBK RES + 100")
                     .addField("__A__", 
-                    "Drop + 1% \n EXP + 1%")
+                    "Drop + 1% \n EXP + 1%");
                     
                 
                 message.channel.send(embed);
@@ -156,7 +156,7 @@ module.exports.run = async (bot, message, args) => {
                     .addField("__KBK Res__", 
                     "SSS: 8.00 \n SS: 6.00 \n S: 4.00 \n A: 3.00 \n B: 2.00 \n C: 1.00")
                     .addField("__Drop Rate %__", 
-                    "SSS: 1.60 \n SS: 1.30 \n S: 1.00 \n A: 0.80 \n B: 0.60 \n C: 0.50")
+                    "SSS: 1.60 \n SS: 1.30 \n S: 1.00 \n A: 0.80 \n B: 0.60 \n C: 0.50");
                     
                 
                     message.channel.send(embed);
@@ -177,7 +177,7 @@ module.exports.run = async (bot, message, args) => {
                     .addField("__S__", 
                     "Crit DMG + 2% \n Boss ATK + 2% \n Boss DEF + 2%")
                     .addField("__A__", 
-                    "Boss Def + 1% \n Boss ATK + 1%")
+                    "Boss Def + 1% \n Boss ATK + 1%");
                     
                 
                 message.channel.send(embed);
@@ -193,7 +193,7 @@ module.exports.run = async (bot, message, args) => {
                     .addField("__Boss DEF__", 
                     "SSS: 1.00 \n SS: 0.80 \n S: 0.60 \n A: 0.50 \n B: 0.30 \n C: 0.20")
                     .addField("__Block__", 
-                    "SSS: 2.10 \n SS: 1.60 \n S: 1.20 \n A: 0.90 \n B: 0.60 \n C: 0.40")
+                    "SSS: 2.10 \n SS: 1.60 \n S: 1.20 \n A: 0.90 \n B: 0.60 \n C: 0.40");
                     
                 
                     message.channel.send(embed);
@@ -202,14 +202,14 @@ module.exports.run = async (bot, message, args) => {
             }
 
             else if (prop === "help") {
-                message.reply(`Type "!jewel <jewel color>" to view jewels of that color. Type "!jewel <jewel color> setbonus" for their set bonuses.`)
+                message.reply(`Type "!jewel <jewel color>" to view jewels of that color. Type "!jewel <jewel color> setbonus" for their set bonuses.`);
             }
 
             else {
-                message.reply(`Please type "!jewel help".`)
+                message.reply(`Please type "!jewel help".`);
             }
-        }
+        };
 
 module.exports.help = {
     name: 'jewel'
-}
+};

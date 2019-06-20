@@ -6,4 +6,4 @@ module.exports = (bot, member) => {
     return member
         .send(privateMessage)
         .catch(console.error);
-}
+};

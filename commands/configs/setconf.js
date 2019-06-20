@@ -29,17 +29,17 @@ module.exports.run = async (bot, message, args, reminder) => {
     let botembed = new Discord.RichEmbed()
         .setTitle(`${prop} changed!`)
         .setDescription(`Your \`${prop}\` has been changed to: \n \`${value.join(" ")}\``)
-        .setColor("#15f153")
+        .setColor("#15f153");
 
     let timeembed = new Discord.RichEmbed()
         .setTitle(`${prop} changed!`)
         .setDescription(`Your \`${prop}\` has been changed to: \n \`${value.join(":")}\``)
-        .setColor("#15f153")
+        .setColor("#15f153");
 
     let channelembed = new Discord.RichEmbed()
         .setTitle(`${prop} changed!`)
         .setDescription(`Your \`${prop}\` has been changed to: \n \`${value.join("-")}\``)
-        .setColor("#15f153")
+        .setColor("#15f153");
 
     if (prop === 'help') {
         message.author.send({embed: {
@@ -68,9 +68,9 @@ module.exports.run = async (bot, message, args, reminder) => {
               }
             ]
           }
-        })
+        });
 
-        return message.reply(`Check your DM!`)
+        return message.reply(`Check your DM!`);
     }
 
     // if invalid key is entered
@@ -80,11 +80,11 @@ module.exports.run = async (bot, message, args, reminder) => {
     }
 
     else if (prop === 'team' || prop === 'party') {
-        return message.reply(`You cannot set these configurations. Use the !${prop} command`)
+        return message.reply(`You cannot set these configurations. Use the !${prop} command`);
     }
 
     else if (prop === 'guildFort') {
-        return message.reply(`You cannot set these configurations. Use the !gf command`)
+        return message.reply(`You cannot set these configurations. Use the !gf command`);
     }
 
     //settings banquet configs
@@ -100,15 +100,15 @@ module.exports.run = async (bot, message, args, reminder) => {
         }
 
         if ( minute > 60 || hour > 24) {
-            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`)
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`);
         }
 
         if (minute < 0 || hour < 0) {
-            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm`)
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm`);
         }
 
         if (value[2]) {
-           return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`)
+           return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`);
         }
 
        
@@ -118,8 +118,8 @@ module.exports.run = async (bot, message, args, reminder) => {
                 let timezone = reminder.cronTime.zone;
 
                 
-                var time = new CronTime(`00 ${value[1]} ${value[0]} * * *`, timezone)
-                reminder.setTime(time);
+                var banquetTime = new CronTime(`00 ${value[1]} ${value[0]} * * *`, timezone);
+                reminder.setTime(banquetTime);
                 
                 reminder.stop();
                 reminder.start();
@@ -129,7 +129,7 @@ module.exports.run = async (bot, message, args, reminder) => {
             
             message.channel
                 .send(timeembed)
-                .catch(err => console.log(err))
+                .catch(err => console.log(err));
         
            
         
@@ -145,15 +145,15 @@ module.exports.run = async (bot, message, args, reminder) => {
         }
 
         if ( minute > 60 || hour > 24) {
-            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`)
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`);
         }
 
         if (minute < 0 || hour < 0) {
-            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm`)
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm`);
         }
 
         if (value[2]) {
-           return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`)
+           return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`);
         }
 
        
@@ -163,7 +163,7 @@ module.exports.run = async (bot, message, args, reminder) => {
                 let timezone = reminder.cronTime.zone;
 
                 
-                var time = new CronTime(`00 ${value[1]} ${value[0]} * * *`, timezone)
+                var time = new CronTime(`00 ${value[1]} ${value[0]} * * *`, timezone);
                 reminder.setTime(time);
                 
                 reminder.stop();
@@ -173,7 +173,7 @@ module.exports.run = async (bot, message, args, reminder) => {
 
             message.channel
                 .send(timeembed)
-                .catch(err => console.log(err))
+                .catch(err => console.log(err));
         
     }
 
@@ -187,15 +187,15 @@ module.exports.run = async (bot, message, args, reminder) => {
         }
 
         if ( minute > 60 || hour > 24) {
-            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`)
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`);
         }
 
         if (minute < 0 || hour < 0) {
-            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm`)
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm`);
         }
 
         if (value[2]) {
-           return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`)
+           return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`);
         }
 
        
@@ -205,8 +205,8 @@ module.exports.run = async (bot, message, args, reminder) => {
                 let timezone = reminder.cronTime.zone;
 
                 
-                var time = new CronTime(`00 ${value[1]} ${value[0]} * * *`, timezone)
-                reminder.setTime(time);
+                var expoTime1 = new CronTime(`00 ${value[1]} ${value[0]} * * *`, timezone);
+                reminder.setTime(expoTime1);
                 
                 reminder.stop();
                 reminder.start();
@@ -215,7 +215,7 @@ module.exports.run = async (bot, message, args, reminder) => {
 
             message.channel
                 .send(timeembed)
-                .catch(err => console.log(err))
+                .catch(err => console.log(err));
         
     }
 
@@ -229,15 +229,15 @@ module.exports.run = async (bot, message, args, reminder) => {
         }
 
         if ( minute > 60 || hour > 24) {
-            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`)
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`);
         }
 
         if (minute < 0 || hour < 0) {
-            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm`)
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm`);
         }
 
         if (value[2]) {
-           return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`)
+           return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`);
         }
 
        
@@ -247,8 +247,8 @@ module.exports.run = async (bot, message, args, reminder) => {
                 let timezone = reminder.cronTime.zone;
 
                 
-                var time = new CronTime(`00 ${value[1]} ${value[0]} * * *`, timezone)
-                reminder.setTime(time);
+                var expoTime2 = new CronTime(`00 ${value[1]} ${value[0]} * * *`, timezone);
+                reminder.setTime(expoTime2);
                 
                 reminder.stop();
                 reminder.start();
@@ -256,18 +256,18 @@ module.exports.run = async (bot, message, args, reminder) => {
             }
             message.channel
                 .send(timeembed)
-                .catch(err => console.log(err))
+                .catch(err => console.log(err));
         
     }
 
      // if changing channel configs
     else if (prop === 'expoChannel' || prop === 'banquetChannel' || prop === 'fortChannel' || prop === 'teamChannel' || prop === 'gfChannel') {
-        enmap.ensure(message.guild.id, defaultSettings)
+        enmap.ensure(message.guild.id, defaultSettings);
     
         enmap.set(message.guild.id, value.join("-").toLowerCase(), prop);
         
         return message.channel
-            .send(channelembed)
+            .send(channelembed);
     }
 
     // if changing prefix
@@ -292,7 +292,7 @@ module.exports.run = async (bot, message, args, reminder) => {
     else if (prop === 'region') {
 
         if (value.join(" ").toLowerCase() === 'na') {
-            enmap.ensure(message.guild.id, defaultSettings)
+            enmap.ensure(message.guild.id, defaultSettings);
     
             enmap.set(message.guild.id, value.join(" ").toLowerCase(), prop);
 
@@ -304,7 +304,7 @@ module.exports.run = async (bot, message, args, reminder) => {
         }
 
         if (value.join(" ").toLowerCase() === 'eu') {
-            enmap.ensure(message.guild.id, defaultSettings)
+            enmap.ensure(message.guild.id, defaultSettings);
     
             enmap.set(message.guild.id, value.join(" ").toLowerCase(), prop);
 
@@ -316,7 +316,7 @@ module.exports.run = async (bot, message, args, reminder) => {
         }
 
         if (value.join(" ").toLowerCase() === 'asia') {
-            enmap.ensure(message.guild.id, defaultSettings)
+            enmap.ensure(message.guild.id, defaultSettings);
     
             enmap.set(message.guild.id, value.join(" ").toLowerCase(), prop);
 
@@ -329,7 +329,7 @@ module.exports.run = async (bot, message, args, reminder) => {
 
         else {
             return message.channel
-                .send(`Please enter **'na'**, **'eu'**, or **'asia'**.`)
+                .send(`Please enter **'na'**, **'eu'**, or **'asia'**.`);
         }
     }   
 
@@ -343,7 +343,7 @@ module.exports.run = async (bot, message, args, reminder) => {
 
         // if blank value is entered
         if (value === undefined || value === null || value.join(" ") === '') {
-            return message.reply(`You cannot enter a blank value. Type '!setconf help' for configuration help, or '!showconf' for your current configurations.`)
+            return message.reply(`You cannot enter a blank value. Type '!setconf help' for configuration help, or '!showconf' for your current configurations.`);
         }
 
         // else if (prop === ('expoReminder') || prop === 'fortReminder' || prop === 'banquetReminder') {
@@ -381,21 +381,21 @@ module.exports.run = async (bot, message, args, reminder) => {
             let botembed = new Discord.RichEmbed()
                     .setTitle(`${prop} changed!`)
                     .setDescription(`Your \`${prop}\` has been changed to: \n \`${value.join(" ")}!\``)
-                    .setColor("#15f153")
+                    .setColor("#15f153");
 
-            enmap.ensure(message.guild.id, defaultSettings)
+            enmap.ensure(message.guild.id, defaultSettings);
         
             enmap.set(message.guild.id, value.join(" "), prop);
         
             return message.channel
-                .send(botembed)
+                .send(botembed);
                 
         }
         }
 
         
-    }
+    };
 
 module.exports.help = {
     name: 'setconf'
-}
+};

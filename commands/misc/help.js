@@ -25,15 +25,15 @@ module.exports.run = async (bot, message) => {
                 }
                 ]
             }
-            })
+            });
 
-            message.reply(`Check your DM!`)
+            message.reply(`Check your DM!`);
        
 
         
-    }
+    };
 
 
 module.exports.help = {
     name: "help"
-}
+};

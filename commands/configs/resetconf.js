@@ -21,12 +21,12 @@ module.exports.run = async (bot, message) => {
         }
 
         enmap.delete(message.guild.id);
-        message.channel.send(`You're configurations have been reset to default settings`)
+        message.channel.send(`You're configurations have been reset to default settings`);
 
-    }
+    };
 
 
 
 module.exports.help = {
     name: 'resetconf'
-}
+};

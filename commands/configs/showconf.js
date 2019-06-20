@@ -19,14 +19,14 @@ module.exports.run = async (bot, message) => {
   let configProps = Object.keys(guildConf).map(prop => {
     return `▶ ${prop} ▶  :  ${guildConf[prop]}\n\n`;
   });
-  let configPropsJoin = configProps.join(" ")
+  let configPropsJoin = configProps.join(" ");
   
   message.channel.send(`The following are the server's current configuration:
   \`\`\`${configPropsJoin}\`\`\``).catch(console.error);
 
 
-}
+};
 
 module.exports.help = {
     name: "showconf"
-}
+};
