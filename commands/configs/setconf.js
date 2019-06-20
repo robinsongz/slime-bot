@@ -261,7 +261,7 @@ module.exports.run = async (bot, message, args, reminder) => {
     }
 
      // if changing channel configs
-    else if (prop === 'expoChannel' || prop === 'banquetChannel' || prop === 'fortChannel' || prop === 'teamChannel' || prop === 'gfChannel') {
+    else if (prop === 'expoChannel' || prop === 'banquetChannel' || prop === 'fortChannel' || prop === 'teamChannel' || prop === 'gfChannel' || prop === 'gfChannel2' || prop === 'teamChannel2') {
         enmap.ensure(message.guild.id, defaultSettings);
     
         enmap.set(message.guild.id, value.join("-").toLowerCase(), prop);

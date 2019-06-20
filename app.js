@@ -29,8 +29,24 @@ defaultSettings = {
     fortChannel: 'general',
     fortMessage: '@everyone Guild fort in 15 minutes! Good luck!',
     teamChannel: 'general',
+    teamChannel2: 'general',
     gfChannel: 'general',
+    gfChannel2: 'general',
     team: {
+        team1: {
+            name: "Team 1", 
+            team: []
+        },
+        team2: {
+            name: "Team 2",
+            team: [] 
+        },
+        team3: {
+            name: "Team 3",
+            team: []
+        }
+    },
+    patreonTeam: {
         team1: {
             name: "Team 1", 
             team: []
@@ -62,11 +78,16 @@ defaultSettings = {
         name: 'Guild Fort Team',
         team: []
     },
+    patreonGuildFort: {
+        name: 'Guild Fort Team',
+        team: []
+    },
     region: 'na'
 };
 
 const bot = new Discord.Client({
 });
+
 
 bot.commands = new Discord.Collection(); 
 
@@ -116,7 +137,6 @@ fs.readdir("./commands/", (err, files) => {
 bot.on('ready', () => {
     console.log(`Serving ${bot.guilds.size} servers`);
     console.log('Ready boss!');
-
 
     bot.guilds.forEach((guild) => {
 
@@ -287,6 +307,7 @@ bot.on('message', function(message) {
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
+    const slimeServer = bot.guilds.get("511649193941794836");
 
     if (prefix == msgPrefix && commandfile && args[0] == "banquetTime") {
         commandfile.run(bot, message, args, banquet[message.guild.id]);
@@ -307,6 +328,14 @@ bot.on('message', function(message) {
     else if (prefix == msgPrefix && commandfile && cmd == prefix + 'calc') {
         commandfile.run(bot, message, args, region);
     }
+
+    else if (prefix == msgPrefix && commandfile && cmd == prefix + 'team') {
+        commandfile.run(bot, message, args, slimeServer);
+    } 
+
+    else if (prefix == msgPrefix && commandfile && cmd == prefix + 'gf') {
+        commandfile.run(bot, message, args, slimeServer);
+    } 
 
     else if (prefix == msgPrefix && commandfile) {
         commandfile.run(bot, message, args);
