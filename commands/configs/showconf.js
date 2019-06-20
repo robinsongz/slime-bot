@@ -16,9 +16,17 @@ module.exports.run = async (bot, message) => {
   if(!message.member.roles.has(adminRole.id)) {
     return message.reply("You're not an admin, sorry!");
   }
-  let configProps = Object.keys(guildConf).map(prop => {
-    return `▶ ${prop} ▶  :  ${guildConf[prop]}\n\n`;
-  });
+
+  let configProps = Object.keys(guildConf)
+    .filter(prop => {
+      if (prop === 'team' || prop === 'guildFort' || prop === 'party' || prop === 'patreonTeam' || prop === 'patreonGuildFort') {
+        return false;
+      }
+      return true;
+    }).map(prop => {
+      
+      return `▶ ${prop} ▶  :  ${guildConf[prop]}\n\n`;
+    });
   let configPropsJoin = configProps.join(" ");
   
   message.channel.send(`The following are the server's current configuration:
