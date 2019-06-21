@@ -11,7 +11,7 @@ module.exports.run = async (bot, message) => {
         
         // Link skills data
 
-        return message.reply(`https://imgur.com/aRLWxcn`);
+        return message.reply(`https://imgur.com/dlRfZeI`);
         
        
     };

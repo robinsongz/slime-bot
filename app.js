@@ -202,12 +202,17 @@ bot.on('ready', () => {
             enmap.set(guild.id, [], 'team.team1.team');
             enmap.set(guild.id, [], 'team.team2.team');
             enmap.set(guild.id, [], 'team.team3.team');    
+
+            enmap.set(guild.id, [], 'patreonTeam.team1.team');
+            enmap.set(guild.id, [], 'patreonTeam.team2.team');
+            enmap.set(guild.id, [], 'patreonTeam.team3.team');    
         };
         
         const fortAutoClear = () => {
             enmap.ensure(guild.id, defaultSettings);
             
             enmap.set(guild.id, [], 'guildFort.team'); 
+            enmap.set(guild.id, [], 'patreonGuildFort.team'); 
         };
 
         let region = enmap.get(guild.id, 'region');
