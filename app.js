@@ -13,6 +13,10 @@ enmap = new Enmap({
   });
 
 
+gfTracker = new Enmap({name: "gfTracker"});
+
+patreonGfTracker = new Enmap({name: "patreonGfTracker"});
+
 // enmap settings front-end  
 defaultSettings = {		
     adminRole: "GM",
@@ -76,11 +80,27 @@ defaultSettings = {
     },
     guildFort: {
         name: 'Guild Fort Team',
-        team: []
+        team: [],
+        buffMap: '',
+        skillPage1User: '',
+        skillPage2User: '',
+        skillPage3User: '',
+        skillPage4User: '',
+        buffer1: '',
+        buffer2: '',
+        buffer3: '',
     },
     patreonGuildFort: {
         name: 'Guild Fort Team',
-        team: []
+        team: [],
+        buffMap: '',
+        skillPage1User: '',
+        skillPage2User: '',
+        skillPage3User: '',
+        skillPage4User: '',
+        buffer1: '',
+        buffer2: '',
+        buffer3: '',
     },
     region: 'na'
 };
@@ -202,18 +222,21 @@ bot.on('ready', () => {
             enmap.set(guild.id, [], 'team.team1.team');
             enmap.set(guild.id, [], 'team.team2.team');
             enmap.set(guild.id, [], 'team.team3.team');    
-
-            enmap.set(guild.id, [], 'patreonTeam.team1.team');
-            enmap.set(guild.id, [], 'patreonTeam.team2.team');
-            enmap.set(guild.id, [], 'patreonTeam.team3.team');    
         };
         
         const fortAutoClear = () => {
             enmap.ensure(guild.id, defaultSettings);
             
             enmap.set(guild.id, [], 'guildFort.team'); 
-            enmap.set(guild.id, [], 'patreonGuildFort.team'); 
         };
+
+        const gfbTrackerAutoClear = () => {
+            const filtered = gfTracker.filter(p => p.guild === guild.id);
+
+            filtered.forEach(data => {
+                gfTracker.delete(`${guild.id}-${data.user}`)
+            })
+        }
 
         let region = enmap.get(guild.id, 'region');
 
@@ -254,6 +277,8 @@ bot.on('ready', () => {
             new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Europe/Amsterdam');
             
             new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'Europe/Amsterdam');
+
+            new CronJob(`00 01 00 * * 1`, gfbTrackerAutoClear, null, true, 'Europe/Amsterdam')
         }
 
         else if (region === 'asia') {
@@ -270,7 +295,8 @@ bot.on('ready', () => {
             new CronJob(`00 01 13,21 * * *`, expedAutoClear, null, true, 'Asia/Taipei');
             
             new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'Asia/Taipei');
-        
+            
+            new CronJob(`00 01 00 * * 1`, gfbTrackerAutoClear, null, true, 'Asia/Taipei')
         }
         
         else {
@@ -287,6 +313,8 @@ bot.on('ready', () => {
             new CronJob(`00 01 11,19 * * *`, expedAutoClear, null, true, 'America/Anchorage');
 
             new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'America/Anchorage');
+
+            new CronJob(`00 01 00 * * 1`, gfbTrackerAutoClear, null, true, 'America/Anchorage')
         }
 
          
@@ -342,8 +370,12 @@ bot.on('message', function(message) {
         commandfile.run(bot, message, args, slimeServer);
     } 
 
+    else if (prefix == msgPrefix && commandfile && cmd == prefix + 'setconf') {
+        commandfile.run(bot, message, args, slimeServer);
+    }
+
     else if (prefix == msgPrefix && commandfile) {
-        commandfile.run(bot, message, args);
+        commandfile.run(bot, message, args,);
     } 
  
 });

@@ -261,13 +261,46 @@ module.exports.run = async (bot, message, args, reminder) => {
     }
 
      // if changing channel configs
-    else if (prop === 'expoChannel' || prop === 'banquetChannel' || prop === 'fortChannel' || prop === 'teamChannel' || prop === 'gfChannel' || prop === 'gfChannel2' || prop === 'teamChannel2') {
+    else if (prop === 'expoChannel' || prop === 'banquetChannel' || prop === 'fortChannel' || prop === 'teamChannel' || prop === 'gfChannel') {
         enmap.ensure(message.guild.id, defaultSettings);
     
         enmap.set(message.guild.id, value.join("-").toLowerCase(), prop);
         
         return message.channel
             .send(channelembed);
+    }
+    
+
+    else if (prop === 'gfChannel2' || prop === 'expoChannel2') {
+            let patreonRole = reminder.roles.get('584205330456772698').id;
+
+            let gmRole = reminder.roles.get('519626665551200257').id;
+
+            // mapping all members with patreon role into an array.
+            let patreonMembers = reminder.roles.get(patreonRole).members.map(member => {
+                return member.user.id;
+            })
+
+            let gmMembers = reminder.roles.get(gmRole).members.map(member => {
+                return member.user.id;
+            })
+        
+            // if message is from patreon member
+            const foundPatreon = patreonMembers.includes(message.member.id);
+            const foundGm = gmMembers.includes(message.member.id);
+
+            if (foundPatreon === true || foundGm === true) {
+                enmap.ensure(message.guild.id, defaultSettings);
+    
+                enmap.set(message.guild.id, value.join("-").toLowerCase(), prop);
+                
+                return message.channel
+                    .send(channelembed);
+            }
+
+            else {
+                message.reply(`This command is limited to Patrons! Become a patron here: https://www.patreon.com/robinsongz`);
+            }
     }
 
     // if changing prefix
