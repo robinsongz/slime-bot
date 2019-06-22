@@ -515,7 +515,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                                 color: 3447003,
                                 fields: [{
                                     name: "**__Public Commands__**", 
-                                    value: `**!gf checkin ** : check yourself into gf. \n **!gf checkout ** : remove yourself from gf  \n**!gf view** : view gf \n**!gf daily** : +1 to your gfb attd \n**!gf me** : view own gfb attd \n**!gf attd** : view guild's gfb attd \n**!gf info** : view GFB info`
+                                    value: `**!gf checkin ** : check yourself into gf. \n **!gf checkout ** : remove yourself from gf  \n**!gf view** : view gf \n**!gf daily** : +1 to your gfb attd \n**!gf track** : view own gfb attd \n**!gf attd** : view guild's gfb attd \n**!gf info** : view GFB info`
                                 }]
                                 }
                             });
@@ -528,7 +528,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                                 color: 3447003,
                                 fields: [{
                                     name: "**__Public Commands__**",
-                                    value: `**!gf checkin ** : check yourself into gf. \n **!gf checkout ** : remove yourself from gf  \n**!gf view** : view gf \n**!gf daily** : +1 to your gfb attd \n**!gf me** : view own gfb attd \n**!gf attd** : view guild's gfb attd \n**!gf info** : view GFB info `
+                                    value: `**!gf checkin ** : check yourself into gf. \n **!gf checkout ** : remove yourself from gf  \n**!gf view** : view gf \n**!gf daily** : +1 to your gfb attd \n**!gf track** : view own gfb attd \n**!gf attd** : view guild's gfb attd \n**!gf info** : view GFB info `
                                 },{
                                     name: `**__GM Commands Part 1__**`,
                                     value: `**!gf clear** : clears entire gf \n **!gf add <use>** : adds user to gf (**important**: user must be exact same spelling as their display name or else it will double register if user checks in themselves)`
@@ -1072,7 +1072,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                             color: 3447003,
                             fields: [{
                                 name: "**__Public Commands__**", 
-                                value: `**!gf checkin ** : check yourself into gf. \n **!gf checkout ** : remove yourself from gf  \n**!gf view** : view gf \n**!gf daily** : +1 to your gfb attd \n**!gf me** : view own gfb attd \n**!gf attd** : view guild's gfb attd \n**!gf info** : view GFB info`
+                                value: `**!gf checkin ** : check yourself into gf. \n **!gf checkout ** : remove yourself from gf  \n**!gf view** : view gf \n**!gf daily** : +1 to your gfb attd \n**!gf track** : view own gfb attd \n**!gf attd** : view guild's gfb attd \n**!gf info** : view GFB info`
                             }]
                             }
                         });
@@ -1085,7 +1085,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                             color: 3447003,
                             fields: [{
                                 name: "**__Public Commands__**",
-                                value: `**!gf checkin ** : check yourself into gf. \n **!gf checkout ** : remove yourself from gf  \n**!gf view** : view gf \n**!gf daily** : +1 to your gfb attd \n**!gf me** : view own gfb attd \n**!gf attd** : view guild's gfb attd \n**!gf info** : view GFB info `
+                                value: `**!gf checkin ** : check yourself into gf. \n **!gf checkout ** : remove yourself from gf  \n**!gf view** : view gf \n**!gf daily** : +1 to your gfb attd \n**!gf track** : view own gfb attd \n**!gf attd** : view guild's gfb attd \n**!gf info** : view GFB info `
                             },{
                                 name: `**__GM Commands Part 1__**`,
                                 value: `**!gf clear** : clears entire gf \n **!gf add <use>** : adds user to gf (**important**: user must be exact same spelling as their display name or else it will double register if user checks in themselves)`
