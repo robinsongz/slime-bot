@@ -13,8 +13,8 @@ module.exports.run = async (bot, message) => {
     // deleting config from all guilds
 
      
-            enmap.forEach( (val, key) => enmap.delete(key, "guildFort") );
-            enmap.forEach( (val, key) => enmap.delete(key, "patreonGuildFort") );
+            // enmap.forEach( (val, key) => enmap.delete(key, "guildFort") );
+            // enmap.forEach( (val, key) => enmap.delete(key, "patreonGuildFort") );
         
         
     };

@@ -10,31 +10,31 @@ module.exports.run = async (bot, message) =>  {
 
         // adding config to all guilds
       
-        enmap.forEach( (val, key) => enmap.set(key, {
-            name: 'Guild Fort Team',
-            team: [],
-            buffMap: '',
-            skillPage1User: '',
-            skillPage2User: '',
-            skillPage3User: '',
-            skillPage4User: '',
-            buffer1: '',
-            buffer2: '',
-            buffer3: '',
-        }, "patreonGuildFort") );
+        // enmap.forEach( (val, key) => enmap.set(key, {
+        //     name: 'Guild Fort Team',
+        //     team: [],
+        //     buffMap: '',
+        //     skillPage1User: '',
+        //     skillPage2User: '',
+        //     skillPage3User: '',
+        //     skillPage4User: '',
+        //     buffer1: '',
+        //     buffer2: '',
+        //     buffer3: '',
+        // }, "patreonGuildFort") );
 
-        enmap.forEach( (val, key) => enmap.set(key, {
-            name: 'Guild Fort Team',
-            team: [],
-            buffMap: '',
-            skillPage1User: '',
-            skillPage2User: '',
-            skillPage3User: '',
-            skillPage4User: '',
-            buffer1: '',
-            buffer2: '',
-            buffer3: '',
-        }, "guildFort") );
+        // enmap.forEach( (val, key) => enmap.set(key, {
+        //     name: 'Guild Fort Team',
+        //     team: [],
+        //     buffMap: '',
+        //     skillPage1User: '',
+        //     skillPage2User: '',
+        //     skillPage3User: '',
+        //     skillPage4User: '',
+        //     buffer1: '',
+        //     buffer2: '',
+        //     buffer3: '',
+        // }, "guildFort") );
 
       
         
