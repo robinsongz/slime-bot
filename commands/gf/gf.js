@@ -427,13 +427,13 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     }
 
                     // view own attendance count
-                    else if (prop === 'me') {
+                    else if (prop === 'track') {
                         const key = `${message.guild.id}-${message.author.id}`
                         return message.reply(`This week, you've done GFB ${gfTracker.get(key, "points")} times`)
                     }
                     
                     // view guild's attendance count
-                    else if (prop === 'total') {
+                    else if (prop === 'attd') {
                         const filtered = gfTracker.array().filter(p => p.guild === message.guild.id);
 
                         const sorted = filtered.sort((a,b) => a.points < b.points);
@@ -987,13 +987,13 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                 }
 
                 // view own attendance count
-                else if (prop === 'me') {
+                else if (prop === 'track') {
                     const key = `${message.guild.id}-${message.author.id}`
                     return message.reply(`This week, you've done GFB ${patreonGfTracker.get(key, "points")} times`)
                 }
             
                 // view guild's attendance count
-                else if (prop === 'total') {
+                else if (prop === 'attd') {
                 const filtered = patreonGfTracker.array().filter(p => p.guild === message.guild.id);
 
                 const sorted = filtered.sort((a,b) => a.points < b.points);
