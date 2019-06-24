@@ -377,6 +377,17 @@ module.exports.run = async (bot, message, args, slimeServer) => {
     
                                 return message.channel.send(`You've set ${secondValue.join(" ")} as \`buffer 3\``);
                             }
+
+                            if (firstValue === 'clear') {
+                                gfSet("", 'guildFort.buffMap');
+                                gfSet("", 'guildFort.skillPage1User');
+                                gfSet("", 'guildFort.skillPage2User');
+                                gfSet("", 'guildFort.skillPage3User');
+                                gfSet("", 'guildFort.skillPage4User');
+                                gfSet("", 'guildFort.buffer1');
+                                gfSet("", 'guildFort.buffer2');
+                                gfSet("", 'guildFort.buffer3');
+                            }
     
                             if (firstValue === 'help') {
     
