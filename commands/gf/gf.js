@@ -447,9 +447,9 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     
                     // view guild's attendance count
                     else if (prop === 'attd') {
-                        const filtered = gfTracker.array().filter(p => p.guild === message.guild.id);
+                        const filtered = gfTracker.filter(p => p.guild === message.guild.id).array();
 
-                        const sorted = filtered.sort((a,b) => a.points < b.points);
+                        const sorted = filtered.sort((a,b) => b.points - a.points);
 
                         const embed = new Discord.RichEmbed()
                             .setTitle("Guild Fort Tracker");
