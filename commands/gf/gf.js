@@ -387,6 +387,8 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                                 gfSet("", 'guildFort.buffer1');
                                 gfSet("", 'guildFort.buffer2');
                                 gfSet("", 'guildFort.buffer3');
+
+                                return message.channel.send(`You have cleared your gfb assignments!`);
                             }
     
                             if (firstValue === 'help') {
@@ -958,6 +960,8 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                         gfSet("", 'patreonGuildFort.buffer1');
                         gfSet("", 'patreonGuildFort.buffer2');
                         gfSet("", 'patreonGuildFort.buffer3');
+
+                        return message.channel.send(`You have cleared your gfb assignments!`);
                     }
                     if (firstValue === 'help') {
 
