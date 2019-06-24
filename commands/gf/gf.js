@@ -310,7 +310,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     }
 
                     else if (prop === 'assign') {
-                        let patreonRole = slimeServer.roles.get('584205330456772698').id;
+                        let patreonRole = slimeServer.roles.get('592523621898125323').id;
 
                         let gmRole = slimeServer.roles.get('519626665551200257').id;
             
@@ -553,7 +553,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
         }
 
         else if (message.channel.name === gfChannel2) {
-            let patreonRole = slimeServer.roles.get('584205330456772698').id;
+            let patreonRole = slimeServer.roles.get('592523621898125323').id;
 
             let gmRole = slimeServer.roles.get('519626665551200257').id;
 
@@ -870,7 +870,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                
                
                else if (prop === 'assign') {
-                let patreonRole = slimeServer.roles.get('584205330456772698').id;
+                let patreonRole = slimeServer.roles.get('592523621898125323').id;
 
                 let gmRole = slimeServer.roles.get('519626665551200257').id;
     
