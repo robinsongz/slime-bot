@@ -451,12 +451,16 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                         const sorted = filtered.sort((a,b) => b.points - a.points);
 
-                        const embed = new Discord.RichEmbed()
-                            .setTitle("Guild Fort Tracker");
+                      
 
-                        for (const data of sorted) {
-                            embed.addField(bot.users.get(data.user).username, `${data.points} `)
-                        }
+                        const embedSorted = sorted.map(data => {
+                            return `${bot.users.get(data.user).username} : ${data.points}\n`;
+                        })
+
+                       
+                        const embed = new Discord.RichEmbed()
+                            .addField("GFB Attendance Tracker", 
+                            `${embedSorted.join(" ")}`)
 
                         return message.channel.send({embed});
                     }
@@ -1019,19 +1023,22 @@ module.exports.run = async (bot, message, args, slimeServer) => {
             
                 // view guild's attendance count
                 else if (prop === 'attd') {
-                const filtered = patreonGfTracker.filter(p => p.guild === message.guild.id).array();
+                    const filtered = gfTracker.filter(p => p.guild === message.guild.id).array();
 
-                const sorted = filtered.sort((a,b) => b.points - a.points);
+                    const sorted = filtered.sort((a,b) => b.points - a.points);
 
-                const embed = new Discord.RichEmbed()
-                    .setTitle("Guild Fort Tracker");
+                  
 
+                    const embedSorted = sorted.map(data => {
+                        return `${bot.users.get(data.user).username} : ${data.points}\n`;
+                    })
 
-                for (const data of sorted) {
-                    embed.addField(bot.users.get(data.user).username, `${data.points}` )
-                }
+                   
+                    const embed = new Discord.RichEmbed()
+                        .addField("GFB Attendance Tracker", 
+                        `${embedSorted.join(" ")}`)
 
-                return message.channel.send({embed});
+                    return message.channel.send({embed});
                 }
 
                 // clear guild's attendance count
