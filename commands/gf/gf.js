@@ -938,11 +938,21 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                         return message.channel.send(`You've set ${secondValue.join(" ")} as \`buffer 3\``);
                     }
 
+                    if (firstValue === 'clear') {
+                        gfSet("", 'patreonGuildFort.buffMap');
+                        gfSet("", 'patreonGuildFort.skillPage1User');
+                        gfSet("", 'patreonGuildFort.skillPage2User');
+                        gfSet("", 'patreonGuildFort.skillPage3User');
+                        gfSet("", 'patreonGuildFort.skillPage4User');
+                        gfSet("", 'patreonGuildFort.buffer1');
+                        gfSet("", 'patreonGuildFort.buffer2');
+                        gfSet("", 'patreonGuildFort.buffer3');
+                    }
                     if (firstValue === 'help') {
 
                         message.reply(`Check your DM!`);
 
-                        message.author.send({embed: {
+                        return message.author.send({embed: {
                             color: 3447003,
                             fields: [{
                                 name: "**__GFB Assign Commands__**",
