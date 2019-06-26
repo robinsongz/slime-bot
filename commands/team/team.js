@@ -69,9 +69,9 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     });
                 };
                 // variable for full teams
-                let fullteam1 = !team1.includes("-") && team1.length === 10;
-                let fullteam2 = !team2.includes("-") && team2.length === 10;
-                let fullteam3 = !team3.includes("-") && team3.length === 10;
+                let fullteam1 = !team1.includes(undefined) && team1.length === 10;
+                let fullteam2 = !team2.includes(undefined) && team2.length === 10;
+                let fullteam3 = !team3.includes(undefined) && team3.length === 10;
 
                 //variable for if party includes member
                 let includesMember1 = team1.includes(member);
