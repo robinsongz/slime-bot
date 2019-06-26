@@ -69,9 +69,9 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     });
                 };
                 // variable for full teams
-                let fullteam1 = !team1.includes(undefined) && team1.length === 10;
-                let fullteam2 = !team2.includes(undefined) && team2.length === 10;
-                let fullteam3 = !team3.includes(undefined) && team3.length === 10;
+                let fullteam1 = !team1.includes("-") && team1.length === 10;
+                let fullteam2 = !team2.includes("-") && team2.length === 10;
+                let fullteam3 = !team3.includes("-") && team3.length === 10;
 
                 //variable for if party includes member
                 let includesMember1 = team1.includes(member);
@@ -230,12 +230,12 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                         else if(fullteam2) {
 
                             // if already in team 1 and team 3
-                            if (team1.includes(member) && team3.includes(member)) {
+                            if (includesMember1 && includesMember3) {
                                 return message.reply(`${name2} is full, and you are already checked in to ${name1} and ${name3}`);
                             }
 
                             // if team 1 has room
-                            else if (team1.includes(undefined) && team1.length !== 10) {
+                            else if (!fullteam1) {
                                 teamPush(member, teamTeam1);
 
                                 message.reply(`${name2} is full, you have been added to ${name1}`);
