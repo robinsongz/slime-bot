@@ -278,7 +278,7 @@ bot.on('ready', () => {
             
             new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'Europe/Amsterdam');
 
-            new CronJob(`00 01 00 * * 1`, gfbTrackerAutoClear, null, true, 'Europe/Amsterdam')
+            // new CronJob(`00 01 00 * * 1`, gfbTrackerAutoClear, null, true, 'Europe/Amsterdam')
         }
 
         else if (region === 'asia') {
@@ -296,7 +296,7 @@ bot.on('ready', () => {
             
             new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'Asia/Taipei');
             
-            new CronJob(`00 01 00 * * 1`, gfbTrackerAutoClear, null, true, 'Asia/Taipei')
+            // new CronJob(`00 01 00 * * 1`, gfbTrackerAutoClear, null, true, 'Asia/Taipei')
         }
         
         else {
@@ -314,7 +314,7 @@ bot.on('ready', () => {
 
             new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'America/Anchorage');
 
-            new CronJob(`00 01 00 * * 1`, gfbTrackerAutoClear, null, true, 'America/Anchorage')
+            // new CronJob(`00 01 00 * * 1`, gfbTrackerAutoClear, null, true, 'America/Anchorage')
         }
 
          
