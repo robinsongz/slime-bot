@@ -274,7 +274,7 @@ bot.on('ready', () => {
                       
             banquet[guild.id] = new CronJob(`00 ${banqMin} ${banqHr} * * *`, banquetReminder, null, true, 'Europe/Amsterdam');
         
-            // new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Europe/Amsterdam');
+            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Europe/Amsterdam');
             
             new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'Europe/Amsterdam');
 
@@ -292,7 +292,7 @@ bot.on('ready', () => {
             banquet[guild.id] = new CronJob(`00 ${banqMin} ${banqHr} * * *`, banquetReminder, null, true, 'Asia/Taipei');
             
 
-            // new CronJob(`00 01 13,21 * * *`, expedAutoClear, null, true, 'Asia/Taipei');
+            new CronJob(`00 01 13,21 * * *`, expedAutoClear, null, true, 'Asia/Taipei');
             
             new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'Asia/Taipei');
             
@@ -310,7 +310,7 @@ bot.on('ready', () => {
             banquet[guild.id]  = new CronJob(`00 ${banqMin} ${banqHr} * * *`, banquetReminder, null, true, 'America/Anchorage');
 
  
-            // new CronJob(`00 01 11,19 * * *`, expedAutoClear, null, true, 'America/Anchorage');
+            new CronJob(`00 01 11,19 * * *`, expedAutoClear, null, true, 'America/Anchorage');
 
             new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'America/Anchorage');
 
