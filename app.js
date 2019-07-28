@@ -24,6 +24,8 @@ defaultSettings = {
     privateMessage: "Hi there, welcome to our discord! \n\n Please change your nickname to your in-game IGN. \n\n Type !help for my list of commands!",
     expoTime1: "09 45",
     expoTime2: "17 45",
+    expoClear1: "11 01",
+    expoClear2: "19 01",
     expoChannel: "general",
     expoMessage: "@everyone Expeditions are starting in 15 minutes! Good luck!",
     banquetTime: "18 00",
@@ -118,6 +120,10 @@ const fort = [];
 const exped1 = [];
 
 const exped2 = [];
+
+const expedclear1 = [];
+
+const expedclear2 = [];
 
 // This loop reads the /events/ folder and attaches each event file to the appropriate event.
 fs.readdir("./events/", (err, files) => {
@@ -222,6 +228,20 @@ bot.on('ready', () => {
             enmap.set(guild.id, [], 'team.team1.team');
             enmap.set(guild.id, [], 'team.team2.team');
             enmap.set(guild.id, [], 'team.team3.team');    
+
+            let expoChannel = enmap.get(guild.id, "expoChannel");
+              
+            guild.channels
+            .find((channel) => {
+                if (channel.name === expoChannel) {
+                    channel
+                        .send('Your expeds have been cleared')
+                        .catch(console.error);
+                } else {
+                    return;
+                }
+            });
+            
         };
         
         const fortAutoClear = () => {
@@ -263,6 +283,19 @@ bot.on('ready', () => {
         let expoMin2 = expoTime2.charAt(3) + expoTime2.charAt(4);
 
         let expoHr2 = expoTime2.charAt(0) + expoTime2.charAt(1);
+
+        let expoClear1 = enmap.get(guild.id, 'expoClear1');
+
+        let expoClearMin1 = expoClear1.charAt(3) + expoClear1.charAt(4);
+
+        let expoClearHr1 = expoClear1.charAt(0) + expoClear1.charAt(1);
+
+        let expoClear2 = enmap.get(guild.id, 'expoClear2');
+
+        let expoClearMin2 = expoClear2.charAt(3) + expoClear2.charAt(4);
+
+        let expoClearHr2 = expoClear2.charAt(0) + expoClear2.charAt(1);
+
 
         if (region === 'eu') {
 
@@ -309,8 +342,11 @@ bot.on('ready', () => {
     
             banquet[guild.id]  = new CronJob(`00 ${banqMin} ${banqHr} * * *`, banquetReminder, null, true, 'America/Anchorage');
 
+            expedclear1[guild.id] = new CronJob(`00 ${expoClearMin1} ${expoClearHr1} * * *`, expedAutoClear, null, true, 'America/Anchorage');
+
+            expedclear2[guild.id] = new CronJob(`00 ${expoClearMin2} ${expoClearHr2} * * *`, expedAutoClear, null, true, 'America/Anchorage');
  
-            new CronJob(`00 01 11,19 * * *`, expedAutoClear, null, true, 'America/Anchorage');
+            // new CronJob(`00 01 11,19 * * *`, expedAutoClear, null, true, 'America/Anchorage');
 
             new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'America/Anchorage');
 
@@ -356,6 +392,14 @@ bot.on('message', function(message) {
 
     else if (prefix == msgPrefix && commandfile && args[0] == "expoTime2") {
         commandfile.run(bot, message, args, exped2[message.guild.id]); 
+    } 
+
+    else if (prefix == msgPrefix && commandfile && args[0] == "expoClear1") {
+        commandfile.run(bot, message, args, expedclear1[message.guild.id]); 
+    } 
+
+    else if (prefix == msgPrefix && commandfile && args[0] == "expoClear2") {
+        commandfile.run(bot, message, args, expedclear2[message.guild.id]); 
     } 
 
     else if (prefix == msgPrefix && commandfile && cmd == prefix + 'calc') {

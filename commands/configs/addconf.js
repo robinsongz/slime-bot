@@ -23,18 +23,9 @@ module.exports.run = async (bot, message) =>  {
         //     buffer3: '',
         // }, "patreonGuildFort") );
 
-        // enmap.forEach( (val, key) => enmap.set(key, {
-        //     name: 'Guild Fort Team',
-        //     team: [],
-        //     buffMap: '',
-        //     skillPage1User: '',
-        //     skillPage2User: '',
-        //     skillPage3User: '',
-        //     skillPage4User: '',
-        //     buffer1: '',
-        //     buffer2: '',
-        //     buffer3: '',
-        // }, "guildFort") );
+        enmap.forEach( (val, key) => enmap.set(key, "11 01", "expedClear1") );
+
+        enmap.forEach( (val, key) => enmap.set(key, "19 01", "expedClear2") );
 
       
         

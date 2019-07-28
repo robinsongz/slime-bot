@@ -260,6 +260,86 @@ module.exports.run = async (bot, message, args, reminder) => {
         
     }
 
+    else if (prop === 'expoClear1') {
+        let minute = Number(value[1]);
+        let hour = Number(value[0]);
+
+        if (isNaN(minute) || isNaN(hour)) {
+            return message.channel.send(`Please enter a valid time.`);
+        }
+
+        if ( minute > 60 || hour > 24) {
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`);
+        }
+
+        if (minute < 0 || hour < 0) {
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm`);
+        }
+
+        if (value[2]) {
+           return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`);
+        }
+
+       
+            enmap.set(message.guild.id, value.join(" "), 'expoClear1');
+
+            if (!!reminder) {
+                let timezone = reminder.cronTime.zone;
+
+                
+                var expoClear1 = new CronTime(`00 ${value[1]} ${value[0]} * * *`, timezone);
+                reminder.setTime(expoClear1);
+                
+                reminder.stop();
+                reminder.start();
+                               
+            }
+
+            message.channel
+                .send(timeembed)
+                .catch(err => console.log(err));
+    }
+
+    else if (prop === 'expoClear2') {
+        let minute = Number(value[1]);
+        let hour = Number(value[0]);
+
+        if (isNaN(minute) || isNaN(hour)) {
+            return message.channel.send(`Please enter a valid time.`);
+        }
+
+        if ( minute > 60 || hour > 24) {
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`);
+        }
+
+        if (minute < 0 || hour < 0) {
+            return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm`);
+        }
+
+        if (value[2]) {
+           return message.channel.send(`Please enter a valid time, with hour first and minute second, in military time. \n For example: 18 30 = 6:30pm.`);
+        }
+
+       
+            enmap.set(message.guild.id, value.join(" "), 'expoClear2');
+
+            if (!!reminder) {
+                let timezone = reminder.cronTime.zone;
+
+                
+                var expoClear2 = new CronTime(`00 ${value[1]} ${value[0]} * * *`, timezone);
+                reminder.setTime(expoClear2);
+                
+                reminder.stop();
+                reminder.start();
+                               
+            }
+
+            message.channel
+                .send(timeembed)
+                .catch(err => console.log(err));
+    }
+
      // if changing channel configs
     else if (prop === 'expoChannel' || prop === 'banquetChannel' || prop === 'fortChannel' || prop === 'teamChannel' || prop === 'gfChannel') {
         enmap.ensure(message.guild.id, defaultSettings);
