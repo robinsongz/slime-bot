@@ -293,8 +293,12 @@ bot.on('ready', () => {
             fort[guild.id] = new CronJob(`00 ${fortMin} ${fortHr} * * *`, fortReminder, null, true, 'Europe/Amsterdam');
                       
             banquet[guild.id] = new CronJob(`00 ${banqMin} ${banqHr} * * *`, banquetReminder, null, true, 'Europe/Amsterdam');
+               
+            expedclear1[guild.id] = new CronJob(`00 ${expoClearMin1} ${expoClearHr1} * * *`, expedAutoClear, null, true, 'Europe/Amsterdam');
+
+            expedclear2[guild.id] = new CronJob(`00 ${expoClearMin2} ${expoClearHr2} * * *`, expedAutoClear, null, true, 'Europe/Amsterdam');
         
-            new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Europe/Amsterdam');
+            // new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Europe/Amsterdam');
             
             new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'Europe/Amsterdam');
 
@@ -311,8 +315,10 @@ bot.on('ready', () => {
                      
             banquet[guild.id] = new CronJob(`00 ${banqMin} ${banqHr} * * *`, banquetReminder, null, true, 'Asia/Taipei');
             
+            expedclear1[guild.id] = new CronJob(`00 ${expoClearMin1} ${expoClearHr1} * * *`, expedAutoClear, null, true, 'Asia/Taipei');
 
-            new CronJob(`00 01 13,21 * * *`, expedAutoClear, null, true, 'Asia/Taipei');
+            expedclear2[guild.id] = new CronJob(`00 ${expoClearMin2} ${expoClearHr2} * * *`, expedAutoClear, null, true, 'Asia/Taipei');
+            // new CronJob(`00 01 13,21 * * *`, expedAutoClear, null, true, 'Asia/Taipei');
             
             new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'Asia/Taipei');
             
