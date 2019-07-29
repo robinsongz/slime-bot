@@ -228,19 +228,6 @@ bot.on('ready', () => {
             enmap.set(guild.id, [], 'team.team1.team');
             enmap.set(guild.id, [], 'team.team2.team');
             enmap.set(guild.id, [], 'team.team3.team');    
-
-            let expoChannel = enmap.get(guild.id, "expoChannel");
-              
-            guild.channels
-            .find((channel) => {
-                if (channel.name === expoChannel) {
-                    channel
-                        .send('Your expeds have been cleared')
-                        .catch(console.error);
-                } else {
-                    return;
-                }
-            });
             
         };
         
