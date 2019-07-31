@@ -351,7 +351,7 @@ module.exports.run = async (bot, message, args, reminder) => {
     }
     
 
-    else if (prop === 'gfChannel2' || prop === 'expoChannel2') {
+    else if (prop === 'gfChannel2' || prop === 'teamChannel2') {
             let patreonRole = reminder.roles.get('592523621898125323').id;
 
             let gmRole = reminder.roles.get('519626665551200257').id;
