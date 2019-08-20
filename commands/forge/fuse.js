@@ -171,11 +171,11 @@ module.exports.run = async (bot, message, args) => {
                       },
                       {
                           name: "**__# of Epic Powders to Max__**",
-                          value: "**Mythic Weapon**: 6761.39 \n **Legendary Weapon**: 2797.82 \n **Unique Weapon**: 908.69 \n **Epic Weapon**: 137.50 \n\n **Mythic Armor**: 5,201.07 \n **Legendary Armor**: 2152.17 \n **Unique Armor**: 699 \n **Epic Armor**: 105.76"
+                          value: "**ELvl 40 Mythic Weapon**: 10244.37 \n **Mythic Weapon**: 6182.17 \n **Legendary Weapon**: 2535.80 \n **Unique Weapon**: 823.59 \n **Epic Weapon**: 124.62 \n\n **Lvl 40 Mythic Armor**: 7880.28 \n **Mythic Armor**: 4713.98 \n **Legendary Armor**: 1950.61 \n **Unique Armor**: 633.53 \n **Epic Armor**: 95.85"
                       },
                       {
                         name: "**__# of Unique Powders to Max__**",
-                        value: "**Mythic Weapon**: 1960.53 \n **Legendary Weapon**: 811.25 \n **Unique Weapon**: 263.48 \n **Epic Weapon**: 39.86 \n\n **Mythic Armor**: 1508.10 \n **Legendary Armor**: 624.04 \n **Unique Armor**: 202.68 \n **Epic Armor**: 30.67"
+                        value: "**Lvl 40 Mythic Weapon**: 3016 \n **Mythic Weapon**: 1804.17 \n **Legendary Weapon**: 746.55 \n **Unique Weapon**: 242.47 \n **Epic Weapon**: 36.69 \n\n **Lvl 40 Mythic Armor**: 2320 \n **Mythic Armor**: 1387.82 \n **Legendary Armor**: 574.27 \n **Unique Armor**: 186.52 \n **Epic Armor**: 28.22"
                       }
                     ]
                   }
