@@ -25,7 +25,7 @@ module.exports.run = async (bot, message) =>  {
 
         // enmap.forEach( (val, key) => enmap.set(key, "11 01", "expoClear1") );
 
-        // enmap.forEach( (val, key) => enmap.set(key, "19 01", "expoClear2") );
+        enmap.forEach( (val, key) => enmap.set(key, "general", "teamChannel2") );
 
       
         
