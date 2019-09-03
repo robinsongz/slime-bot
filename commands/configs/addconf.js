@@ -23,7 +23,20 @@ module.exports.run = async (bot, message) =>  {
         //     buffer3: '',
         // }, "patreonGuildFort") );
 
-        // enmap.forEach( (val, key) => enmap.set(key, "11 01", "expoClear1") );
+        // enmap.forEach( (val, key) => enmap.set(key, {
+        //     team1: {
+        //         name: "Team 1", 
+        //         team: []
+        //     },
+        //     team2: {
+        //         name: "Team 2",
+        //         team: [] 
+        //     },
+        //     team3: {
+        //         name: "Team 3",
+        //         team: []
+        //     }
+        // }, "patreonTeam") );
 
         // enmap.forEach( (val, key) => enmap.set(key, "general", "teamChannel2") );
 
