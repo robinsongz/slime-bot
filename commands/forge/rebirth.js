@@ -25,7 +25,7 @@ module.exports.run = async (bot, message, args) => {
             
             let convertedxboost = xboost / 100;
 
-            return convertedxboost * yboost;
+            return Math.round(convertedxboost * yboost);
         }
 
         // percent x percent
@@ -35,7 +35,7 @@ module.exports.run = async (bot, message, args) => {
 
             let result = convertedxboost * convertedyboost;
 
-            return result * 100;
+            return Math.round(result * 100);
         }
 
         // fixed x percent
@@ -45,7 +45,7 @@ module.exports.run = async (bot, message, args) => {
             let convertedxboost = xboost / 100;
             let calibratedyboost = yboost * 10;
 
-            return convertedxboost * calibratedyboost;
+            return Math.round(convertedxboost * calibratedyboost);
         }
 
         // percent x fixed
@@ -54,24 +54,67 @@ module.exports.run = async (bot, message, args) => {
             let calibratedxboost = xboost * 10;
             let convertedyboost = yboost / 100;
 
-            return convertedyboost * calibratedxboost;
+            return Math.round(convertedyboost * calibratedxboost);
         }
     }
 
-    let [ calc, x, y, xboost, yboost ] = args;
+    let [ first, x, y, xboost, yboost ] = args;
 
-    if (calc == 'calc') {
+    if (first == 'calc') {
 
        let result = rebirthCalc(x, y, xboost, yboost);
+       if (isNaN(xboost) === true || isNaN(yboost)) {
+        return message.reply('You must enter a number! Type !rebirth help to see how the formula works!')
+       }
 
-       if (x == 'phyatk' || x == 'magatk' || x == 'phydef' || x == 'magdef') {
+       else if (x == 'phyatk' || x == 'magatk' || x == 'phydef' || x == 'magdef') {
         message.reply(`You will gain ${result} ${x}`);
        }
 
-       if (x == 'critdmg' || x == 'critrate') {
+       else if (x == 'critdmg' || x == 'critrate') {
         message.reply(`You will gain ${result}% ${x}`);
        }
        
+    }
+
+    else if (first == 'data') {
+        message.reply ('coming soon ;)')
+    }
+
+    else if (first == 'help') {
+
+        message.author.send({embed: {
+            color: 3447003,
+            fields: [{
+                name: "**__Let me help you with rebirth calculations!__**",
+                value: "Command: '!rebirth calc [value A] [value B] [boost A] [boost B]' \n \n An example of the in-game wording compared to formula: \n \n Crit DMG proportionate to EXP increase 100% \n \n critdmg = value A, expinc = value B, 100 = boost A, & whatever your exp increase is (only including the ones influenced by rebirth flame) \n \n If Exp Increase is 10%, completed command will be: !rebirth calc critdmg expinc 100 10"
+              },
+              {
+                name: "**__Examples__**",
+                value: "!fuse legendaryweapon maxepic 15000000 \n\n !fuse mythicarmor level1epic 500000"
+              },
+              {
+                  name: "**__Current Value A Options__**",
+                  value: "phyatk, magatk, critrate, critdmg, phydef, magdef \n\n"
+              },
+              {
+                  name: "**__Current Value B Options**",
+                  value: "maxhp, maxmp, droprateinc, mesodropinc, bossatk, critrate, critdmg, expinc"
+              },
+              {
+                  name: "**__Other Rebirth Commands__**",
+                  value: "**!rebirth data** : rebirth flame data (coming soon) \n"
+              }
+
+            ],
+          }
+        });
+
+        message.reply(`Check your DM!`);
+    }
+
+    else {
+        message.reply ('Please type !rebirth help')
     }
     
 
