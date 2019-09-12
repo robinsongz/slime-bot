@@ -87,7 +87,7 @@ module.exports.run = async (bot, message, args) => {
             color: 3447003,
             fields: [{
                 name: "**__Let me help you with rebirth calculations!__**",
-                value: "Command: '!rebirth calc [value A] [value B] [boost A] [boost B]' \n \n An example of the in-game wording compared to formula: \n \n Crit DMG proportionate to EXP increase 100% \n \n critdmg = value A, expinc = value B, 100 = boost A, &  boost B = whatever your exp increase is (only including the ones influenced by rebirth flame) \n \n If Exp Increase is 10%, completed command will be: !rebirth calc critdmg expinc 100 10"
+                value: "Command: '!rebirth calc [value A] [value B] [boost A] [boost B]' \n \n An example of the in-game wording compared to formula: \n \n Crit DMG proportionate to EXP increase 100% \n\n !rebirth calc critdmg expinc 100 [boostB] \n\n critdmg = value A, expinc = value B, 100 = boost A, &  boost B = whatever your exp increase is (only including the ones influenced by rebirth flame) \n \n If Exp Increase is 10%, completed command will be: !rebirth calc critdmg expinc 100 10"
               },
               {
                 name: "**__Examples__**",
