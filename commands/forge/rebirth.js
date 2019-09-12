@@ -91,7 +91,7 @@ module.exports.run = async (bot, message, args) => {
               },
               {
                 name: "**__Examples__**",
-                value: "!fuse legendaryweapon maxepic 15000000 \n\n !fuse mythicarmor level1epic 500000"
+                value: "!rebirth calc phyatk critrate 500 5.5 \n\n !rebirth calc magatk maxmp 19.7 1115"
               },
               {
                   name: "**__Current Value A Options__**",
