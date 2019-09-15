@@ -78,7 +78,7 @@ module.exports.run = async (bot, message, args) => {
     }
 
     else if (first == 'data') {
-        message.reply ('coming soon ;)')
+        message.reply ('https://imgur.com/EFAqNIn')
     }
 
     else if (first == 'help') {
