@@ -103,7 +103,7 @@ module.exports.run = async (bot, message, args) => {
               },
               {
                   name: "**__Other Rebirth Commands__**",
-                  value: "**!rebirth data** : rebirth flame data (coming soon) \n"
+                  value: "**!rebirth data** : rebirth flame data \n"
               }
 
             ],
