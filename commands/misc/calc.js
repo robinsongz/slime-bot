@@ -52,7 +52,7 @@ module.exports.run = async (bot, message, args, region) => {
                 }
             
                 if (region === 'eu') {
-                    let currentTime = moment().tz('Europe/Amsterdam').format('HH:mm');
+                    let currentTime = moment().tz('Europe/London').format('HH:mm');
             
                     let parsedInputtedTime = parseTime(args[0]);
                     let parsedCurrentTime = parseTime(currentTime);
