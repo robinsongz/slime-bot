@@ -286,21 +286,21 @@ bot.on('ready', () => {
 
         if (region === 'eu') {
 
-            exped1[guild.id] = new CronJob(`00 ${expoMin1} ${expoHr1} * * *`, expedReminder, null, true, 'Europe/London');
+            exped1[guild.id] = new CronJob(`00 ${expoMin1} ${expoHr1} * * *`, expedReminder, null, true, 'Europe/Helsinki');
 
-            exped2[guild.id] = new CronJob(`00 ${expoMin2} ${expoHr2} * * *`, expedReminder, null, true, 'Europe/London');
+            exped2[guild.id] = new CronJob(`00 ${expoMin2} ${expoHr2} * * *`, expedReminder, null, true, 'Europe/Helsinki');
                
-            fort[guild.id] = new CronJob(`00 ${fortMin} ${fortHr} * * *`, fortReminder, null, true, 'Europe/London');
+            fort[guild.id] = new CronJob(`00 ${fortMin} ${fortHr} * * *`, fortReminder, null, true, 'Europe/Helsinki');
                       
-            banquet[guild.id] = new CronJob(`00 ${banqMin} ${banqHr} * * *`, banquetReminder, null, true, 'Europe/London');
+            banquet[guild.id] = new CronJob(`00 ${banqMin} ${banqHr} * * *`, banquetReminder, null, true, 'Europe/Helsinki');
                
-            expedclear1[guild.id] = new CronJob(`00 ${expoClearMin1} ${expoClearHr1} * * *`, expedAutoClear, null, true, 'Europe/London');
+            expedclear1[guild.id] = new CronJob(`00 ${expoClearMin1} ${expoClearHr1} * * *`, expedAutoClear, null, true, 'Europe/Helsinki');
 
-            expedclear2[guild.id] = new CronJob(`00 ${expoClearMin2} ${expoClearHr2} * * *`, expedAutoClear, null, true, 'Europe/London');
+            expedclear2[guild.id] = new CronJob(`00 ${expoClearMin2} ${expoClearHr2} * * *`, expedAutoClear, null, true, 'Europe/Helsinki');
         
             // new CronJob(`00 01 14,22 * * *`, expedAutoClear, null, true, 'Europe/Amsterdam');
             
-            new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'Europe/London');
+            new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'Europe/Helsinki');
 
             // new CronJob(`00 01 00 * * 1`, gfbTrackerAutoClear, null, true, 'Europe/Amsterdam')
         }
