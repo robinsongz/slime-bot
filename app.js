@@ -327,21 +327,21 @@ bot.on('ready', () => {
         
         else {
 
-            exped1[guild.id] = new CronJob(`00 ${expoMin1} ${expoHr1} * * *`, expedReminder, null, true, 'America/Anchorage');
+            exped1[guild.id] = new CronJob(`00 ${expoMin1} ${expoHr1} * * *`, expedReminder, null, true, 'America/Los_Angeles');
 
-            exped2[guild.id]  = new CronJob(`00 ${expoMin2} ${expoHr2} * * *`, expedReminder, null, true, 'America/Anchorage');
+            exped2[guild.id]  = new CronJob(`00 ${expoMin2} ${expoHr2} * * *`, expedReminder, null, true, 'America/Los_Angeles');
     
-            fort[guild.id] = new CronJob(`00 ${fortMin} ${fortHr} * * *`, fortReminder, null, true, 'America/Anchorage');
+            fort[guild.id] = new CronJob(`00 ${fortMin} ${fortHr} * * *`, fortReminder, null, true, 'America/Los_Angeles');
     
-            banquet[guild.id]  = new CronJob(`00 ${banqMin} ${banqHr} * * *`, banquetReminder, null, true, 'America/Anchorage');
+            banquet[guild.id]  = new CronJob(`00 ${banqMin} ${banqHr} * * *`, banquetReminder, null, true, 'America/Los_Angeles');
 
-            expedclear1[guild.id] = new CronJob(`00 ${expoClearMin1} ${expoClearHr1} * * *`, expedAutoClear, null, true, 'America/Anchorage');
+            expedclear1[guild.id] = new CronJob(`00 ${expoClearMin1} ${expoClearHr1} * * *`, expedAutoClear, null, true, 'America/Los_Angeles');
 
-            expedclear2[guild.id] = new CronJob(`00 ${expoClearMin2} ${expoClearHr2} * * *`, expedAutoClear, null, true, 'America/Anchorage');
+            expedclear2[guild.id] = new CronJob(`00 ${expoClearMin2} ${expoClearHr2} * * *`, expedAutoClear, null, true, 'America/Los_Angeles');
  
             // new CronJob(`00 01 11,19 * * *`, expedAutoClear, null, true, 'America/Anchorage');
 
-            new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'America/Anchorage');
+            new CronJob(`00 01 00 * * *`, fortAutoClear, null, true, 'America/Los_Angeles');
 
             // new CronJob(`00 01 00 * * 1`, gfbTrackerAutoClear, null, true, 'America/Anchorage')
         }
