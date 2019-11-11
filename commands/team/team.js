@@ -448,9 +448,15 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
 
-                    if(!adminRole) return message.reply("Administrator Role Not Found");
+                    const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
+
+                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
                 
                     if(!message.member.roles.has(adminRole.id)) {
+                        return message.reply("Hey, you're not the boss of me!");
+                    }
+
+                    if(!message.member.roles.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -547,9 +553,15 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
 
-                    if(!adminRole) return message.reply("Administrator Role Not Found");
+                    const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
+
+                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
                 
                     if(!message.member.roles.has(adminRole.id)) {
+                        return message.reply("Hey, you're not the boss of me!");
+                    }
+
+                    if(!message.member.roles.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -624,10 +636,16 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
 
-                    if(!adminRole) return message.reply("Administrator Role Not Found");
+                    const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
+
+                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
                 
                     if(!message.member.roles.has(adminRole.id)) {
-                        return message.reply("You're not an admin, sorry!");
+                        return message.reply("Hey, you're not the boss of me!");
+                    }
+
+                    if(!message.member.roles.has(teamRole.id)) {
+                        return message.reply("Hey, you're not the boss of me!");
                     }
 
                     if (value === '1') {
@@ -720,10 +738,15 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
 
-                    if(!adminRole) return message.reply("Administrator Role Not Found");
-                
+                    const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
+
+                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
                 
                     if(!message.member.roles.has(adminRole.id)) {
+                        return message.reply("Hey, you're not the boss of me!");
+                    }
+
+                    if(!message.member.roles.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -868,10 +891,15 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
 
-                    if(!adminRole) return message.reply("Administrator Role Not Found");
-                
+                    const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
+
+                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
                 
                     if(!message.member.roles.has(adminRole.id)) {
+                        return message.reply("Hey, you're not the boss of me!");
+                    }
+
+                    if(!message.member.roles.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -984,6 +1012,71 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                                 
                         return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} : \n ${secondValue.join(" ")}`);
                 
+                    }
+
+                    if (value === 'all') {
+
+                        let user1 = message.guild.members.find(member => member.displayName == team1[0]);
+
+                        let user2 = message.guild.members.find(member => member.displayName == team1[1]);
+
+                        let user3 = message.guild.members.find(member => member.displayName == team1[2]);
+
+                        let user4 = message.guild.members.find(member => member.displayName == team1[3]);
+
+                        let user5 = message.guild.members.find(member => member.displayName == team1[4]);
+
+                        let user6 = message.guild.members.find(member => member.displayName == team1[5]);
+
+                        let user7 = message.guild.members.find(member => member.displayName == team1[6]);
+
+                        let user8 = message.guild.members.find(member => member.displayName == team1[7]);
+
+                        let user9 = message.guild.members.find(member => member.displayName == team1[8]);
+
+                        let user10 = message.guild.members.find(member => member.displayName == team1[9]);
+
+                        let user11 = message.guild.members.find(member => member.displayName == team2[0]);
+
+                        let user12 = message.guild.members.find(member => member.displayName == team2[1]);
+
+                        let user13 = message.guild.members.find(member => member.displayName == team2[2]);
+
+                        let user14 = message.guild.members.find(member => member.displayName == team2[3]);
+
+                        let user15 = message.guild.members.find(member => member.displayName == team2[4]);
+
+                        let user16 = message.guild.members.find(member => member.displayName == team2[5]);
+
+                        let user17 = message.guild.members.find(member => member.displayName == team2[6]);
+
+                        let user18 = message.guild.members.find(member => member.displayName == team2[7]);
+
+                        let user19 = message.guild.members.find(member => member.displayName == team2[8]);
+
+                        let user20 = message.guild.members.find(member => member.displayName == team2[9]);
+
+                        let user21 = message.guild.members.find(member => member.displayName == team3[0]);
+
+                        let user22 = message.guild.members.find(member => member.displayName == team3[1]);
+
+                        let user23 = message.guild.members.find(member => member.displayName == team3[2]);
+
+                        let user24 = message.guild.members.find(member => member.displayName == team3[3]);
+
+                        let user25 = message.guild.members.find(member => member.displayName == team3[4]);
+
+                        let user26 = message.guild.members.find(member => member.displayName == team3[5]);
+
+                        let user27 = message.guild.members.find(member => member.displayName == team3[6]);
+
+                        let user28 = message.guild.members.find(member => member.displayName == team3[7]);
+
+                        let user29 = message.guild.members.find(member => member.displayName == team3[8]);
+
+                        let user30 = message.guild.members.find(member => member.displayName == team3[9]);
+
+                        return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} ${realUser(user11)} ${realUser(user12)} ${realUser(user13)} ${realUser(user14)} ${realUser(user15)} ${realUser(user16)} ${realUser(user17)} ${realUser(user18)} ${realUser(user19)} ${realUser(user20)} ${realUser(user21)} ${realUser(user22)} ${realUser(user23)} ${realUser(user24)} ${realUser(user25)} ${realUser(user26)} ${realUser(user27)} ${realUser(user28)} ${realUser(user29)} ${realUser(user30)} : \n ${secondValue.join(" ")}`);
                     }
                 }
                 
@@ -1483,227 +1576,245 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                         }
 
-                        // removing member
-                        else if (prop === 'remove') {
+                         // removing member
+                else if (prop === 'remove') {
 
-                            const [prop, value, ...secondValue] = args;
+                    const [prop, value, ...secondValue] = args;
 
-                            const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                    const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
 
-                            if(!adminRole) return message.reply("Administrator Role Not Found");
-                        
-                            if(!message.member.roles.has(adminRole.id)) {
-                                return message.reply("Hey, you're not the boss of me!");
-                            }
+                    const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
-                            if (value === 'team1') {
-
-                                if (secondValue.join(" ")) {
-
-                                    let value = team1[secondValue-1];
-                                
-                                    if (value !== undefined) {
-                                    
-                                        message.channel.send(`${value} has been removed from ${name1}.`);
-
-                                        teamRemove(value, teamTeam1);
-                    
-                                        teamEmbed(name1, team1);
-                                    }
-
-                                    else {
-                                        message.channel.send(`There is no one to remove here.`);
-
-                                        teamEmbed(name1, team1);
-                                    }
-                                }
-
-                                else {
-                                    return message.reply(`Please enter '!team remove <team1 or team2 or team3> <number>'`);
-                                }
-                                
-                            }
-
-                            else if (value === 'team2') {
-
-                                if (secondValue.join(" ")) {
-
-                                    let value2 = team2[secondValue-1];
-
-                                    if (value2 !== undefined) {
-                                        message.channel.send(`${value2} has been removed from ${name2}.`);
-
-                                        teamRemove(value2, teamTeam2);
-                        
-                                        teamEmbed(name2, team2);
-                                    }
-
-                                    else {
-                                        message.channel.send(`There is no one to remove here`);
-
-                                        teamEmbed(name2, team2);
-                                    }
-                                }
-
-                                else {
-                                    return message.reply(`Please enter '!team remove <team1 or team2 or team3> <number>'`);
-                                }
-                            }
-
-                            else if (value === 'team3') {
-
-                                if (secondValue.join(" ")) {
-
-                                    let value3 = team3[secondValue-1];
-
-                                    if (value3 !== undefined) {
-                                        message.channel.send(`${value3} has been removed from ${name3}.`);
-
-                                        teamRemove(value3, teamTeam3);
-                        
-                                        teamEmbed(name3, team3);
-                                    }
-
-                                    else {
-                                        message.channel.send(`There is no one to remove here`);
-
-                                        teamEmbed(name3, team3);
-                                    }
-                                }
-
-                                else {
-                                    return message.reply(`Please enter '!team remove <team1 or team2 or team3> <number>'`);
-                                }
-                            }
-
-                            else {
-                                return message.reply(`Please enter '!team remove <team1 or team2 or team3> <number>'`);
-                            }
-                            
-                        }
-
-                        // adding member
-                        else if (prop === 'add') {
-
-                            const [prop, value, ...secondValue] = args;
-
-                            const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
-
-                            if(!adminRole) return message.reply("Administrator Role Not Found");
-                        
-                            if(!message.member.roles.has(adminRole.id)) {
-                                return message.reply("Hey, you're not the boss of me!");
-                            }
-
-                            if (value === 'team1') {
-
-
-                                if (team1.includes(secondValue.join(" "))) {
-                                    return message.reply(`${secondValue.join(" ")} is already checked in to ${name1}`);
-                                }
-
-                                else if (fullteam1) {
-                                    return message.reply(`${name1} is already full!`);
-                                }
-                    
-                                else {
-                                    message.channel.send(`${secondValue.join(" ")} has been added to ${name1}`);
-
-                                    teamPush(secondValue.join(" "), teamTeam1);
-                        
-                                    teamEmbed(name1, team1);
-                                }
-                            }
-
-                            else if (value === 'team2') {
-
-                                if (team2.includes(secondValue.join(" "))) {
-                                    return message.reply(`${secondValue.join(" ")} is already checked in to ${name2}`);
-                                }
-
-                                else if (fullteam2) {
-                                    return message.reply(`${name2} is already full!`);
-                                }
-                    
-                                else {
-                                    message.channel.send(`${secondValue.join(" ")} has been added to ${name2}`);
-                    
-                                    teamPush(secondValue.join(" "), teamTeam2);
-                        
-                                    teamEmbed(name2, team2);
-                                }
-                            }
-
-                            else if (value === 'team3') {
-
-                                if (team3.includes(secondValue.join(" "))) {
-                                    return message.reply(`${secondValue.join(" ")} is already checked in to ${name3}`);
-                                }
-
-                                else if (fullteam3) {
-                                    return message.reply(`${name3} is already full!`);
-                                }
-                    
-                                else {
-                                    message.channel.send(`${secondValue.join(" ")} has been added to ${name3}`);
-                    
-                                    teamPush(secondValue.join(" "), teamTeam3);
-                        
-                                    teamEmbed(name3, team3);
-                                }
-                            }
-
-                            else {
-                                return message.reply(`Please enter '!team add <team1 or team2 or team3> <display name>`);
-                            }
-                        }
+                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
                 
-                    
-                        // clearing teams
-                        else if (prop === "clear") {
+                    if(!message.member.roles.has(adminRole.id)) {
+                        return message.reply("Hey, you're not the boss of me!");
+                    }
 
-                            const [prop, value] = args;
+                    if(!message.member.roles.has(teamRole.id)) {
+                        return message.reply("Hey, you're not the boss of me!");
+                    }
 
-                            const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                    if (value === 'team1') {
 
-                            if(!adminRole) return message.reply("Administrator Role Not Found");
+                        if (secondValue.join(" ")) {
+
+                            let value = team1[secondValue-1];
                         
-                            if(!message.member.roles.has(adminRole.id)) {
-                                return message.reply("You're not an admin, sorry!");
-                            }
-
-                            if (value === '1') {
-                                teamSet([], teamTeam1);
-
-                                return message.channel.send(`${name1} has been cleared.`);
-                            }
-
-                            else if (value === '2') {
-                                teamSet([], teamTeam2);
-
-                                return message.channel.send(`${name2} has been cleared`);
-                            }
+                            if (value !== undefined) {
                             
-                            else if (value === '3') {
-                                teamSet([], teamTeam3);
+                                message.channel.send(`${value} has been removed from ${name1}.`);
 
-                                return message.channel.send(`${name3} has been cleared`);
-                            }
-
-                            else if ( value === 'all') {
-                                teamSet([], teamTeam1);
-                                teamSet([], teamTeam2);
-                                teamSet([], teamTeam3);
-
-                                return message.channel.send(`All teams have been cleared`);
+                                teamRemove(value, teamTeam1);
+            
+                                teamEmbed(name1, team1);
                             }
 
                             else {
-                                return message.reply(`Please enter which team you'd like to clear (1 or 2 or 3)`);
+                                message.channel.send(`There is no one to remove here.`);
+
+                                teamEmbed(name1, team1);
+                            }
+                        }
+
+                        else {
+                            return message.reply(`Please enter '!team remove <team1 or team2 or team3> <number>'`);
+                        }
+                        
+                    }
+
+                    else if (value === 'team2') {
+
+                        if (secondValue.join(" ")) {
+
+                            let value2 = team2[secondValue-1];
+
+                            if (value2 !== undefined) {
+                                message.channel.send(`${value2} has been removed from ${name2}.`);
+
+                                teamRemove(value2, teamTeam2);
+                
+                                teamEmbed(name2, team2);
                             }
 
-                            
+                            else {
+                                message.channel.send(`There is no one to remove here`);
+
+                                teamEmbed(name2, team2);
+                            }
                         }
+
+                        else {
+                            return message.reply(`Please enter '!team remove <team1 or team2 or team3> <number>'`);
+                        }
+                    }
+
+                    else if (value === 'team3') {
+
+                        if (secondValue.join(" ")) {
+
+                            let value3 = team3[secondValue-1];
+
+                            if (value3 !== undefined) {
+                                message.channel.send(`${value3} has been removed from ${name3}.`);
+
+                                teamRemove(value3, teamTeam3);
+                
+                                teamEmbed(name3, team3);
+                            }
+
+                            else {
+                                message.channel.send(`There is no one to remove here`);
+
+                                teamEmbed(name3, team3);
+                            }
+                        }
+
+                        else {
+                            return message.reply(`Please enter '!team remove <team1 or team2 or team3> <number>'`);
+                        }
+                    }
+
+                    else {
+                        return message.reply(`Please enter '!team remove <team1 or team2 or team3> <number>'`);
+                    }
+                    
+                }
+
+                // adding member
+                else if (prop === 'add') {
+
+                    const [prop, value, ...secondValue] = args;
+
+                    const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+
+                    const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
+
+                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
+                
+                    if(!message.member.roles.has(adminRole.id)) {
+                        return message.reply("Hey, you're not the boss of me!");
+                    }
+
+                    if(!message.member.roles.has(teamRole.id)) {
+                        return message.reply("Hey, you're not the boss of me!");
+                    }
+
+                    if (value === 'team1') {
+
+
+                        if (team1.includes(secondValue.join(" "))) {
+                            return message.reply(`${secondValue.join(" ")} is already checked in to ${name1}`);
+                        }
+
+                        else if (fullteam1) {
+                            return message.reply(`${name1} is already full!`);
+                        }
+            
+                        else {
+                            message.channel.send(`${secondValue.join(" ")} has been added to ${name1}`);
+
+                            teamPush(secondValue.join(" "), teamTeam1);
+                
+                            teamEmbed(name1, team1);
+                        }
+                    }
+
+                    else if (value === 'team2') {
+
+                        if (team2.includes(secondValue.join(" "))) {
+                            return message.reply(`${secondValue.join(" ")} is already checked in to ${name2}`);
+                        }
+
+                        else if (fullteam2) {
+                            return message.reply(`${name2} is already full!`);
+                        }
+            
+                        else {
+                            message.channel.send(`${secondValue.join(" ")} has been added to ${name2}`);
+            
+                            teamPush(secondValue.join(" "), teamTeam2);
+                
+                            teamEmbed(name2, team2);
+                        }
+                    }
+
+                    else if (value === 'team3') {
+
+                        if (team3.includes(secondValue.join(" "))) {
+                            return message.reply(`${secondValue.join(" ")} is already checked in to ${name3}`);
+                        }
+
+                        else if (fullteam3) {
+                            return message.reply(`${name3} is already full!`);
+                        }
+            
+                        else {
+                            message.channel.send(`${secondValue.join(" ")} has been added to ${name3}`);
+            
+                            teamPush(secondValue.join(" "), teamTeam3);
+                
+                            teamEmbed(name3, team3);
+                        }
+                    }
+
+                    else {
+                        return message.reply(`Please enter '!team add <team1 or team2 or team3> <display name>`);
+                    }
+                }
+        
+            
+                // clearing teams
+                else if (prop === "clear") {
+
+                    const [prop, value] = args;
+
+                    const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+
+                    const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
+
+                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
+                
+                    if(!message.member.roles.has(adminRole.id)) {
+                        return message.reply("Hey, you're not the boss of me!");
+                    }
+
+                    if(!message.member.roles.has(teamRole.id)) {
+                        return message.reply("Hey, you're not the boss of me!");
+                    }
+
+                    if (value === '1') {
+                        teamSet([], teamTeam1);
+
+                        return message.channel.send(`${name1} has been cleared.`);
+                    }
+
+                    else if (value === '2') {
+                        teamSet([], teamTeam2);
+
+                        return message.channel.send(`${name2} has been cleared`);
+                    }
+                    
+                    else if (value === '3') {
+                        teamSet([], teamTeam3);
+
+                        return message.channel.send(`${name3} has been cleared`);
+                    }
+
+                    else if ( value === 'all') {
+                        teamSet([], teamTeam1);
+                        teamSet([], teamTeam2);
+                        teamSet([], teamTeam3);
+
+                        return message.channel.send(`All teams have been cleared`);
+                    }
+
+                    else {
+                        return message.reply(`Please enter which team you'd like to clear (1 or 2 or 3)`);
+                    }
+
+                    
+                }
 
                         // viewing teams
                         else if (prop === "view") {
@@ -1756,276 +1867,351 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                 
                         // swapping members
 
-                        else if (prop === 'swap') {
+                else if (prop === 'swap') {
 
-                            const [prop, firstteam, firstNumber, secondteam, secondNumber] = args;
+                    const [prop, firstteam, firstNumber, secondteam, secondNumber] = args;
 
-                            const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                    const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
 
-                            if(!adminRole) return message.reply("Administrator Role Not Found");
-                        
-                        
-                            if(!message.member.roles.has(adminRole.id)) {
-                                return message.reply("Hey, you're not the boss of me!");
-                            }
+                    const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
-                            if (firstteam === 'team1' && secondteam === 'team2') {
-                                let member1 = team1[firstNumber-1];
+                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
+                
+                    if(!message.member.roles.has(adminRole.id)) {
+                        return message.reply("Hey, you're not the boss of me!");
+                    }
 
-                                let member2 = team2[secondNumber-1];
+                    if(!message.member.roles.has(teamRole.id)) {
+                        return message.reply("Hey, you're not the boss of me!");
+                    }
 
-                                if (member1 === undefined && member2 !== undefined) {
+                    if (firstteam === 'team1' && secondteam === 'team2') {
+                        let member1 = team1[firstNumber-1];
 
-                                    message.reply(`${member2} has been moved to ${name1}`);
+                        let member2 = team2[secondNumber-1];
 
-                                    teamPush(member2, teamTeam1);
+                        if (member1 === undefined && member2 !== undefined) {
 
-                                    teamRemove(member2, teamTeam2);
-                    
-                                }
-                    
-                                else if (member2 === undefined && member1 !== undefined) {
-                    
-                                    message.reply(`${member1} has been moved to ${name2}`);
-                    
-                                    teamPush(member1, teamTeam2);
+                            message.reply(`${member2} has been moved to ${name1}`);
 
-                                    teamRemove(member1, teamTeam1);
-                    
-                                    
-                                }
-                    
-                                else if (member2 === undefined && member1 === undefined) {
-                                    return message.reply(`There are no one in these positions!`);
-                                }
-                    
-                                else {
-                                    message.reply (`${member1} and ${member2} have been swapped.`);
-                    
-                                    teamPush(member1, teamTeam2);
+                            teamPush(member2, teamTeam1);
 
-                                    teamRemove(member1, teamTeam1);
-
-                                    teamPush(member2, teamTeam1);
-
-                                    teamRemove(member2, teamTeam2);
-                    
-                                    
-                                }
-                            }
-
-                            else if (firstteam === 'team1' && secondteam === 'team3') {
-                                let member1 = team1[firstNumber-1];
-
-                                let member2 = team3[secondNumber-1];
-
-                                if (member1 === undefined && member2 !== undefined) {
-
-                                    message.reply(`${member2} has been moved to ${name1}`);
-                    
-                                    teamPush(member2, teamTeam1);
-
-                                    teamRemove(member2, teamTeam3);
-                                }
-                    
-                                else if (member2 === undefined && member1 !== undefined) {
-                    
-                                    message.reply(`${member1} has been moved to ${name3}`);
-                    
-                                    teamPush(member1, teamTeam3);
-
-                                    teamRemove(member1, teamTeam1);
-                    
-                                    
-                                }
-                    
-                                else if (member2 === undefined && member1 === undefined) {
-                                    return message.reply(`There are no one in these positions!`);
-                                }
-                    
-                                else {
-                                    message.reply (`${member1} and ${member2} have been swapped.`);
-                                    
-                                    teamPush(member1, teamTeam3);
-
-                                    teamRemove(member1, teamTeam1);
-
-                                    teamPush(member2, teamTeam1);
-
-                                    teamRemove(member2, teamTeam3);
-                                    
-                                }
-                            }
-
-                            else if (firstteam === 'team2' && secondteam === 'team3') {
-                                let member1 = team2[firstNumber-1];
-
-                                let member2 = team3[secondNumber-1];
-
-                                if (member1 === undefined && member2 !== undefined) {
-
-                                    message.reply(`${member2} has been moved to ${name2}`);
-                    
-                                    teamPush(member2, teamTeam2);
-
-                                    teamRemove(member2, teamTeam3);
-                                }
-                    
-                                else if (member2 === undefined && member1 !== undefined) {
-                    
-                                    message.reply(`${member1} has been moved to ${name3}`);
-                    
-                                    teamPush(member1, teamTeam3);
-
-                                    teamRemove(member1, teamTeam2);
-                    
-                                    
-                                }
-                    
-                                else if (member2 === undefined && member1 === undefined) {
-                                    return message.reply(`There are no one in these positions!`);
-                                }
-                    
-                                else {
-                                    message.reply (`${member1} and ${member2} have been swapped.`);
-
-                                    teamPush(member1, teamTeam3);
-
-                                    teamRemove(member1, teamTeam2);
-
-                                    teamPush(member2, teamTeam2);
-
-                                    teamRemove(member2, teamTeam3);
-                    
-                                }
-                            }
-
+                            teamRemove(member2, teamTeam2);
+            
                         }
+            
+                        else if (member2 === undefined && member1 !== undefined) {
+            
+                            message.reply(`${member1} has been moved to ${name2}`);
+            
+                            teamPush(member1, teamTeam2);
 
-                        // changing team title
-
-                        else if (prop === 'edit') {
-
-                            const [ prop, value, ...secondValue ] = args;
-
-                            const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
-
-                            if(!adminRole) return message.reply("Administrator Role Not Found");
-                        
-                        
-                            if(!message.member.roles.has(adminRole.id)) {
-                                return message.reply("Hey, you're not the boss of me!");
-                            }
-
-                            if (value === 'team3') {
-
-                                teamSet(secondValue.join(" "), teamName3);
-
-                                return message.reply(`You have changed team 3's name to ${secondValue.join(" ")}`);
-                            }
-
-                            else if (value === 'team2') {
-
-                                teamSet(secondValue.join(" "), teamName2);
-
-                                return message.reply(`You have changed team 2's name to ${secondValue.join(" ")}`);
-                            }
-
-                            else if (value === 'team1') {
-
-                                teamSet(secondValue.join(" "), teamName1);
-
-                                return message.reply(`You have changed team 1's name to ${secondValue.join(" ")}`);
-                            }
+                            teamRemove(member1, teamTeam1);
+            
+                            
                         }
+            
+                        else if (member2 === undefined && member1 === undefined) {
+                            return message.reply(`There are no one in these positions!`);
+                        }
+            
+                        else {
+                            message.reply (`${member1} and ${member2} have been swapped.`);
+            
+                            teamPush(member1, teamTeam2);
+
+                            teamRemove(member1, teamTeam1);
+
+                            teamPush(member2, teamTeam1);
+
+                            teamRemove(member2, teamTeam2);
+            
+                            
+                        }
+                    }
+
+                    else if (firstteam === 'team1' && secondteam === 'team3') {
+                        let member1 = team1[firstNumber-1];
+
+                        let member2 = team3[secondNumber-1];
+
+                        if (member1 === undefined && member2 !== undefined) {
+
+                            message.reply(`${member2} has been moved to ${name1}`);
+            
+                            teamPush(member2, teamTeam1);
+
+                            teamRemove(member2, teamTeam3);
+                        }
+            
+                        else if (member2 === undefined && member1 !== undefined) {
+            
+                            message.reply(`${member1} has been moved to ${name3}`);
+            
+                            teamPush(member1, teamTeam3);
+
+                            teamRemove(member1, teamTeam1);
+            
+                            
+                        }
+            
+                        else if (member2 === undefined && member1 === undefined) {
+                            return message.reply(`There are no one in these positions!`);
+                        }
+            
+                        else {
+                            message.reply (`${member1} and ${member2} have been swapped.`);
+                            
+                            teamPush(member1, teamTeam3);
+
+                            teamRemove(member1, teamTeam1);
+
+                            teamPush(member2, teamTeam1);
+
+                            teamRemove(member2, teamTeam3);
+                            
+                        }
+                    }
+
+                    else if (firstteam === 'team2' && secondteam === 'team3') {
+                        let member1 = team2[firstNumber-1];
+
+                        let member2 = team3[secondNumber-1];
+
+                        if (member1 === undefined && member2 !== undefined) {
+
+                            message.reply(`${member2} has been moved to ${name2}`);
+            
+                            teamPush(member2, teamTeam2);
+
+                            teamRemove(member2, teamTeam3);
+                        }
+            
+                        else if (member2 === undefined && member1 !== undefined) {
+            
+                            message.reply(`${member1} has been moved to ${name3}`);
+            
+                            teamPush(member1, teamTeam3);
+
+                            teamRemove(member1, teamTeam2);
+            
+                            
+                        }
+            
+                        else if (member2 === undefined && member1 === undefined) {
+                            return message.reply(`There are no one in these positions!`);
+                        }
+            
+                        else {
+                            message.reply (`${member1} and ${member2} have been swapped.`);
+
+                            teamPush(member1, teamTeam3);
+
+                            teamRemove(member1, teamTeam2);
+
+                            teamPush(member2, teamTeam2);
+
+                            teamRemove(member2, teamTeam3);
+            
+                        }
+                    }
+
+                }
+
+                // changing team title
+
+                else if (prop === 'edit') {
+
+                    const [ prop, value, ...secondValue ] = args;
+
+                    const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+
+                    const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
+
+                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
+                
+                    if(!message.member.roles.has(adminRole.id)) {
+                        return message.reply("Hey, you're not the boss of me!");
+                    }
+
+                    if(!message.member.roles.has(teamRole.id)) {
+                        return message.reply("Hey, you're not the boss of me!");
+                    }
+
+                    if (value === 'team3') {
+
+                        teamSet(secondValue.join(" "), teamName3);
+
+                        return message.reply(`You have changed team 3's name to ${secondValue.join(" ")}`);
+                    }
+
+                    else if (value === 'team2') {
+
+                        teamSet(secondValue.join(" "), teamName2);
+
+                        return message.reply(`You have changed team 2's name to ${secondValue.join(" ")}`);
+                    }
+
+                    else if (value === 'team1') {
+
+                        teamSet(secondValue.join(" "), teamName1);
+
+                        return message.reply(`You have changed team 1's name to ${secondValue.join(" ")}`);
+                    }
+                }
 
                         // mentioning checked-in members
 
                         else if (prop === 'mention') {
 
                             const [ prop, value, ...secondValue ] = args;
-
+        
                             const realUser = (user) => {
                                 return user === null ? "" : user;
                             };
-
+        
                             if (value === 'team1') {
-
+        
                                 let user1 = message.guild.members.find(member => member.displayName == team1[0]);
-
+        
                                 let user2 = message.guild.members.find(member => member.displayName == team1[1]);
-
+        
                                 let user3 = message.guild.members.find(member => member.displayName == team1[2]);
-
+        
                                 let user4 = message.guild.members.find(member => member.displayName == team1[3]);
-
+        
                                 let user5 = message.guild.members.find(member => member.displayName == team1[4]);
-
+        
                                 let user6 = message.guild.members.find(member => member.displayName == team1[5]);
-
+        
                                 let user7 = message.guild.members.find(member => member.displayName == team1[6]);
-
+        
                                 let user8 = message.guild.members.find(member => member.displayName == team1[7]);
-
+        
                                 let user9 = message.guild.members.find(member => member.displayName == team1[8]);
-
+        
                                 let user10 = message.guild.members.find(member => member.displayName == team1[9]);
-
-
+        
+        
                                     
                                 return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} : \n ${secondValue.join(" ")}`);
                             }
-
+        
                             if (value === 'team2') {
                                 let user1 = message.guild.members.find(member => member.displayName == team2[0]);
-
+        
                                 let user2 = message.guild.members.find(member => member.displayName == team2[1]);
-
+        
                                 let user3 = message.guild.members.find(member => member.displayName == team2[2]);
-
+        
                                 let user4 = message.guild.members.find(member => member.displayName == team2[3]);
-
+        
                                 let user5 = message.guild.members.find(member => member.displayName == team2[4]);
-
+        
                                 let user6 = message.guild.members.find(member => member.displayName == team2[5]);
-
+        
                                 let user7 = message.guild.members.find(member => member.displayName == team2[6]);
-
+        
                                 let user8 = message.guild.members.find(member => member.displayName == team2[7]);
-
+        
                                 let user9 = message.guild.members.find(member => member.displayName == team2[8]);
-
+        
                                 let user10 = message.guild.members.find(member => member.displayName == team2[9]);
-
+        
                                     
                                 return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} : \n ${secondValue.join(" ")}`);
                             }
-
+        
                             if (value === 'team3') {
                                 
                                 let user1 = message.guild.members.find(member => member.displayName == team3[0]);
-
+        
                                 let user2 = message.guild.members.find(member => member.displayName == team3[1]);
-
+        
                                 let user3 = message.guild.members.find(member => member.displayName == team3[2]);
-
+        
                                 let user4 = message.guild.members.find(member => member.displayName == team3[3]);
-
+        
                                 let user5 = message.guild.members.find(member => member.displayName == team3[4]);
-
+        
                                 let user6 = message.guild.members.find(member => member.displayName == team3[5]);
-
+        
                                 let user7 = message.guild.members.find(member => member.displayName == team3[6]);
-
+        
                                 let user8 = message.guild.members.find(member => member.displayName == team3[7]);
-
+        
                                 let user9 = message.guild.members.find(member => member.displayName == team3[8]);
-
+        
                                 let user10 = message.guild.members.find(member => member.displayName == team3[9]);
-
+        
                                         
                                 return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} : \n ${secondValue.join(" ")}`);
                         
+                            }
+        
+                            if (value === 'all') {
+        
+                                let user1 = message.guild.members.find(member => member.displayName == team1[0]);
+        
+                                let user2 = message.guild.members.find(member => member.displayName == team1[1]);
+        
+                                let user3 = message.guild.members.find(member => member.displayName == team1[2]);
+        
+                                let user4 = message.guild.members.find(member => member.displayName == team1[3]);
+        
+                                let user5 = message.guild.members.find(member => member.displayName == team1[4]);
+        
+                                let user6 = message.guild.members.find(member => member.displayName == team1[5]);
+        
+                                let user7 = message.guild.members.find(member => member.displayName == team1[6]);
+        
+                                let user8 = message.guild.members.find(member => member.displayName == team1[7]);
+        
+                                let user9 = message.guild.members.find(member => member.displayName == team1[8]);
+        
+                                let user10 = message.guild.members.find(member => member.displayName == team1[9]);
+        
+                                let user11 = message.guild.members.find(member => member.displayName == team2[0]);
+        
+                                let user12 = message.guild.members.find(member => member.displayName == team2[1]);
+        
+                                let user13 = message.guild.members.find(member => member.displayName == team2[2]);
+        
+                                let user14 = message.guild.members.find(member => member.displayName == team2[3]);
+        
+                                let user15 = message.guild.members.find(member => member.displayName == team2[4]);
+        
+                                let user16 = message.guild.members.find(member => member.displayName == team2[5]);
+        
+                                let user17 = message.guild.members.find(member => member.displayName == team2[6]);
+        
+                                let user18 = message.guild.members.find(member => member.displayName == team2[7]);
+        
+                                let user19 = message.guild.members.find(member => member.displayName == team2[8]);
+        
+                                let user20 = message.guild.members.find(member => member.displayName == team2[9]);
+        
+                                let user21 = message.guild.members.find(member => member.displayName == team3[0]);
+        
+                                let user22 = message.guild.members.find(member => member.displayName == team3[1]);
+        
+                                let user23 = message.guild.members.find(member => member.displayName == team3[2]);
+        
+                                let user24 = message.guild.members.find(member => member.displayName == team3[3]);
+        
+                                let user25 = message.guild.members.find(member => member.displayName == team3[4]);
+        
+                                let user26 = message.guild.members.find(member => member.displayName == team3[5]);
+        
+                                let user27 = message.guild.members.find(member => member.displayName == team3[6]);
+        
+                                let user28 = message.guild.members.find(member => member.displayName == team3[7]);
+        
+                                let user29 = message.guild.members.find(member => member.displayName == team3[8]);
+        
+                                let user30 = message.guild.members.find(member => member.displayName == team3[9]);
+        
+                                return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} ${realUser(user11)} ${realUser(user12)} ${realUser(user13)} ${realUser(user14)} ${realUser(user15)} ${realUser(user16)} ${realUser(user17)} ${realUser(user18)} ${realUser(user19)} ${realUser(user20)} ${realUser(user21)} ${realUser(user22)} ${realUser(user23)} ${realUser(user24)} ${realUser(user25)} ${realUser(user26)} ${realUser(user27)} ${realUser(user28)} ${realUser(user29)} ${realUser(user30)} : \n ${secondValue.join(" ")}`);
                             }
                         }
                         

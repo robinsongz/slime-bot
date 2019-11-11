@@ -20,6 +20,7 @@ patreonGfTracker = new Enmap({name: "patreonGfTracker"});
 // enmap settings front-end  
 defaultSettings = {		
     adminRole: "GM",
+    teamRole: "Team Admin",
     prefix: "!",	
     privateMessage: "Hi there, welcome to our discord! \n\n Please change your nickname to your in-game IGN. \n\n Type !help for my list of commands!",
     expoTime1: "09 45",
