@@ -450,17 +450,13 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
-                    if (teamRole == null) {
+                    if (!teamRole) {
                         return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
                     }
 
-                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
-                
-                    if(!message.member.roles.has(adminRole.id)) {
-                        return message.reply("Hey, you're not the boss of me!");
-                    }
+                    if(!adminRole) return message.reply("Administrator Role Not Found");
 
-                    if(!message.member.roles.has(teamRole.id)) {
+                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -559,17 +555,13 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
-                    if (teamRole == null) {
+                    if (!teamRole) {
                         return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
                     }
 
-                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
-                
-                    if(!message.member.roles.has(adminRole.id)) {
-                        return message.reply("Hey, you're not the boss of me!");
-                    }
+                    if(!adminRole) return message.reply("Administrator Role Not Found");
 
-                    if(!message.member.roles.has(teamRole.id)) {
+                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -646,17 +638,13 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
-                    if (teamRole == null) {
+                    if (!teamRole) {
                         return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
                     }
 
-                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
-                
-                    if(!message.member.roles.has(adminRole.id)) {
-                        return message.reply("Hey, you're not the boss of me!");
-                    }
+                    if(!adminRole) return message.reply("Administrator Role Not Found");
 
-                    if(!message.member.roles.has(teamRole.id)) {
+                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -752,17 +740,13 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
-                    if (teamRole == null) {
+                    if (!teamRole) {
                         return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
                     }
 
-                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
-                
-                    if(!message.member.roles.has(adminRole.id)) {
-                        return message.reply("Hey, you're not the boss of me!");
-                    }
+                    if(!adminRole) return message.reply("Administrator Role Not Found");
 
-                    if(!message.member.roles.has(teamRole.id)) {
+                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -909,20 +893,15 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
-                    if (teamRole == null) {
+                    if (!teamRole) {
                         return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
                     }
 
-                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
-                
-                    if(!message.member.roles.has(adminRole.id)) {
+                    if(!adminRole) return message.reply("Administrator Role Not Found");
+
+                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
-
-                    if(!message.member.roles.has(teamRole.id)) {
-                        return message.reply("Hey, you're not the boss of me!");
-                    }
-
                     if (value === 'team3') {
 
                         teamSet(secondValue.join(" "), teamName3);
@@ -1605,13 +1584,13 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
-                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
-                
-                    if(!message.member.roles.has(adminRole.id)) {
-                        return message.reply("Hey, you're not the boss of me!");
+                    if (!teamRole) {
+                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
                     }
 
-                    if(!message.member.roles.has(teamRole.id)) {
+                    if(!adminRole) return message.reply("Administrator Role Not Found");
+
+                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -1710,17 +1689,13 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
-                    if (teamRole == null) {
+                    if (!teamRole) {
                         return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
                     }
 
-                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
-                
-                    if(!message.member.roles.has(adminRole.id)) {
-                        return message.reply("Hey, you're not the boss of me!");
-                    }
-                   
-                    if(!message.member.roles.has(teamRole.id)) {
+                    if(!adminRole) return message.reply("Administrator Role Not Found");
+
+                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
                   
@@ -1799,17 +1774,13 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
-                    if (teamRole == null) {
+                    if (!teamRole) {
                         return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
                     }
 
-                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
-                
-                    if(!message.member.roles.has(adminRole.id)) {
-                        return message.reply("Hey, you're not the boss of me!");
-                    }
+                    if(!adminRole) return message.reply("Administrator Role Not Found");
 
-                    if(!message.member.roles.has(teamRole.id)) {
+                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -1905,17 +1876,13 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
-                    if (teamRole == null) {
+                    if (!teamRole) {
                         return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
                     }
 
-                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
-                
-                    if(!message.member.roles.has(adminRole.id)) {
-                        return message.reply("Hey, you're not the boss of me!");
-                    }
+                    if(!adminRole) return message.reply("Administrator Role Not Found");
 
-                    if(!message.member.roles.has(teamRole.id)) {
+                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -2062,17 +2029,13 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
-                    if (teamRole == null) {
+                    if (!teamRole) {
                         return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
                     }
 
-                    if(!adminRole && !teamRole) return message.reply("Administrator Role Not Found");
-                
-                    if(!message.member.roles.has(adminRole.id)) {
-                        return message.reply("Hey, you're not the boss of me!");
-                    }
+                    if(!adminRole) return message.reply("Administrator Role Not Found");
 
-                    if(!message.member.roles.has(teamRole.id)) {
+                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
