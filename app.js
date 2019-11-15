@@ -1,5 +1,6 @@
+require('dotenv').load();
+const token = process.env.DISCORD_BOT_TOKEN;
 const Discord = require('discord.js');
-const config = require('./config.json');
 const Enmap = require('enmap');
 const fs = require('fs');
 const CronJob = require('cron').CronJob;
@@ -424,4 +425,4 @@ process.on('unhandledRejection', (reason, promise) => {
 });
 
 // bot login
-bot.login(config.token); 
+bot.login(token); 
