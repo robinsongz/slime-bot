@@ -451,7 +451,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
                     if (!teamRole) {
-                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
+                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !showconf to view your configs.")
                     }
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
@@ -556,7 +556,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
                     if (!teamRole) {
-                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
+                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !showconf to view your configs.")
                     }
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
@@ -639,7 +639,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
                     if (!teamRole) {
-                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
+                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !showconf to view your configs.")
                     }
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
@@ -741,7 +741,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
                     if (!teamRole) {
-                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
+                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !showconf to view your configs.")
                     }
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
@@ -894,7 +894,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
                     if (!teamRole) {
-                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
+                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !showconf to view your configs.")
                     }
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
@@ -1075,7 +1075,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                         let user30 = message.guild.members.find(member => member.displayName == team3[9]);
 
-                        return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} ${realUser(user11)} ${realUser(user12)} ${realUser(user13)} ${realUser(user14)} ${realUser(user15)} ${realUser(user16)} ${realUser(user17)} ${realUser(user18)} ${realUser(user19)} ${realUser(user20)} ${realUser(user21)} ${realUser(user22)} ${realUser(user23)} ${realUser(user24)} ${realUser(user25)} ${realUser(user26)} ${realUser(user27)} ${realUser(user28)} ${realUser(user29)} ${realUser(user30)} : \n ${secondValue.join(" ")}`);
+                        return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} ${realUser(user11)} ${realUser(user12)} ${realUser(user13)} ${realUser(user14)} ${realUser(user15)} ${realUser(user16)} ${realUser(user17)} ${realUser(user18)} ${realUser(user19)} ${realUser(user20)} ${realUser(user21)} ${realUser(user22)} ${realUser(user23)} ${realUser(user24)} ${realUser(user25)} ${realUser(user26)} ${realUser(user27)} ${realUser(user28)} ${realUser(user29)} ${realUser(user30)} \n ${secondValue.join(" ")}`);
                     }
                 }
                 
@@ -1585,7 +1585,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
                     if (!teamRole) {
-                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
+                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !showconf to view your configs.")
                     }
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
@@ -1690,7 +1690,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
                     if (!teamRole) {
-                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
+                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !showconf to view your configs.")
                     }
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
@@ -1775,7 +1775,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
                     if (!teamRole) {
-                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
+                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !showconf to view your configs.")
                     }
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
@@ -1877,7 +1877,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
 
                     if (!teamRole) {
-                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
+                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !showconf to view your configs.")
                     }
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
@@ -2028,9 +2028,8 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
 
                     const teamRole = message.guild.roles.find(role => role.name === guildConf.teamRole);
-
                     if (!teamRole) {
-                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !viewconf to view your configs.")
+                        return message.reply("Please create the role that is under your teamRole config. Members with this role have !team admin powers but can't change configs. Type !showconf to view your configs.")
                     }
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
@@ -2212,7 +2211,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
         
                                 let user30 = message.guild.members.find(member => member.displayName == team3[9]);
         
-                                return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} ${realUser(user11)} ${realUser(user12)} ${realUser(user13)} ${realUser(user14)} ${realUser(user15)} ${realUser(user16)} ${realUser(user17)} ${realUser(user18)} ${realUser(user19)} ${realUser(user20)} ${realUser(user21)} ${realUser(user22)} ${realUser(user23)} ${realUser(user24)} ${realUser(user25)} ${realUser(user26)} ${realUser(user27)} ${realUser(user28)} ${realUser(user29)} ${realUser(user30)} : \n ${secondValue.join(" ")}`);
+                                return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} ${realUser(user11)} ${realUser(user12)} ${realUser(user13)} ${realUser(user14)} ${realUser(user15)} ${realUser(user16)} ${realUser(user17)} ${realUser(user18)} ${realUser(user19)} ${realUser(user20)} ${realUser(user21)} ${realUser(user22)} ${realUser(user23)} ${realUser(user24)} ${realUser(user25)} ${realUser(user26)} ${realUser(user27)} ${realUser(user28)} ${realUser(user29)} ${realUser(user30)} \n ${secondValue.join(" ")}`);
                             }
                         }
                         
