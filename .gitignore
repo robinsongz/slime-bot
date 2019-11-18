@@ -1,7 +1,3 @@
 data/
 node_modules/
-<<<<<<< HEAD
-#.env
-=======
 config.json
->>>>>>> 60ace8c951ffe90620421be695fa8896b1e4e2e3
