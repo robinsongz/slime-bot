@@ -1370,7 +1370,9 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                                     }
         
                                 else {
-                        
+                                    if (team1.includes(member)) {
+                                        return message.reply(`You are already in ${name1}`);
+                                    }
                                     teamPush(member, teamTeam1);
                                 
                                     message.reply(`you just checked in to ${name1}.`);
