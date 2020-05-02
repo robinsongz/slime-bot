@@ -35,10 +35,10 @@ defaultSettings = {
     fortTime: "18 45",
     fortChannel: 'general',
     fortMessage: '@everyone Guild fort in 15 minutes! Good luck!',
-    teamChannel: 'general',
-    teamChannel2: 'general',
-    gfChannel: 'general',
-    gfChannel2: 'general',
+    teamChannel: 'team1',
+    teamChannel2: 'team2',
+    gfChannel: 'gf1',
+    gfChannel2: 'gf2',
     team: {
         team1: {
             name: "Team 1", 

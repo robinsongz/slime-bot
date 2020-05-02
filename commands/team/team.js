@@ -14,11 +14,11 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
     let teamChannel = enmap.get(message.guild.id, 'teamChannel');
     let teamChannel2 = enmap.get(message.guild.id, 'teamChannel2');
+    let teamChannel3 = enmap.get(message.guild.id, 'teamChannel3');
          
     // expedition commands
     
         const [ prop ] = args;
-
             if (message.channel.name === teamChannel) {
 
                 // variable for getting team team from enmap
@@ -195,6 +195,28 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                         }
                     }
 
+                    else if (value === '1') {
+                        if (fullteam1) {
+
+                            message.reply(`${name1} is full`);
+            
+                            teamEmbed(name1, team1);
+                        }
+                        
+                        else if (team1.includes(member)) {
+                            return message.reply(`You're already checked in!`);
+                        }
+            
+                        else {
+            
+                            teamPush(member, teamTeam1);
+                        
+                            message.reply(`you just checked in to ${name1}.`);
+                
+                            teamEmbed(name1, team1);
+                        }
+                    }
+
                     else {  
                         // if team 1 is full
                         if (fullteam1) {
@@ -225,42 +247,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                                 teamEmbed(name2, team2);
                             }
                             }
-                            
-                        // if team 2 is full
-                        else if(fullteam2) {
 
-                            // if already in team 1 and team 3
-                            if (includesMember1 && includesMember3) {
-                                return message.reply(`${name2} is full, and you are already checked in to ${name1} and ${name3}`);
-                            }
-
-                            // if team 1 has room
-                            else if (!fullteam1) {
-                                teamPush(member, teamTeam1);
-
-                                message.reply(`${name2} is full, you have been added to ${name1}`);
-
-                                teamEmbed(name1, team1);
-                            }
-
-                            else {
-
-                                if (fullteam3) {
-                                    return message.reply(`All teams are full!`);
-                                }
-                                teamPush(member, teamTeam3);
-                
-                                message.reply(`${name2} is full, you have been added to ${name3}`);
-                
-                                teamEmbed(name3, team3);
-                            }
-                        }    
-
-                        // if already in team 1
-                        else if (team1.includes(member)) {
-                            return message.reply(`You're already checked in!`);
-                        }
-                        
                         else {
                 
                             teamPush(member, teamTeam1);
@@ -1219,21 +1206,21 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                         
                         // checking in
                         if (prop === "checkin") {
-                        
+                
                             const [ prop, value ] = args;
-
+        
                             if (value === '3') {
-
+        
                                 if (fullteam3) {
                                     message.reply(`${name3} is full`);
                     
                                     teamEmbed(name3, team3);
                                 }
-
+        
                                 else if (team3.includes(member)) {
                                     return message.reply(`You're already checked in!`);
                                 }
-
+        
                                 else {
                     
                                     teamPush(member, teamTeam3);
@@ -1243,12 +1230,12 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                                     teamEmbed(name3, team3);
                                 } 
                             }
-
-
+        
+        
                             else if (value === '2') {
-
+        
                                 if (fullteam2) {
-
+        
                                     message.reply(`${name2} is full`);
                     
                                     teamEmbed(name2, team2);
@@ -1267,68 +1254,90 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                                     teamEmbed(name2, team2);
                                 }
                             }
-
+        
                             else if (value === 'all') {
                                 
-
+        
                                 if (fullteam1 && fullteam2 && fullteam3) {
                                     return message.reply(`Sorry, all teams are full!`);
                                 }
-
+        
                                 else if (fullteam1 && fullteam2) {
                                     teamPush(mmeber, teamTeam3);
-
+        
                                     message.reply(`Sorry, ${name1} and ${name2} are full, you have checked in to only ${name3}`);
-
+        
                                     teamEmbed(name3, team3);
                                 }
-
+        
                                 else if (fullteam1 && fullteam3) {
                                     teamPush(member, teamTeam2);
-
+        
                                     message.reply(`${name1} and ${name3} are full, you have checked in to only ${name2}`);
-
+        
                                     teamEmbed(name2, team2);
                                 }
-
+        
                                 else if (fullteam2 && fullteam3) {
                                     teamPush(member, teamTeam1);
-
+        
                                     message.reply(`${name2} and ${name3} are full, you have checked in to only ${name1}`);
-
+        
                                     teamEmbed(name1, team1);
                                 }
-
+        
                                 else if (fullteam1) {
                                     teamPush(member, teamTeam2);
                                     teamPush(member, teamTeam3);
-
+        
                                     message.reply(`${name1} is full, you have checked into ${name2} and ${name3}`);
                                 }
-
+        
                                 else if (fullteam2) {
                                     teamPush(member, teamTeam1);
                                     teamPush(member, teamTeam3);
-
+        
                                     message.reply(`${name2} is full, you have checked into ${name1} and ${name3}`);
                                 }
-
+        
                                 else if (fullteam3) {
                                     teamPush(member, teamTeam1);
                                     teamPush(member, teamTeam2);
-
+        
                                     message.reply(`${name3} is full, you have checked into ${name1} and ${name2}`);
                                 }
-
+        
                                 else {
                                     teamPush(member, teamTeam1);
                                     teamPush(member, teamTeam2);
                                     teamPush(member, teamTeam3);
-
+        
                                     message.reply(`You have checked into all teams`);
                                 }
                             }
-
+        
+                            else if (value === '1') {
+                                if (fullteam1) {
+        
+                                    message.reply(`${name1} is full`);
+                    
+                                    teamEmbed(name1, team1);
+                                }
+                                
+                                else if (team1.includes(member)) {
+                                    return message.reply(`You're already checked in!`);
+                                }
+                    
+                                else {
+                    
+                                    teamPush(member, teamTeam1);
+                                
+                                    message.reply(`you just checked in to ${name1}.`);
+                        
+                                    teamEmbed(name1, team1);
+                                }
+                            }
+        
                             else {  
                                 // if team 1 is full
                                 if (fullteam1) {
@@ -1339,15 +1348,15 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                                     }
                                     // if team 2 is full
                                     else if (fullteam2) {
-
+        
                                         if (fullteam3) {
                                             return message.reply(`All teams are full!`);
                                         }
-
+        
                                         teamPush(member, teamTeam3);
-
+        
                                         message.reply(`${name1} & ${name2} are full, you have been added to ${name3}`);
-
+        
                                         teamEmbed(name3, team3);
                                     }
                                     
@@ -1359,42 +1368,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                                         teamEmbed(name2, team2);
                                     }
                                     }
-                                    
-                                // if team 2 is full
-                                else if(fullteam2) {
-
-                                    // if already in team 1 and team 3
-                                    if (team1.includes(member) && team3.includes(member)) {
-                                        return message.reply(`${name2} is full, and you are already checked in to ${name1} and ${name3}`);
-                                    }
-
-                                    // if team 1 has room
-                                    else if (team1.includes(undefined) && team1.length !== 10) {
-                                        teamPush(member, teamTeam1);
-
-                                        message.reply(`${name2} is full, you have been added to ${name1}`);
-
-                                        teamEmbed(name1, team1);
-                                    }
-
-                                    else {
-
-                                        if (fullteam3) {
-                                            return message.reply(`All teams are full!`);
-                                        }
-                                        teamPush(member, teamTeam3);
-                        
-                                        message.reply(`${name2} is full, you have been added to ${name3}`);
-                        
-                                        teamEmbed(name3, team3);
-                                    }
-                                }    
-
-                                // if already in team 1
-                                else if (team1.includes(member)) {
-                                    return message.reply(`You're already checked in!`);
-                                }
-                                
+        
                                 else {
                         
                                     teamPush(member, teamTeam1);
@@ -1406,7 +1380,6 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                             }
                         }
                         
-                    
                         // checking out
                         else if (prop === "checkout") {
                         
