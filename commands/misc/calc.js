@@ -26,7 +26,7 @@ module.exports.run = async (bot, message, args, region) => {
             
             if (splitTime[0] < 24 && splitTime[1] < 60) {
                 if (region === 'na') {
-                    let currentTime = moment().tz('America/Anchorage').format('HH:mm');
+                    let currentTime = moment().tz('America/Los_Angeles').format('HH:mm');
         
                     let parsedInputtedTime = parseTime(args[0]);
                     let parsedCurrentTime = parseTime(currentTime);
@@ -52,7 +52,7 @@ module.exports.run = async (bot, message, args, region) => {
                 }
             
                 if (region === 'eu') {
-                    let currentTime = moment().tz('Europe/Oslo').format('HH:mm');
+                    let currentTime = moment().tz('Europe/Helsinki').format('HH:mm');
             
                     let parsedInputtedTime = parseTime(args[0]);
                     let parsedCurrentTime = parseTime(currentTime);
