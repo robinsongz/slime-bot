@@ -108,9 +108,7 @@ defaultSettings = {
     region: 'na'
 };
 
-const bot = new Discord.Client({
-    ws: { intents: ['GUILDS', 'GUILD_MESSAGES']} 
-});
+const bot = new Discord.Client();
 
 
 bot.commands = new Discord.Collection(); 
