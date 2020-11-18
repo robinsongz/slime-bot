@@ -161,7 +161,6 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 bot.on('ready', () => {
-    console.log(`Serving ${bot.guilds.cache.size} servers`);
     console.log('Ready boss!');
 
     bot.guilds.cache.forEach((guild) => {
