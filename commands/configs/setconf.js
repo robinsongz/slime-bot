@@ -14,29 +14,29 @@ module.exports.run = async (bot, message, args, reminder) => {
     
      
     // grabbing value of admin
-    const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+    const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
     if(!adminRole) return message.reply("Administrator Role Not Found");
     
     // exits if user is not admin
-    if(!message.member.roles.has(adminRole.id)) {
+    if(!message.member.roles.cache.has(adminRole.id)) {
       return message.reply("Hey, you're not the boss of me!");
     }
     
     const [prop, ...value] = args;
 
     
-    let botembed = new Discord.RichEmbed()
+    let botembed = new Discord.MessageEmbed()
         .setTitle(`${prop} changed!`)
         .setDescription(`Your \`${prop}\` has been changed to: \n \`${value.join(" ")}\``)
         .setColor("#15f153");
 
-    let timeembed = new Discord.RichEmbed()
+    let timeembed = new Discord.MessageEmbed()
         .setTitle(`${prop} changed!`)
         .setDescription(`Your \`${prop}\` has been changed to: \n \`${value.join(":")}\``)
         .setColor("#15f153");
 
-    let channelembed = new Discord.RichEmbed()
+    let channelembed = new Discord.MessageEmbed()
         .setTitle(`${prop} changed!`)
         .setDescription(`Your \`${prop}\` has been changed to: \n \`${value.join("-")}\``)
         .setColor("#15f153");
@@ -352,16 +352,16 @@ module.exports.run = async (bot, message, args, reminder) => {
     
 
     else if (prop === 'gfChannel2' || prop === 'teamChannel2') {
-            let patreonRole = reminder.roles.get('592523621898125323').id;
+            let patreonRole = reminder.roles.cache.get('592523621898125323').id;
 
-            let gmRole = reminder.roles.get('519626665551200257').id;
+            let gmRole = reminder.roles.cache.get('519626665551200257').id;
 
             // mapping all members with patreon role into an array.
-            let patreonMembers = reminder.roles.get(patreonRole).members.map(member => {
+            let patreonMembers = reminder.roles.cache.get(patreonRole).members.map(member => {
                 return member.user.id;
             })
 
-            let gmMembers = reminder.roles.get(gmRole).members.map(member => {
+            let gmMembers = reminder.roles.cache.get(gmRole).members.map(member => {
                 return member.user.id;
             })
         

@@ -440,7 +440,7 @@ module.exports.run = async (bot, message, args) => {
 
                     const [prop, value, ...secondValue] = args;
 
-                    const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                    const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
                 
@@ -539,7 +539,7 @@ module.exports.run = async (bot, message, args) => {
 
                     const [prop, value, ...secondValue] = args;
 
-                    const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                    const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
                 
@@ -616,7 +616,7 @@ module.exports.run = async (bot, message, args) => {
 
                     const [prop, value] = args;
 
-                    const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                    const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
                 
@@ -713,7 +713,7 @@ module.exports.run = async (bot, message, args) => {
 
                     const [prop, firstparty, firstNumber, secondparty, secondNumber] = args;
 
-                    const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                    const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
                 
@@ -861,7 +861,7 @@ module.exports.run = async (bot, message, args) => {
 
                     const [ prop, value, ...secondValue ] = args;
 
-                    const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                    const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
                 
@@ -965,7 +965,7 @@ module.exports.run = async (bot, message, args) => {
                 // party help
                 else if (prop === 'help') {
                 
-                    const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                    const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
                 

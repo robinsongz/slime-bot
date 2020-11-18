@@ -138,7 +138,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                         const [prop, ...value] = args;
 
-                        const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                        const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                         if(!adminRole) return message.reply("Administrator Role Not Found");
                     
@@ -168,7 +168,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                         const [prop, ...value] = args;
 
-                        const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                        const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                         if(!adminRole) return message.reply("Administrator Role Not Found");
                     
@@ -205,7 +205,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     // clearing gfs
                     else if (prop === "clear") {
 
-                        const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                        const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                         if(!adminRole) return message.reply("Administrator Role Not Found");
                     
@@ -236,7 +236,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                         const [ prop, ...value ] = args;
 
-                        const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                        const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                         if(!adminRole) return message.reply("Administrator Role Not Found");
                     
@@ -468,7 +468,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     // clear guild's attendance count
                     else if (prop === 'cleanup') {
 
-                        const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                        const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                         if(!adminRole) return message.reply("Administrator Role Not Found");
                     
@@ -487,7 +487,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     // set guild members attendance count
                     else if (prop === 'set') {
-                        const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                        const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                         if(!adminRole) return message.reply("Administrator Role Not Found");
                     
@@ -521,7 +521,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     // gf help
                     else if (prop === 'help') {
                     
-                        const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                        const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                         if(!adminRole) return message.reply("Administrator Role Not Found");
                     
@@ -714,7 +714,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                    const [prop, ...value] = args;
 
-                   const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                   const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                    if(!adminRole) return message.reply("Administrator Role Not Found");
                
@@ -744,7 +744,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                    const [prop, ...value] = args;
 
-                   const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                   const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                    if(!adminRole) return message.reply("Administrator Role Not Found");
                
@@ -781,7 +781,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                // clearing gfs
                else if (prop === "clear") {
 
-                   const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                   const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                    if(!adminRole) return message.reply("Administrator Role Not Found");
                
@@ -812,7 +812,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                    const [ prop, ...value ] = args;
 
-                   const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                   const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                    if(!adminRole) return message.reply("Administrator Role Not Found");
                
@@ -1043,7 +1043,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                 // clear guild's attendance count
                 else if (prop === 'cleanup') {
-                    const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                    const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                         if(!adminRole) return message.reply("Administrator Role Not Found");
                     
@@ -1062,7 +1062,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                 // set guild members attendance count
                 else if (prop === 'set') {
-                    const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                    const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
                 
@@ -1093,7 +1093,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                 // gf help
                 else if (prop === 'help') {
                 
-                    const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+                    const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
                 

@@ -12,7 +12,7 @@ module.exports.run = async (bot, message) => {
        
      // resets configurations to default
 
-        const adminRole = message.guild.roles.find(role => role.name === guildConf.adminRole);
+        const adminRole = message.guild.roles.cache.find(role => role.name === guildConf.adminRole);
         if(!adminRole) return message.reply("Administrator Role Not Found");
         
         
