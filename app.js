@@ -137,7 +137,7 @@ fs.readdir("./events/", (err, files) => {
      
       let eventName = file.split(".")[0];
      
-      bot.on(eventName, event.bind(null, bot));
+      bot.on(eventName, event.bind(null, bot)); 
     });
   });
 
