@@ -142,7 +142,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                         if(!adminRole) return message.reply("Administrator Role Not Found");
                     
-                        if(!message.member.roles.has(adminRole.id)) {
+                        if(!message.member.roles.cache.has(adminRole.id)) {
                             return message.reply("Hey, you're not the boss of me!");
                         }
 
@@ -172,7 +172,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                         if(!adminRole) return message.reply("Administrator Role Not Found");
                     
-                        if(!message.member.roles.has(adminRole.id)) {
+                        if(!message.member.roles.cache.has(adminRole.id)) {
                             return message.reply("Hey, you're not the boss of me!");
                         }
 
@@ -209,7 +209,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                         if(!adminRole) return message.reply("Administrator Role Not Found");
                     
-                        if(!message.member.roles.has(adminRole.id)) {
+                        if(!message.member.roles.cache.has(adminRole.id)) {
                             return message.reply("You're not an admin, sorry!");
                         }
 
@@ -241,7 +241,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                         if(!adminRole) return message.reply("Administrator Role Not Found");
                     
                     
-                        if(!message.member.roles.has(adminRole.id)) {
+                        if(!message.member.roles.cache.has(adminRole.id)) {
                             return message.reply("Hey, you're not the boss of me!");
                         }
 
@@ -310,16 +310,16 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     }
 
                     else if (prop === 'assign') {
-                        let patreonRole = slimeServer.roles.get('592523621898125323').id;
+                        let patreonRole = slimeServer.roles.cache.get('592523621898125323').id;
 
-                        let gmRole = slimeServer.roles.get('519626665551200257').id;
+                        let gmRole = slimeServer.roles.cache.get('519626665551200257').id;
             
                         // mapping all members with patreon role into an array.
-                        let patreonMembers = slimeServer.roles.get(patreonRole).members.map(member => {
+                        let patreonMembers = slimeServer.roles.cache.get(patreonRole).members.map(member => {
                             return member.user.id;
                         })
             
-                        let gmMembers = slimeServer.roles.get(gmRole).members.map(member => {
+                        let gmMembers = slimeServer.roles.cache.get(gmRole).members.map(member => {
                             return member.user.id;
                         })
                     
@@ -452,17 +452,23 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                         const sorted = filtered.sort((a,b) => b.points - a.points);
 
                       
-
-                        const embedSorted = sorted.map(data => {
-                            return `${bot.users.get(data.user).username} : ${data.points}\n`;
-                        })
+                        return message.reply('this command is currently unavailable');
+                    
+                        // const embedSorted = sorted.map(data => {
+                        //     if (data.user == undefined) {
+                        //         return;
+                        //     }
+                        //     else {
+                        //         return `${bot.users.cache.get(data.user).username} : ${data.points}\n`;
+                        //     }
+                        // })
 
                        
-                        const embed = new Discord.RichEmbed()
-                            .addField("GFB Attendance Tracker", 
-                            `${embedSorted.join(" ")}`)
+                        // const embed = new Discord.MessageEmbed()
+                        //     .addField("GFB Attendance Tracker", 
+                        //     `${embedSorted.join(" ")}`)
 
-                        return message.channel.send({embed});
+                        // return message.channel.send({embed});
                     }
 
                     // clear guild's attendance count
@@ -472,7 +478,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                         if(!adminRole) return message.reply("Administrator Role Not Found");
                     
-                        if(!message.member.roles.has(adminRole.id)) {
+                        if(!message.member.roles.cache.has(adminRole.id)) {
                             return message.reply("You're not an admin, sorry!");
                         }
 
@@ -491,12 +497,12 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                         if(!adminRole) return message.reply("Administrator Role Not Found");
                     
-                        if(!message.member.roles.has(adminRole.id)) {
+                        if(!message.member.roles.cache.has(adminRole.id)) {
                             return message.reply("You're not an admin, sorry!");
                         }
                         
 
-                        const user = message.mentions.users.first() || bot.users.get(args[0]);
+                        const user = message.mentions.users.first() || bot.users.cache.get(args[0]);
 
                         
 
@@ -526,7 +532,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                         if(!adminRole) return message.reply("Administrator Role Not Found");
                     
                     
-                        if(!message.member.roles.has(adminRole.id)) {
+                        if(!message.member.roles.cache.has(adminRole.id)) {
 
                             message.author.send({embed: {
                                 color: 3447003,
@@ -584,7 +590,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
             })
             
             // mapping all members from the message.guild into an array.
-            let guildMember = message.guild.members.map(member => {
+            let guildMember = message.guild.members.cache.map(member => {
                 return member.id;
             })
         
@@ -718,7 +724,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                    if(!adminRole) return message.reply("Administrator Role Not Found");
                
-                   if(!message.member.roles.has(adminRole.id)) {
+                   if(!message.member.roles.cache.has(adminRole.id)) {
                        return message.reply("Hey, you're not the boss of me!");
                    }
 
@@ -748,7 +754,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                    if(!adminRole) return message.reply("Administrator Role Not Found");
                
-                   if(!message.member.roles.has(adminRole.id)) {
+                   if(!message.member.roles.cache.has(adminRole.id)) {
                        return message.reply("Hey, you're not the boss of me!");
                    }
 
@@ -785,7 +791,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                    if(!adminRole) return message.reply("Administrator Role Not Found");
                
-                   if(!message.member.roles.has(adminRole.id)) {
+                   if(!message.member.roles.cache.has(adminRole.id)) {
                        return message.reply("You're not an admin, sorry!");
                    }
 
@@ -817,7 +823,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                    if(!adminRole) return message.reply("Administrator Role Not Found");
                
                
-                   if(!message.member.roles.has(adminRole.id)) {
+                   if(!message.member.roles.cache.has(adminRole.id)) {
                        return message.reply("Hey, you're not the boss of me!");
                    }
 
@@ -840,45 +846,45 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                        return user === null ? "" : user;
                    };
 
-                       let user1 = message.guild.members.find(member => member.displayName == gf[0]);
+                       let user1 = message.guild.members.cache.find(member => member.displayName == gf[0]);
 
-                       let user2 = message.guild.members.find(member => member.displayName == gf[1]);
+                       let user2 = message.guild.members.cache.find(member => member.displayName == gf[1]);
 
-                       let user3 = message.guild.members.find(member => member.displayName == gf[2]);
+                       let user3 = message.guild.members.cache.find(member => member.displayName == gf[2]);
 
-                       let user4 = message.guild.members.find(member => member.displayName == gf[3]);
+                       let user4 = message.guild.members.cache.find(member => member.displayName == gf[3]);
 
-                       let user5 = message.guild.members.find(member => member.displayName == gf[4]);
+                       let user5 = message.guild.members.cache.find(member => member.displayName == gf[4]);
 
-                       let user6 = message.guild.members.find(member => member.displayName == gf[5]);
+                       let user6 = message.guild.members.cache.find(member => member.displayName == gf[5]);
 
-                       let user7 = message.guild.members.find(member => member.displayName == gf[6]);
+                       let user7 = message.guild.members.cache.find(member => member.displayName == gf[6]);
 
-                       let user8 = message.guild.members.find(member => member.displayName == gf[7]);
+                       let user8 = message.guild.members.cache.find(member => member.displayName == gf[7]);
 
-                       let user9 = message.guild.members.find(member => member.displayName == gf[8]);
+                       let user9 = message.guild.members.cache.find(member => member.displayName == gf[8]);
 
-                       let user10 = message.guild.members.find(member => member.displayName == gf[9]);
+                       let user10 = message.guild.members.cache.find(member => member.displayName == gf[9]);
 
-                       let user11 = message.guild.members.find(member => member.displayName == gf[10]);
+                       let user11 = message.guild.members.cache.find(member => member.displayName == gf[10]);
 
-                       let user12 = message.guild.members.find(member => member.displayName == gf[11]);
+                       let user12 = message.guild.members.cache.find(member => member.displayName == gf[11]);
 
-                       let user13 = message.guild.members.find(member => member.displayName == gf[12]);
+                       let user13 = message.guild.members.cache.find(member => member.displayName == gf[12]);
 
-                       let user14 = message.guild.members.find(member => member.displayName == gf[13]);
+                       let user14 = message.guild.members.cache.find(member => member.displayName == gf[13]);
 
-                       let user15 = message.guild.members.find(member => member.displayName == gf[14]);
+                       let user15 = message.guild.members.cache.find(member => member.displayName == gf[14]);
 
-                       let user16 = message.guild.members.find(member => member.displayName == gf[15]);
+                       let user16 = message.guild.members.cache.find(member => member.displayName == gf[15]);
 
-                       let user17 = message.guild.members.find(member => member.displayName == gf[16]);
+                       let user17 = message.guild.members.cache.find(member => member.displayName == gf[16]);
 
-                       let user18 = message.guild.members.find(member => member.displayName == gf[17]);
+                       let user18 = message.guild.members.cache.find(member => member.displayName == gf[17]);
 
-                       let user19 = message.guild.members.find(member => member.displayName == gf[18]);
+                       let user19 = message.guild.members.cache.find(member => member.displayName == gf[18]);
 
-                       let user20 = message.guild.members.find(member => member.displayName == gf[19]);
+                       let user20 = message.guild.members.cache.find(member => member.displayName == gf[19]);
 
                    
                            
@@ -1034,7 +1040,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     })
 
                    
-                    const embed = new Discord.RichEmbed()
+                    const embed = new Discord.MessageEmbed()
                         .addField("GFB Attendance Tracker", 
                         `${embedSorted.join(" ")}`)
 
@@ -1047,7 +1053,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                         if(!adminRole) return message.reply("Administrator Role Not Found");
                     
-                        if(!message.member.roles.has(adminRole.id)) {
+                        if(!message.member.roles.cache.has(adminRole.id)) {
                             return message.reply("You're not an admin, sorry!");
                         }
 
@@ -1066,7 +1072,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
                 
-                    if(!message.member.roles.has(adminRole.id)) {
+                    if(!message.member.roles.cache.has(adminRole.id)) {
                         return message.reply("You're not an admin, sorry!");
                     }
 
@@ -1098,7 +1104,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     if(!adminRole) return message.reply("Administrator Role Not Found");
                 
                 
-                    if(!message.member.roles.has(adminRole.id)) {
+                    if(!message.member.roles.cache.has(adminRole.id)) {
 
                         message.author.send({embed: {
                             color: 3447003,
@@ -1120,7 +1126,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                                 value: `**!gf checkin ** : check yourself into gf. \n **!gf checkout ** : remove yourself from gf  \n**!gf view** : view gf \n**!gf daily** : +1 to your gfb attd \n**!gf track** : view own gfb attd \n**!gf attd** : view guild's gfb attd \n**!gf info** : view GFB info `
                             },{
                                 name: `**__GM Commands Part 1__**`,
-                                value: `**!gf clear** : clears entire gf \n **!gf add <use>** : adds user to gf (**important**: user must be exact same spelling as their display name or else it will double register if user checks in themselves)`
+                                value: `**!gf clear** : clears entire gf \n **!gf add <user>** : adds user to gf (**important**: user must be exact same spelling as their display name or else it will double register if user checks in themselves)`
                             },{
                                 name: `**__GM Commands Part 2__**`,
                                 value: `**!gf remove <number>** : removes member of that number from gf \n **!gf edit <name>** : edits gf's title`

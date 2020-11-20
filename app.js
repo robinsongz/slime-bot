@@ -23,18 +23,18 @@ defaultSettings = {
     teamRole: "Team Admin",
     prefix: "!",	
     privateMessage: "Hi there, welcome to our discord! \n\n Please change your nickname to your in-game IGN. \n\n Type !help for my list of commands!",
-    expoTime1: "09 45",
-    expoTime2: "17 45",
-    expoClear1: "11 01",
-    expoClear2: "19 01",
-    expoChannel: "general",
-    expoMessage: "@everyone Expeditions are starting in 15 minutes! Good luck!",
+    expoTime1: "08 45",
+    expoTime2: "16 45",
+    expoClear1: "10 01",
+    expoClear2: "18 01",
+    expoChannel: "expo",
+    expoMessage: "Expeditions are starting in 15 minutes! Good luck!",
     banquetTime: "18 00",
-    banquetChannel: "general",
-    banquetMessage: "@everyone Banquet is starting in 15 minutes!",
-    fortTime: "18 45",
-    fortChannel: 'general',
-    fortMessage: '@everyone Guild fort in 15 minutes! Good luck!',
+    banquetChannel: "banquet",
+    banquetMessage: "Banquet is starting in 15 minutes!",
+    fortTime: "17 45",
+    fortChannel: 'fort',
+    fortMessage: 'Guild fort in 15 minutes! Good luck!',
     teamChannel: 'team1',
     teamChannel2: 'team2',
     gfChannel: 'gf1',
@@ -177,8 +177,8 @@ bot.on('ready', () => {
             
            
                 guild.channels
-                    .find((channel) => {
-                        if (channel.name === expoChannel) {
+                    .cache.find((channel) => {
+                        if (channel.name === expoChannel && channel.type === 'text') {
                             channel
                                 .send(expoMessage)
                                 .catch(console.error);
@@ -195,10 +195,9 @@ bot.on('ready', () => {
     
            
             guild.channels
-                .find((channel) => {
-                    if (channel.name === fortChannel) {
-                        channel
-                            .send(fortMessage)
+                .cache.find((channel) => {
+                    if (channel.name === fortChannel && channel.type === 'text') {
+                        channel.send(fortMessage)
                             .catch(console.error);
                     } else {
                         return;
@@ -212,8 +211,8 @@ bot.on('ready', () => {
             let banquetMessage = enmap.get(guild.id, 'banquetMessage');
 
             guild.channels
-                .find(channel => {
-                    if (channel.name === banquetChannel) {
+                .cache.find(channel => {
+                    if (channel.name === banquetChannel && channel.type === 'text') {
                         channel
                             .send(banquetMessage)
                             .catch(console.error);

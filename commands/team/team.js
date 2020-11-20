@@ -444,7 +444,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
 
-                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
+                    if(!message.member.roles.cache.has(adminRole.id) && !message.member.roles.cache.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -549,7 +549,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
 
-                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
+                    if(!message.member.roles.cache.has(adminRole.id) && !message.member.roles.cache.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -632,7 +632,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
 
-                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
+                    if(!message.member.roles.cache.has(adminRole.id) && !message.member.roles.cache.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -734,7 +734,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
 
-                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
+                    if(!message.member.roles.cache.has(adminRole.id) && !message.member.roles.cache.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -887,7 +887,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
 
-                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
+                    if(!message.member.roles.cache.has(adminRole.id) && !message.member.roles.cache.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
                     if (value === 'team3') {
@@ -924,25 +924,25 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     if (value === 'team1') {
 
-                        let user1 = message.guild.members.find(member => member.displayName == team1[0]);
+                        let user1 = message.guild.members.cache.find(member => member.displayName == team1[0]);
 
-                        let user2 = message.guild.members.find(member => member.displayName == team1[1]);
+                        let user2 = message.guild.members.cache.find(member => member.displayName == team1[1]);
 
-                        let user3 = message.guild.members.find(member => member.displayName == team1[2]);
+                        let user3 = message.guild.members.cache.find(member => member.displayName == team1[2]);
 
-                        let user4 = message.guild.members.find(member => member.displayName == team1[3]);
+                        let user4 = message.guild.members.cache.find(member => member.displayName == team1[3]);
 
-                        let user5 = message.guild.members.find(member => member.displayName == team1[4]);
+                        let user5 = message.guild.members.cache.find(member => member.displayName == team1[4]);
 
-                        let user6 = message.guild.members.find(member => member.displayName == team1[5]);
+                        let user6 = message.guild.members.cache.find(member => member.displayName == team1[5]);
 
-                        let user7 = message.guild.members.find(member => member.displayName == team1[6]);
+                        let user7 = message.guild.members.cache.find(member => member.displayName == team1[6]);
 
-                        let user8 = message.guild.members.find(member => member.displayName == team1[7]);
+                        let user8 = message.guild.members.cache.find(member => member.displayName == team1[7]);
 
-                        let user9 = message.guild.members.find(member => member.displayName == team1[8]);
+                        let user9 = message.guild.members.cache.find(member => member.displayName == team1[8]);
 
-                        let user10 = message.guild.members.find(member => member.displayName == team1[9]);
+                        let user10 = message.guild.members.cache.find(member => member.displayName == team1[9]);
 
 
                             
@@ -950,25 +950,25 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     }
 
                     if (value === 'team2') {
-                        let user1 = message.guild.members.find(member => member.displayName == team2[0]);
+                        let user1 = message.guild.members.cache.find(member => member.displayName == team2[0]);
 
-                        let user2 = message.guild.members.find(member => member.displayName == team2[1]);
+                        let user2 = message.guild.members.cache.find(member => member.displayName == team2[1]);
 
-                        let user3 = message.guild.members.find(member => member.displayName == team2[2]);
+                        let user3 = message.guild.members.cache.find(member => member.displayName == team2[2]);
 
-                        let user4 = message.guild.members.find(member => member.displayName == team2[3]);
+                        let user4 = message.guild.members.cache.find(member => member.displayName == team2[3]);
 
-                        let user5 = message.guild.members.find(member => member.displayName == team2[4]);
+                        let user5 = message.guild.members.cache.find(member => member.displayName == team2[4]);
 
-                        let user6 = message.guild.members.find(member => member.displayName == team2[5]);
+                        let user6 = message.guild.members.cache.find(member => member.displayName == team2[5]);
 
-                        let user7 = message.guild.members.find(member => member.displayName == team2[6]);
+                        let user7 = message.guild.members.cache.find(member => member.displayName == team2[6]);
 
-                        let user8 = message.guild.members.find(member => member.displayName == team2[7]);
+                        let user8 = message.guild.members.cache.find(member => member.displayName == team2[7]);
 
-                        let user9 = message.guild.members.find(member => member.displayName == team2[8]);
+                        let user9 = message.guild.members.cache.find(member => member.displayName == team2[8]);
 
-                        let user10 = message.guild.members.find(member => member.displayName == team2[9]);
+                        let user10 = message.guild.members.cache.find(member => member.displayName == team2[9]);
 
                             
                         return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} : \n ${secondValue.join(" ")}`);
@@ -976,25 +976,25 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     if (value === 'team3') {
                         
-                        let user1 = message.guild.members.find(member => member.displayName == team3[0]);
+                        let user1 = message.guild.members.cache.find(member => member.displayName == team3[0]);
 
-                        let user2 = message.guild.members.find(member => member.displayName == team3[1]);
+                        let user2 = message.guild.members.cache.find(member => member.displayName == team3[1]);
 
-                        let user3 = message.guild.members.find(member => member.displayName == team3[2]);
+                        let user3 = message.guild.members.cache.find(member => member.displayName == team3[2]);
 
-                        let user4 = message.guild.members.find(member => member.displayName == team3[3]);
+                        let user4 = message.guild.members.cache.find(member => member.displayName == team3[3]);
 
-                        let user5 = message.guild.members.find(member => member.displayName == team3[4]);
+                        let user5 = message.guild.members.cache.find(member => member.displayName == team3[4]);
 
-                        let user6 = message.guild.members.find(member => member.displayName == team3[5]);
+                        let user6 = message.guild.members.cache.find(member => member.displayName == team3[5]);
 
-                        let user7 = message.guild.members.find(member => member.displayName == team3[6]);
+                        let user7 = message.guild.members.cache.find(member => member.displayName == team3[6]);
 
-                        let user8 = message.guild.members.find(member => member.displayName == team3[7]);
+                        let user8 = message.guild.members.cache.find(member => member.displayName == team3[7]);
 
-                        let user9 = message.guild.members.find(member => member.displayName == team3[8]);
+                        let user9 = message.guild.members.cache.find(member => member.displayName == team3[8]);
 
-                        let user10 = message.guild.members.find(member => member.displayName == team3[9]);
+                        let user10 = message.guild.members.cache.find(member => member.displayName == team3[9]);
 
                                 
                         return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} : \n ${secondValue.join(" ")}`);
@@ -1003,65 +1003,65 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     if (value === 'all') {
 
-                        let user1 = message.guild.members.find(member => member.displayName == team1[0]);
+                        let user1 = message.guild.members.cache.find(member => member.displayName == team1[0]);
 
-                        let user2 = message.guild.members.find(member => member.displayName == team1[1]);
+                        let user2 = message.guild.members.cache.find(member => member.displayName == team1[1]);
 
-                        let user3 = message.guild.members.find(member => member.displayName == team1[2]);
+                        let user3 = message.guild.members.cache.find(member => member.displayName == team1[2]);
 
-                        let user4 = message.guild.members.find(member => member.displayName == team1[3]);
+                        let user4 = message.guild.members.cache.find(member => member.displayName == team1[3]);
 
-                        let user5 = message.guild.members.find(member => member.displayName == team1[4]);
+                        let user5 = message.guild.members.cache.find(member => member.displayName == team1[4]);
 
-                        let user6 = message.guild.members.find(member => member.displayName == team1[5]);
+                        let user6 = message.guild.members.cache.find(member => member.displayName == team1[5]);
 
-                        let user7 = message.guild.members.find(member => member.displayName == team1[6]);
+                        let user7 = message.guild.members.cache.find(member => member.displayName == team1[6]);
 
-                        let user8 = message.guild.members.find(member => member.displayName == team1[7]);
+                        let user8 = message.guild.members.cache.find(member => member.displayName == team1[7]);
 
-                        let user9 = message.guild.members.find(member => member.displayName == team1[8]);
+                        let user9 = message.guild.members.cache.find(member => member.displayName == team1[8]);
 
-                        let user10 = message.guild.members.find(member => member.displayName == team1[9]);
+                        let user10 = message.guild.members.cache.find(member => member.displayName == team1[9]);
 
-                        let user11 = message.guild.members.find(member => member.displayName == team2[0]);
+                        let user11 = message.guild.members.cache.find(member => member.displayName == team2[0]);
 
-                        let user12 = message.guild.members.find(member => member.displayName == team2[1]);
+                        let user12 = message.guild.members.cache.find(member => member.displayName == team2[1]);
 
-                        let user13 = message.guild.members.find(member => member.displayName == team2[2]);
+                        let user13 = message.guild.members.cache.find(member => member.displayName == team2[2]);
 
-                        let user14 = message.guild.members.find(member => member.displayName == team2[3]);
+                        let user14 = message.guild.members.cache.find(member => member.displayName == team2[3]);
 
-                        let user15 = message.guild.members.find(member => member.displayName == team2[4]);
+                        let user15 = message.guild.members.cache.find(member => member.displayName == team2[4]);
 
-                        let user16 = message.guild.members.find(member => member.displayName == team2[5]);
+                        let user16 = message.guild.members.cache.find(member => member.displayName == team2[5]);
 
-                        let user17 = message.guild.members.find(member => member.displayName == team2[6]);
+                        let user17 = message.guild.members.cache.find(member => member.displayName == team2[6]);
 
-                        let user18 = message.guild.members.find(member => member.displayName == team2[7]);
+                        let user18 = message.guild.members.cache.find(member => member.displayName == team2[7]);
 
-                        let user19 = message.guild.members.find(member => member.displayName == team2[8]);
+                        let user19 = message.guild.members.cache.find(member => member.displayName == team2[8]);
 
-                        let user20 = message.guild.members.find(member => member.displayName == team2[9]);
+                        let user20 = message.guild.members.cache.find(member => member.displayName == team2[9]);
 
-                        let user21 = message.guild.members.find(member => member.displayName == team3[0]);
+                        let user21 = message.guild.members.cache.find(member => member.displayName == team3[0]);
 
-                        let user22 = message.guild.members.find(member => member.displayName == team3[1]);
+                        let user22 = message.guild.members.cache.find(member => member.displayName == team3[1]);
 
-                        let user23 = message.guild.members.find(member => member.displayName == team3[2]);
+                        let user23 = message.guild.members.cache.find(member => member.displayName == team3[2]);
 
-                        let user24 = message.guild.members.find(member => member.displayName == team3[3]);
+                        let user24 = message.guild.members.cache.find(member => member.displayName == team3[3]);
 
-                        let user25 = message.guild.members.find(member => member.displayName == team3[4]);
+                        let user25 = message.guild.members.cache.find(member => member.displayName == team3[4]);
 
-                        let user26 = message.guild.members.find(member => member.displayName == team3[5]);
+                        let user26 = message.guild.members.cache.find(member => member.displayName == team3[5]);
 
-                        let user27 = message.guild.members.find(member => member.displayName == team3[6]);
+                        let user27 = message.guild.members.cache.find(member => member.displayName == team3[6]);
 
-                        let user28 = message.guild.members.find(member => member.displayName == team3[7]);
+                        let user28 = message.guild.members.cache.find(member => member.displayName == team3[7]);
 
-                        let user29 = message.guild.members.find(member => member.displayName == team3[8]);
+                        let user29 = message.guild.members.cache.find(member => member.displayName == team3[8]);
 
-                        let user30 = message.guild.members.find(member => member.displayName == team3[9]);
+                        let user30 = message.guild.members.cache.find(member => member.displayName == team3[9]);
 
                         return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} ${realUser(user11)} ${realUser(user12)} ${realUser(user13)} ${realUser(user14)} ${realUser(user15)} ${realUser(user16)} ${realUser(user17)} ${realUser(user18)} ${realUser(user19)} ${realUser(user20)} ${realUser(user21)} ${realUser(user22)} ${realUser(user23)} ${realUser(user24)} ${realUser(user25)} ${realUser(user26)} ${realUser(user27)} ${realUser(user28)} ${realUser(user29)} ${realUser(user30)} \n ${secondValue.join(" ")}`);
                     }
@@ -1075,7 +1075,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                     if(!adminRole) return message.reply("Administrator Role Not Found");
                 
                 
-                    if(!message.member.roles.has(adminRole.id)) {
+                    if(!message.member.roles.cache.has(adminRole.id)) {
 
                         message.author.send({embed: {
                             color: 3447003,
@@ -1566,7 +1566,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
 
-                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
+                    if(!message.member.roles.cache.has(adminRole.id) && !message.member.roles.cache.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -1671,7 +1671,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
 
-                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
+                    if(!message.member.roles.cache.has(adminRole.id) && !message.member.roles.cache.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
                   
@@ -1756,7 +1756,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
 
-                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
+                    if(!message.member.roles.cache.has(adminRole.id) && !message.member.roles.cache.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -1858,7 +1858,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
 
-                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
+                    if(!message.member.roles.cache.has(adminRole.id) && !message.member.roles.cache.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -2010,7 +2010,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
 
-                    if(!message.member.roles.has(adminRole.id) && !message.member.roles.has(teamRole.id)) {
+                    if(!message.member.roles.cache.has(adminRole.id) && !message.member.roles.cache.has(teamRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -2048,25 +2048,25 @@ module.exports.run = async (bot, message, args, slimeServer) => {
         
                             if (value === 'team1') {
         
-                                let user1 = message.guild.members.find(member => member.displayName == team1[0]);
+                                let user1 = message.guild.members.cache.find(member => member.displayName == team1[0]);
         
-                                let user2 = message.guild.members.find(member => member.displayName == team1[1]);
+                                let user2 = message.guild.members.cache.find(member => member.displayName == team1[1]);
         
-                                let user3 = message.guild.members.find(member => member.displayName == team1[2]);
+                                let user3 = message.guild.members.cache.find(member => member.displayName == team1[2]);
         
-                                let user4 = message.guild.members.find(member => member.displayName == team1[3]);
+                                let user4 = message.guild.members.cache.find(member => member.displayName == team1[3]);
         
-                                let user5 = message.guild.members.find(member => member.displayName == team1[4]);
+                                let user5 = message.guild.members.cache.find(member => member.displayName == team1[4]);
         
-                                let user6 = message.guild.members.find(member => member.displayName == team1[5]);
+                                let user6 = message.guild.members.cache.find(member => member.displayName == team1[5]);
         
-                                let user7 = message.guild.members.find(member => member.displayName == team1[6]);
+                                let user7 = message.guild.members.cache.find(member => member.displayName == team1[6]);
         
-                                let user8 = message.guild.members.find(member => member.displayName == team1[7]);
+                                let user8 = message.guild.members.cache.find(member => member.displayName == team1[7]);
         
-                                let user9 = message.guild.members.find(member => member.displayName == team1[8]);
+                                let user9 = message.guild.members.cache.find(member => member.displayName == team1[8]);
         
-                                let user10 = message.guild.members.find(member => member.displayName == team1[9]);
+                                let user10 = message.guild.members.cache.find(member => member.displayName == team1[9]);
         
         
                                     
@@ -2074,25 +2074,25 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                             }
         
                             if (value === 'team2') {
-                                let user1 = message.guild.members.find(member => member.displayName == team2[0]);
+                                let user1 = message.guild.members.cache.find(member => member.displayName == team2[0]);
         
-                                let user2 = message.guild.members.find(member => member.displayName == team2[1]);
+                                let user2 = message.guild.members.cache.find(member => member.displayName == team2[1]);
         
-                                let user3 = message.guild.members.find(member => member.displayName == team2[2]);
+                                let user3 = message.guild.members.cache.find(member => member.displayName == team2[2]);
         
-                                let user4 = message.guild.members.find(member => member.displayName == team2[3]);
+                                let user4 = message.guild.members.cache.find(member => member.displayName == team2[3]);
         
-                                let user5 = message.guild.members.find(member => member.displayName == team2[4]);
+                                let user5 = message.guild.members.cache.find(member => member.displayName == team2[4]);
         
-                                let user6 = message.guild.members.find(member => member.displayName == team2[5]);
+                                let user6 = message.guild.members.cache.find(member => member.displayName == team2[5]);
         
-                                let user7 = message.guild.members.find(member => member.displayName == team2[6]);
+                                let user7 = message.guild.members.cache.find(member => member.displayName == team2[6]);
         
-                                let user8 = message.guild.members.find(member => member.displayName == team2[7]);
+                                let user8 = message.guild.members.cache.find(member => member.displayName == team2[7]);
         
-                                let user9 = message.guild.members.find(member => member.displayName == team2[8]);
+                                let user9 = message.guild.members.cache.find(member => member.displayName == team2[8]);
         
-                                let user10 = message.guild.members.find(member => member.displayName == team2[9]);
+                                let user10 = message.guild.members.cache.find(member => member.displayName == team2[9]);
         
                                     
                                 return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} : \n ${secondValue.join(" ")}`);
@@ -2100,25 +2100,25 @@ module.exports.run = async (bot, message, args, slimeServer) => {
         
                             if (value === 'team3') {
                                 
-                                let user1 = message.guild.members.find(member => member.displayName == team3[0]);
+                                let user1 = message.guild.members.cache.find(member => member.displayName == team3[0]);
         
-                                let user2 = message.guild.members.find(member => member.displayName == team3[1]);
+                                let user2 = message.guild.members.cache.find(member => member.displayName == team3[1]);
         
-                                let user3 = message.guild.members.find(member => member.displayName == team3[2]);
+                                let user3 = message.guild.members.cache.find(member => member.displayName == team3[2]);
         
-                                let user4 = message.guild.members.find(member => member.displayName == team3[3]);
+                                let user4 = message.guild.members.cache.find(member => member.displayName == team3[3]);
         
-                                let user5 = message.guild.members.find(member => member.displayName == team3[4]);
+                                let user5 = message.guild.members.cache.find(member => member.displayName == team3[4]);
         
-                                let user6 = message.guild.members.find(member => member.displayName == team3[5]);
+                                let user6 = message.guild.members.cache.find(member => member.displayName == team3[5]);
         
-                                let user7 = message.guild.members.find(member => member.displayName == team3[6]);
+                                let user7 = message.guild.members.cache.find(member => member.displayName == team3[6]);
         
-                                let user8 = message.guild.members.find(member => member.displayName == team3[7]);
+                                let user8 = message.guild.members.cache.find(member => member.displayName == team3[7]);
         
-                                let user9 = message.guild.members.find(member => member.displayName == team3[8]);
+                                let user9 = message.guild.members.cache.find(member => member.displayName == team3[8]);
         
-                                let user10 = message.guild.members.find(member => member.displayName == team3[9]);
+                                let user10 = message.guild.members.cache.find(member => member.displayName == team3[9]);
         
                                         
                                 return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} : \n ${secondValue.join(" ")}`);
@@ -2127,65 +2127,65 @@ module.exports.run = async (bot, message, args, slimeServer) => {
         
                             if (value === 'all') {
         
-                                let user1 = message.guild.members.find(member => member.displayName == team1[0]);
+                                let user1 = message.guild.members.cache.find(member => member.displayName == team1[0]);
         
-                                let user2 = message.guild.members.find(member => member.displayName == team1[1]);
+                                let user2 = message.guild.members.cache.find(member => member.displayName == team1[1]);
         
-                                let user3 = message.guild.members.find(member => member.displayName == team1[2]);
+                                let user3 = message.guild.members.cache.find(member => member.displayName == team1[2]);
         
-                                let user4 = message.guild.members.find(member => member.displayName == team1[3]);
+                                let user4 = message.guild.members.cache.find(member => member.displayName == team1[3]);
         
-                                let user5 = message.guild.members.find(member => member.displayName == team1[4]);
+                                let user5 = message.guild.members.cache.find(member => member.displayName == team1[4]);
         
-                                let user6 = message.guild.members.find(member => member.displayName == team1[5]);
+                                let user6 = message.guild.members.cache.find(member => member.displayName == team1[5]);
         
-                                let user7 = message.guild.members.find(member => member.displayName == team1[6]);
+                                let user7 = message.guild.members.cache.find(member => member.displayName == team1[6]);
         
-                                let user8 = message.guild.members.find(member => member.displayName == team1[7]);
+                                let user8 = message.guild.members.cache.find(member => member.displayName == team1[7]);
         
-                                let user9 = message.guild.members.find(member => member.displayName == team1[8]);
+                                let user9 = message.guild.members.cache.find(member => member.displayName == team1[8]);
         
-                                let user10 = message.guild.members.find(member => member.displayName == team1[9]);
+                                let user10 = message.guild.members.cache.find(member => member.displayName == team1[9]);
         
-                                let user11 = message.guild.members.find(member => member.displayName == team2[0]);
+                                let user11 = message.guild.members.cache.find(member => member.displayName == team2[0]);
         
-                                let user12 = message.guild.members.find(member => member.displayName == team2[1]);
+                                let user12 = message.guild.members.cache.find(member => member.displayName == team2[1]);
         
-                                let user13 = message.guild.members.find(member => member.displayName == team2[2]);
+                                let user13 = message.guild.members.cache.find(member => member.displayName == team2[2]);
         
-                                let user14 = message.guild.members.find(member => member.displayName == team2[3]);
+                                let user14 = message.guild.members.cache.find(member => member.displayName == team2[3]);
         
-                                let user15 = message.guild.members.find(member => member.displayName == team2[4]);
+                                let user15 = message.guild.members.cache.find(member => member.displayName == team2[4]);
         
-                                let user16 = message.guild.members.find(member => member.displayName == team2[5]);
+                                let user16 = message.guild.members.cache.find(member => member.displayName == team2[5]);
         
-                                let user17 = message.guild.members.find(member => member.displayName == team2[6]);
+                                let user17 = message.guild.members.cache.find(member => member.displayName == team2[6]);
         
-                                let user18 = message.guild.members.find(member => member.displayName == team2[7]);
+                                let user18 = message.guild.members.cache.find(member => member.displayName == team2[7]);
         
-                                let user19 = message.guild.members.find(member => member.displayName == team2[8]);
+                                let user19 = message.guild.members.cache.find(member => member.displayName == team2[8]);
         
-                                let user20 = message.guild.members.find(member => member.displayName == team2[9]);
+                                let user20 = message.guild.members.cache.find(member => member.displayName == team2[9]);
         
-                                let user21 = message.guild.members.find(member => member.displayName == team3[0]);
+                                let user21 = message.guild.members.cache.find(member => member.displayName == team3[0]);
         
-                                let user22 = message.guild.members.find(member => member.displayName == team3[1]);
+                                let user22 = message.guild.members.cache.find(member => member.displayName == team3[1]);
         
-                                let user23 = message.guild.members.find(member => member.displayName == team3[2]);
+                                let user23 = message.guild.members.cache.find(member => member.displayName == team3[2]);
         
-                                let user24 = message.guild.members.find(member => member.displayName == team3[3]);
+                                let user24 = message.guild.members.cache.find(member => member.displayName == team3[3]);
         
-                                let user25 = message.guild.members.find(member => member.displayName == team3[4]);
+                                let user25 = message.guild.members.cache.find(member => member.displayName == team3[4]);
         
-                                let user26 = message.guild.members.find(member => member.displayName == team3[5]);
+                                let user26 = message.guild.members.cache.find(member => member.displayName == team3[5]);
         
-                                let user27 = message.guild.members.find(member => member.displayName == team3[6]);
+                                let user27 = message.guild.members.cache.find(member => member.displayName == team3[6]);
         
-                                let user28 = message.guild.members.find(member => member.displayName == team3[7]);
+                                let user28 = message.guild.members.cache.find(member => member.displayName == team3[7]);
         
-                                let user29 = message.guild.members.find(member => member.displayName == team3[8]);
+                                let user29 = message.guild.members.cache.find(member => member.displayName == team3[8]);
         
-                                let user30 = message.guild.members.find(member => member.displayName == team3[9]);
+                                let user30 = message.guild.members.cache.find(member => member.displayName == team3[9]);
         
                                 return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} ${realUser(user7)} ${realUser(user8)} ${realUser(user9)} ${realUser(user10)} ${realUser(user11)} ${realUser(user12)} ${realUser(user13)} ${realUser(user14)} ${realUser(user15)} ${realUser(user16)} ${realUser(user17)} ${realUser(user18)} ${realUser(user19)} ${realUser(user20)} ${realUser(user21)} ${realUser(user22)} ${realUser(user23)} ${realUser(user24)} ${realUser(user25)} ${realUser(user26)} ${realUser(user27)} ${realUser(user28)} ${realUser(user29)} ${realUser(user30)} \n ${secondValue.join(" ")}`);
                             }
@@ -2199,7 +2199,7 @@ module.exports.run = async (bot, message, args, slimeServer) => {
                             if(!adminRole) return message.reply("Administrator Role Not Found");
                         
                         
-                            if(!message.member.roles.has(adminRole.id)) {
+                            if(!message.member.roles.cache.has(adminRole.id)) {
 
                                 message.author.send({embed: {
                                     color: 3447003,

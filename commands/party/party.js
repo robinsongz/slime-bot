@@ -444,7 +444,7 @@ module.exports.run = async (bot, message, args) => {
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
                 
-                    if(!message.member.roles.has(adminRole.id)) {
+                    if(!message.member.roles.cache.has(adminRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -543,7 +543,7 @@ module.exports.run = async (bot, message, args) => {
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
                 
-                    if(!message.member.roles.has(adminRole.id)) {
+                    if(!message.member.roles.cache.has(adminRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -620,7 +620,7 @@ module.exports.run = async (bot, message, args) => {
 
                     if(!adminRole) return message.reply("Administrator Role Not Found");
                 
-                    if(!message.member.roles.has(adminRole.id)) {
+                    if(!message.member.roles.cache.has(adminRole.id)) {
                         return message.reply("You're not an admin, sorry!");
                     }
 
@@ -718,7 +718,7 @@ module.exports.run = async (bot, message, args) => {
                     if(!adminRole) return message.reply("Administrator Role Not Found");
                 
                 
-                    if(!message.member.roles.has(adminRole.id)) {
+                    if(!message.member.roles.cache.has(adminRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -866,7 +866,7 @@ module.exports.run = async (bot, message, args) => {
                     if(!adminRole) return message.reply("Administrator Role Not Found");
                 
                 
-                    if(!message.member.roles.has(adminRole.id)) {
+                    if(!message.member.roles.cache.has(adminRole.id)) {
                         return message.reply("Hey, you're not the boss of me!");
                     }
 
@@ -907,17 +907,17 @@ module.exports.run = async (bot, message, args) => {
                     
                     if (value === 'party1') {
 
-                        let user1 = message.guild.members.find(member => member.displayName == party1[0]);
+                        let user1 = message.guild.members.cache.find(member => member.displayName == party1[0]);
 
-                        let user2 = message.guild.members.find(member => member.displayName == party1[1]);
+                        let user2 = message.guild.members.cache.find(member => member.displayName == party1[1]);
 
-                        let user3 = message.guild.members.find(member => member.displayName == party1[2]);
+                        let user3 = message.guild.members.cache.find(member => member.displayName == party1[2]);
 
-                        let user4 = message.guild.members.find(member => member.displayName == party1[3]);
+                        let user4 = message.guild.members.cache.find(member => member.displayName == party1[3]);
 
-                        let user5 = message.guild.members.find(member => member.displayName == party1[4]);
+                        let user5 = message.guild.members.cache.find(member => member.displayName == party1[4]);
 
-                        let user6 = message.guild.members.find(member => member.displayName == party1[5]);
+                        let user6 = message.guild.members.cache.find(member => member.displayName == party1[5]);
                             
                         return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} : \n ${secondValue.join(" ")}`);
                     }
@@ -925,17 +925,17 @@ module.exports.run = async (bot, message, args) => {
                    
                     if (value === 'party2') {
 
-                        let user1 = message.guild.members.find(member => member.displayName == party2[0]);
+                        let user1 = message.guild.members.cache.find(member => member.displayName == party2[0]);
 
-                        let user2 = message.guild.members.find(member => member.displayName == party2[1]);
+                        let user2 = message.guild.members.cache.find(member => member.displayName == party2[1]);
 
-                        let user3 = message.guild.members.find(member => member.displayName == party2[2]);
+                        let user3 = message.guild.members.cache.find(member => member.displayName == party2[2]);
 
-                        let user4 = message.guild.members.find(member => member.displayName == party2[3]);
+                        let user4 = message.guild.members.cache.find(member => member.displayName == party2[3]);
 
-                        let user5 = message.guild.members.find(member => member.displayName == party2[4]);
+                        let user5 = message.guild.members.cache.find(member => member.displayName == party2[4]);
 
-                        let user6 = message.guild.members.find(member => member.displayName == party2[5]);
+                        let user6 = message.guild.members.cache.find(member => member.displayName == party2[5]);
 
                             
                         return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} : \n ${secondValue.join(" ")}`);
@@ -944,17 +944,17 @@ module.exports.run = async (bot, message, args) => {
                    
                     if (value === 'party3') {
                         
-                        let user1 = message.guild.members.find(member => member.displayName == party3[0]);
+                        let user1 = message.guild.members.cache.find(member => member.displayName == party3[0]);
 
-                        let user2 = message.guild.members.find(member => member.displayName == party3[1]);
+                        let user2 = message.guild.members.cache.find(member => member.displayName == party3[1]);
 
-                        let user3 = message.guild.members.find(member => member.displayName == party3[2]);
+                        let user3 = message.guild.members.cache.find(member => member.displayName == party3[2]);
 
-                        let user4 = message.guild.members.find(member => member.displayName == party3[3]);
+                        let user4 = message.guild.members.cache.find(member => member.displayName == party3[3]);
 
-                        let user5 = message.guild.members.find(member => member.displayName == party3[4]);
+                        let user5 = message.guild.members.cache.find(member => member.displayName == party3[4]);
 
-                        let user6 = message.guild.members.find(member => member.displayName == party3[5]);
+                        let user6 = message.guild.members.cache.find(member => member.displayName == party3[5]);
 
                                 
                         return message.channel.send(`${realUser(user1)} ${realUser(user2)} ${realUser(user3)} ${realUser(user4)} ${realUser(user5)} ${realUser(user6)} : \n ${secondValue.join(" ")}`);
@@ -970,7 +970,7 @@ module.exports.run = async (bot, message, args) => {
                     if(!adminRole) return message.reply("Administrator Role Not Found");
                 
                 
-                    if(!message.member.roles.has(adminRole.id)) {
+                    if(!message.member.roles.cache.has(adminRole.id)) {
 
                         message.author.send({embed: {
                             color: 3447003,

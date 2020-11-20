@@ -491,7 +491,7 @@ module.exports.run = async (bot, message, args, reminder) => {
         // changing all other configs
         else {
 
-            let botembed = new Discord.RichEmbed()
+            let botembed = new Discord.MessageEmbed()
                     .setTitle(`${prop} changed!`)
                     .setDescription(`Your \`${prop}\` has been changed to: \n \`${value.join(" ")}!\``)
                     .setColor("#15f153");
